@@ -1,0 +1,5 @@
+(1) was getting a div to move by dragging on a mouse click.
+
+Task here was to see if I could get the moving div to snap to a defined point when released. This seems to work here.
+
+Next task is to have more than one snap point and have the div snap to the nearest.
