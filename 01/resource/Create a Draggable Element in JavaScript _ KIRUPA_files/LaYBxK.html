@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- saved from url=(0124)https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&slug-hash=LaYBxK&default-tabs=js,result&host=https://codepen.io -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width">
+<title>CodePen Embed - Drag  &amp; Drop</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="gbpSXavMtYaYSpOLPSGIfLaT3RmSMusI7LUNdGYH0iFJsXD4Y1f/V1eGoZCQOUfrDZaoU07F7IHCpooxRmM+1w==">
+<link rel="stylesheet" media="all" href="./embed-5a8968e8fdae96302fed120f7315b34912ebf28814995f2781a9e66077ca4fab.css">
+<style>
+    .hide {
+      display: none !important;
+    }
+
+    #result-box {
+      background: #3d3d3e;
+      color: #ffffff;
+    }
+    .embed-footer,
+    .embed-nav {
+      background: #3d3d3e;
+      
+    }
+    .embed-nav .code-types a,
+    .embed-nav .result-button-list a,
+    .action-button {
+      color: #ffffff;
+      background-color: #666666;
+    }
+    .embed-nav .code-types a.active,
+    .embed-nav .result-button-list a.active,
+    .action-button.active {
+      background: #888888;
+      color: #ffffff;
+      box-shadow: inset 0px 3px #dddddd;
+    }
+    .embed-nav .logo-wrap .edit-on-codepen {
+      color: #ffffff;
+    }
+
+    .embed-nav svg {
+      stroke: #ffffff !important;
+    }
+  </style>
+<link rel="stylesheet" media="all" href="./twilight-a5a757de70a8d57373f9bc7c87208806adaa2b69d0f2c3e9fcce79a6f9babd65.css">
+<meta name="monetization" content="$ilp.uphold.com/biyqg2MkQKbe">
+</head>
+<body id="the-body" style="border: 1px solid #555555; --borderWidth: 1px;" class="codepen-embed-body static results-active" data-new-gr-c-s-check-loaded="14.1008.0" data-gr-ext-installed="">
+<nav class="embed-nav group" id="embed-nav">
+<ul class="code-types">
+<li class="code-type">
+<a id="html-link" href="https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&amp;slug-hash=LaYBxK&amp;default-tabs=js,result&amp;host=https://codepen.io#html-box" role="button" aria-pressed="false">
+HTML
+</a>
+</li>
+<li class="code-type">
+<a id="css-link" href="https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&amp;slug-hash=LaYBxK&amp;default-tabs=js,result&amp;host=https://codepen.io#css-box" role="button" aria-pressed="false">
+CSS
+</a>
+</li>
+<li class="code-type">
+<a id="js-link" href="https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&amp;slug-hash=LaYBxK&amp;default-tabs=js,result&amp;host=https://codepen.io#js-box" role="button" aria-pressed="false">
+JS
+</a>
+</li>
+</ul>
+<ul class="result-button-list">
+<li class="results results-type">
+<a id="result-link" href="https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&amp;slug-hash=LaYBxK&amp;default-tabs=js,result&amp;host=https://codepen.io#result-box" class="active" aria-pressed="true" role="button">
+Result
+</a>
+</li>
+<li>
+<a href="https://codepen.io/Danny1897/embed/preview/LaYBxK?height=300&amp;slug-hash=LaYBxK&amp;default-tabs=js,result&amp;host=https://codepen.io#resources-link" id="skip-results-iframe-link">Skip Results Iframe</a>
+</li>
+</ul>
+<div class="logo-wrap" id="edit-area">
+<a class="edit-on-codepen" target="_blank" rel="noopener" href="https://codepen.io/user_563745/pen/LaYBxK" title="Edit on CodePen">
+<div class="large-logo">
+<span id="edit-on-text" class="open-on">EDIT ON</span>
+<svg id="embed-codepen-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138 26" fill="none" stroke="#000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="CodePen">
+<path d="M80 6h-9v14h9m34-14h-9v14h9m-3-7h-6m-28 0h-6m51 7V6l11 14V6M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24m55-10h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14M15 8c-1.3-1.3-3-2-5-2-4 0-7 3-7 7s3 7 7 7c2 0 3.7-.8 5-2m49-5c0 4-3 7-7 7h-5V6h5c4 0 7 3 7 7z"></path>
+</svg>
+</div>
+<div class="box-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 26 26" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" role="img" aria-label="Edit on CodePen">
+<path id="icon-codepen-box" d="M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24"></path>
+</svg>
+</div>
+</a>
+</div>
+</nav>
+<div id="output" data-border-style="thin" data-header="true">
+<div id="html-box" class="code-wrap code-box box " role="region" aria-label="HTML">
+<pre tabindex="0"><code data-lang="htmlmixed" id="actual-html-code" class=" cm-s-default"><span class="cm-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">html</span><span class="cm-tag cm-bracket">&gt;</span>
+<span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">body</span><span class="cm-tag cm-bracket">&gt;</span>
+
+  <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"outerContainer"</span><span class="cm-tag cm-bracket">&gt;</span>
+    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"container"</span><span class="cm-tag cm-bracket">&gt;</span>
+
+      <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">stats</span> <span class="cm-attribute">id</span>=<span class="cm-string">"me"</span> <span class="cm-attribute">class</span>=<span class="cm-string">"de-style"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">stats</span><span class="cm-tag cm-bracket">&gt;</span>
+      <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">application</span> <span class="cm-attribute">class</span>=<span class="cm-string">"de-style"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">application</span><span class="cm-tag cm-bracket">&gt;</span>
+      <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">nav</span> <span class="cm-attribute">class</span>=<span class="cm-string">"de-style"</span><span class="cm-tag cm-bracket">&gt;</span><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">nav</span><span class="cm-tag cm-bracket">&gt;</span>
+
+    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+  <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span>
+
+<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">body</span><span class="cm-tag cm-bracket">&gt;</span>
+<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">html</span><span class="cm-tag cm-bracket">&gt;</span>
+</code></pre>
+</div>
+<div id="css-box" class="code-wrap code-box box " role="region" aria-label="CSS">
+<pre tabindex="0"><code data-lang="css" id="actual-css-code" class=" cm-s-default">
+<span class="cm-builtin">#container</span> {
+  <span class="cm-property">width</span>: <span class="cm-number">100%</span>;
+
+  <span class="cm-property">height</span>: <span class="cm-number">400px</span>;
+  <span class="cm-property">background-color</span>: <span class="cm-atom">#333</span>;
+  <span class="cm-property">display</span>: <span class="cm-atom">flex</span>;
+  <span class="cm-property">align-items</span>: <span class="cm-atom">center</span>;
+  <span class="cm-property">justify-content</span>: <span class="cm-atom">center</span>;
+  <span class="cm-property">overflow</span>: <span class="cm-atom">hidden</span>;
+  <span class="cm-property">border-radius</span>: <span class="cm-number">7px</span>;
+  <span class="cm-property">touch-action</span>: <span class="cm-atom">none</span>;
+}
+
+<span class="cm-qualifier">.de-style</span> {
+  <span class="cm-property">border-radius</span>: <span class="cm-number">50%</span>;
+  <span class="cm-property">touch-action</span>: <span class="cm-atom">none</span>;
+  <span class="cm-property">user-select</span>: <span class="cm-atom">none</span>;
+  <span class="cm-property">position</span>: <span class="cm-atom">relative</span>;
+  <span class="cm-property">width</span>: <span class="cm-number">100px</span>;
+  <span class="cm-property">height</span>: <span class="cm-number">100px</span>;
+  <span class="cm-property">background-color</span>: <span class="cm-variable cm-callee">rgb</span>(<span class="cm-number">245</span>, <span class="cm-number">230</span>, <span class="cm-number">99</span>);
+  <span class="cm-property">border</span>: <span class="cm-number">10px</span> <span class="cm-atom">solid</span> <span class="cm-variable cm-callee">rgba</span>(<span class="cm-number">136</span>, <span class="cm-number">136</span>, <span class="cm-number">136</span>, <span class="cm-number">.5</span>);
+  <span class="cm-property">top</span>: <span class="cm-number">0px</span>;
+  <span class="cm-property">left</span>: <span class="cm-number">0px</span>;
+}
+
+<span class="cm-qualifier">.de-style</span>:<span class="cm-variable-3">active</span> {
+  <span class="cm-property">opacity</span>: <span class="cm-number">.75</span>;
+}
+
+<span class="cm-qualifier">.de-style</span>:<span class="cm-variable-3">hover</span> {
+  <span class="cm-property">cursor</span>: <span class="cm-atom">pointer</span>;
+}</code></pre>
+</div>
+<div id="js-box" class="code-wrap code-box box " role="region" aria-label="JS">
+<pre tabindex="0"><code data-lang="javascript" id="actual-js-code" class=" cm-s-default">
+  <span class="cm-variable">window</span>.<span class="cm-property">onload</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span> () {
+    <span class="cm-variable">load</span>();
+  };
+
+  <span class="cm-keyword">function</span> <span class="cm-def">load</span>() {
+
+    <span class="cm-keyword">var</span> <span class="cm-def">a</span> <span class="cm-operator">=</span> <span class="cm-variable">JSON</span>.<span class="cm-property">parse</span>(<span class="cm-variable">localStorage</span>.<span class="cm-property">getItem</span>(<span class="cm-string">'data'</span>));
+    <span class="cm-variable">getObject</span>(<span class="cm-variable-2">a</span>);
+    <span class="cm-keyword">function</span> <span class="cm-def">getObject</span>(<span class="cm-def">a</span>) {
+      <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Array</span>) {
+        <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">a</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span>) {
+          <span class="cm-variable-2">getObject</span>(<span class="cm-variable-2">a</span>[<span class="cm-variable-2">i</span>]);
+        }
+      } <span class="cm-keyword">else</span> <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Object</span>) {
+        <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">prop</span> <span class="cm-keyword">in</span> <span class="cm-variable-2">a</span>) {
+          <span class="cm-comment">// console.log('%c a','color:yellow',a,prop,a[prop]);</span>
+          <span class="cm-keyword">var</span> <span class="cm-def">subObject</span> <span class="cm-operator">=</span> <span class="cm-variable-2">a</span>[<span class="cm-variable-2">prop</span>];
+          <span class="cm-keyword">if</span> (<span class="cm-variable-2">subObject</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Object</span> <span class="cm-operator">||</span> <span class="cm-variable-2">subObject</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Array</span>) {
+            <span class="cm-variable">Object</span>.<span class="cm-property">keys</span>(<span class="cm-variable-2">subObject</span>).<span class="cm-property">forEach</span>(<span class="cm-def">key</span><span class="cm-operator">=&gt;</span>{
+              <span class="cm-variable">window</span>[<span class="cm-string-2">`${</span><span class="cm-variable-2">key</span>.<span class="cm-property">toUpperCase</span>()<span class="cm-string-2">}</span><span class="cm-string-2">`</span>] <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Object</span>(<span class="cm-string-2">`${</span><span class="cm-variable-2">subObject</span>[<span class="cm-string-2">`${</span><span class="cm-variable-2">key</span><span class="cm-string-2">}</span><span class="cm-string-2">`</span>]<span class="cm-string-2">}</span><span class="cm-string-2">`</span>);
+              <span class="cm-comment">// console.log(`${subObject[`${key}`]}`);</span>
+            });
+            <span class="cm-variable">getCont</span>(<span class="cm-variable-2">prop</span>);
+          };
+        };
+      } <span class="cm-keyword">else</span> {
+        <span class="cm-keyword">var</span> <span class="cm-def">a</span> <span class="cm-operator">=</span> <span class="cm-variable">localStorage</span>.<span class="cm-property">getItem</span>(<span class="cm-string">'data'</span>) <span class="cm-operator">?</span> <span class="cm-variable">JSON</span>.<span class="cm-property">parse</span>(<span class="cm-variable">localStorage</span>.<span class="cm-property">getItem</span>(<span class="cm-string">'data'</span>)) : [];
+        <span class="cm-keyword">var</span> <span class="cm-def">a</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">getElementById</span>(<span class="cm-string">'container'</span>).<span class="cm-property">children</span>;
+        <span class="cm-keyword">var</span> <span class="cm-def">element</span> <span class="cm-operator">=</span> [];
+        <span class="cm-keyword">for</span> ( <span class="cm-keyword">var</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">a</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span> ) {
+          <span class="cm-keyword">var</span> <span class="cm-def">tag</span> <span class="cm-operator">=</span> <span class="cm-variable-2">a</span>[<span class="cm-variable-2">i</span>].<span class="cm-property">tagName</span>;
+          <span class="cm-keyword">var</span> <span class="cm-def">obj</span> <span class="cm-operator">=</span> {};
+          <span class="cm-variable-2">obj</span>[<span class="cm-variable-2">tag</span>] <span class="cm-operator">=</span> {
+            <span class="cm-string cm-property">"x"</span> : <span class="cm-number">0</span>,
+            <span class="cm-string cm-property">"y"</span> : <span class="cm-number">0</span>
+          };
+          <span class="cm-variable-2">element</span>.<span class="cm-property">push</span>(<span class="cm-variable-2">obj</span>);
+        };
+        <span class="cm-variable">localStorage</span>.<span class="cm-property">setItem</span>(<span class="cm-string">"data"</span>, <span class="cm-variable">JSON</span>.<span class="cm-property">stringify</span>(<span class="cm-variable-2">element</span>));
+      };
+    };
+
+    <span class="cm-keyword">function</span> <span class="cm-def">getCont</span>(<span class="cm-def">prop</span>) {
+      <span class="cm-keyword">var</span> <span class="cm-def">container</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">getElementById</span>(<span class="cm-string">'container'</span>).<span class="cm-property">children</span>;
+      <span class="cm-keyword">for</span> ( <span class="cm-keyword">var</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">container</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span> ) {
+        <span class="cm-keyword">var</span> <span class="cm-def">c_str</span> <span class="cm-operator">=</span> <span class="cm-variable-2">container</span>[<span class="cm-variable-2">i</span>];
+        <span class="cm-keyword">var</span> <span class="cm-def">c_tag</span> <span class="cm-operator">=</span> <span class="cm-variable-2">c_str</span>.<span class="cm-property">tagName</span>;
+        <span class="cm-comment">// console.log(c_tag);</span>
+        <span class="cm-comment">// console.log(c_str);</span>
+        <span class="cm-keyword">if</span> (<span class="cm-variable-2">c_tag</span> <span class="cm-operator">===</span> <span class="cm-variable-2">prop</span>) {
+          <span class="cm-variable-2">c_str</span>.<span class="cm-property">style</span>.<span class="cm-property">transform</span> <span class="cm-operator">=</span> <span class="cm-string">"translate3d("</span> <span class="cm-operator">+</span> <span class="cm-variable">X</span> <span class="cm-operator">+</span> <span class="cm-string">"px, "</span> <span class="cm-operator">+</span> <span class="cm-variable">Y</span> <span class="cm-operator">+</span> <span class="cm-string">"px, 0)"</span>;
+        };
+      };
+    };
+  };
+
+  <span class="cm-keyword">var</span> <span class="cm-def">container</span> <span class="cm-operator">=</span> <span class="cm-variable">document</span>.<span class="cm-property">querySelector</span>(<span class="cm-string">"#container"</span>);
+  <span class="cm-keyword">var</span> <span class="cm-def">item</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
+  <span class="cm-keyword">var</span> <span class="cm-def">active</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
+
+  <span class="cm-comment">// mobile</span>
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"touchstart"</span>, <span class="cm-variable">dragStart</span>, <span class="cm-atom">false</span>);
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"touchmove"</span>, <span class="cm-variable">drag</span>, <span class="cm-atom">false</span>);
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"touchend"</span>, <span class="cm-variable">dragEnd</span>, <span class="cm-atom">false</span>);
+
+  <span class="cm-comment">// desktop</span>
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"mousedown"</span>, <span class="cm-variable">dragStart</span>, <span class="cm-atom">false</span>);
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"mousemove"</span>, <span class="cm-variable">drag</span>, <span class="cm-atom">false</span>);
+  <span class="cm-variable">container</span>.<span class="cm-property">addEventListener</span>(<span class="cm-string">"mouseup"</span>, <span class="cm-variable">dragEnd</span>, <span class="cm-atom">false</span>);
+
+  <span class="cm-keyword">function</span> <span class="cm-def">dragStart</span>(<span class="cm-def">event</span>) {
+    <span class="cm-comment">// console.log("dragStart");</span>
+
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">event</span>.<span class="cm-property">target</span> <span class="cm-operator">!==</span> <span class="cm-variable-2">event</span>.<span class="cm-property">currentTarget</span>) {
+      <span class="cm-variable">active</span> <span class="cm-operator">=</span> <span class="cm-atom">true</span>;
+
+      <span class="cm-comment">// "target" returns element (body,p,h1..)</span>
+      <span class="cm-variable">item</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">target</span>;
+      <span class="cm-variable">itemtag</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">tagName</span>;
+
+      <span class="cm-keyword">if</span> (<span class="cm-variable">item</span> <span class="cm-operator">!==</span> <span class="cm-atom">null</span>) {
+
+        <span class="cm-keyword">var</span> <span class="cm-def">a</span> <span class="cm-operator">=</span> <span class="cm-variable">JSON</span>.<span class="cm-property">parse</span>(<span class="cm-variable">localStorage</span>.<span class="cm-property">getItem</span>(<span class="cm-string">'data'</span>));
+        <span class="cm-variable">getObject</span>(<span class="cm-variable-2">a</span>);
+        <span class="cm-keyword">function</span> <span class="cm-def">getObject</span>(<span class="cm-def">a</span>) {
+          <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Array</span>) {
+            <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">a</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span>) {
+              <span class="cm-variable-2">getObject</span>(<span class="cm-variable-2">a</span>[<span class="cm-variable-2">i</span>]);
+            }
+          } <span class="cm-keyword">else</span> <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Object</span>) {
+            <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">prop</span> <span class="cm-keyword">in</span> <span class="cm-variable-2">a</span>) {
+              <span class="cm-keyword">if</span> (<span class="cm-variable-2">prop</span> <span class="cm-operator">===</span> <span class="cm-variable">itemtag</span>) {
+                <span class="cm-keyword">var</span> <span class="cm-def">subObject</span> <span class="cm-operator">=</span> <span class="cm-variable-2">a</span>[<span class="cm-variable-2">prop</span>];
+                <span class="cm-keyword">if</span> (<span class="cm-variable-2">subObject</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Object</span> <span class="cm-operator">||</span> <span class="cm-variable-2">subObject</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Array</span>) {
+                  <span class="cm-variable">Object</span>.<span class="cm-property">keys</span>(<span class="cm-variable-2">subObject</span>).<span class="cm-property">forEach</span>(<span class="cm-def">key</span><span class="cm-operator">=&gt;</span>{
+                    <span class="cm-variable">window</span>[<span class="cm-string-2">`${</span><span class="cm-variable-2">key</span>.<span class="cm-property">toUpperCase</span>()<span class="cm-string-2">}</span><span class="cm-string-2">`</span>] <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Object</span>(<span class="cm-string-2">`${</span><span class="cm-variable-2">subObject</span>[<span class="cm-string-2">`${</span><span class="cm-variable-2">key</span><span class="cm-string-2">}</span><span class="cm-string-2">`</span>]<span class="cm-string-2">}</span><span class="cm-string-2">`</span>);
+                    <span class="cm-comment">// console.log(`${subObject[`${key}`]}`);</span>
+                  });
+                };
+              }
+            };
+          };
+        };
+        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'%c #######'</span>,<span class="cm-string">'color:hotpink'</span>,<span class="cm-variable">X</span>);
+
+        <span class="cm-variable">item</span>.<span class="cm-property">xOffset</span> <span class="cm-operator">=</span> <span class="cm-variable">X</span>;
+        <span class="cm-variable">item</span>.<span class="cm-property">yOffset</span> <span class="cm-operator">=</span> <span class="cm-variable">Y</span>;
+
+        <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">item</span>.<span class="cm-property">xOffset</span>) {
+          <span class="cm-variable">item</span>.<span class="cm-property">xOffset</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+        }
+
+        <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable">item</span>.<span class="cm-property">yOffset</span>) {
+          <span class="cm-variable">item</span>.<span class="cm-property">yOffset</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;
+        }
+
+
+        <span class="cm-comment">// "type" returns (mouseup,mousedown,mousemove)</span>
+        <span class="cm-keyword">if</span> (<span class="cm-variable-2">event</span>.<span class="cm-property">type</span> <span class="cm-operator">===</span> <span class="cm-string">"touchstart"</span>) {
+          <span class="cm-variable">item</span>.<span class="cm-property">initialX</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">touches</span>[<span class="cm-number">0</span>].<span class="cm-property">clientX</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">xOffset</span>;
+          <span class="cm-variable">item</span>.<span class="cm-property">initialY</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">touches</span>[<span class="cm-number">0</span>].<span class="cm-property">clientY</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">yOffset</span>;
+        } <span class="cm-keyword">else</span> {
+          <span class="cm-variable">item</span>.<span class="cm-property">initialX</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">clientX</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">xOffset</span>;
+          <span class="cm-variable">item</span>.<span class="cm-property">initialY</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">clientY</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">yOffset</span>;
+        }
+      }
+    }
+  };
+
+  <span class="cm-keyword">function</span> <span class="cm-def">drag</span>(<span class="cm-def">event</span>) {
+    <span class="cm-comment">// console.log("drag");</span>
+    <span class="cm-keyword">if</span> (<span class="cm-variable">active</span>) {
+      <span class="cm-variable-2">event</span>.<span class="cm-property">preventDefault</span>();
+      <span class="cm-keyword">if</span> (<span class="cm-variable-2">event</span>.<span class="cm-property">type</span> <span class="cm-operator">===</span> <span class="cm-string">"touchmove"</span>) {
+        <span class="cm-variable">item</span>.<span class="cm-property">currentX</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">touches</span>[<span class="cm-number">0</span>].<span class="cm-property">clientX</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">initialX</span>;
+        <span class="cm-variable">item</span>.<span class="cm-property">currentY</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">touches</span>[<span class="cm-number">0</span>].<span class="cm-property">clientY</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">initialY</span>;
+      } <span class="cm-keyword">else</span> {
+        <span class="cm-variable">item</span>.<span class="cm-property">currentX</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">clientX</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">initialX</span>;
+        <span class="cm-variable">item</span>.<span class="cm-property">currentY</span> <span class="cm-operator">=</span> <span class="cm-variable-2">event</span>.<span class="cm-property">clientY</span> <span class="cm-operator">-</span> <span class="cm-variable">item</span>.<span class="cm-property">initialY</span>;
+      }
+
+      <span class="cm-variable">item</span>.<span class="cm-property">xOffset</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">currentX</span>;
+      <span class="cm-variable">item</span>.<span class="cm-property">yOffset</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">currentY</span>;
+
+      <span class="cm-variable">setTranslate</span>(<span class="cm-variable">item</span>.<span class="cm-property">currentX</span>, <span class="cm-variable">item</span>.<span class="cm-property">currentY</span>, <span class="cm-variable">item</span>);
+      <span class="cm-keyword">function</span> <span class="cm-def">setTranslate</span>(<span class="cm-def">x</span>, <span class="cm-def">y</span>, <span class="cm-def">el</span>) {
+        <span class="cm-variable-2">el</span>.<span class="cm-property">style</span>.<span class="cm-property">transform</span> <span class="cm-operator">=</span> <span class="cm-string">"translate3d("</span> <span class="cm-operator">+</span> <span class="cm-variable-2">x</span> <span class="cm-operator">+</span> <span class="cm-string">"px, "</span> <span class="cm-operator">+</span> <span class="cm-variable-2">y</span> <span class="cm-operator">+</span> <span class="cm-string">"px, 0)"</span>;
+      }
+    }
+  }
+
+
+  <span class="cm-keyword">function</span> <span class="cm-def">dragEnd</span>(<span class="cm-def">event</span>) {
+    <span class="cm-comment">// console.log("dragEnd");</span>
+    <span class="cm-keyword">if</span> (<span class="cm-variable">item</span> <span class="cm-operator">!==</span> <span class="cm-atom">null</span>) {
+      <span class="cm-variable">item</span>.<span class="cm-property">initialX</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">currentX</span>;
+      <span class="cm-variable">item</span>.<span class="cm-property">initialY</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">currentY</span>;
+    };
+
+    <span class="cm-keyword">var</span> <span class="cm-def">save_a</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">tagName</span>;
+    <span class="cm-keyword">var</span> <span class="cm-def">save_b</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">initialX</span>;
+    <span class="cm-keyword">var</span> <span class="cm-def">save_c</span> <span class="cm-operator">=</span> <span class="cm-variable">item</span>.<span class="cm-property">initialY</span>;
+    <span class="cm-variable">save</span>(<span class="cm-variable-2">save_a</span>,<span class="cm-variable-2">save_b</span>,<span class="cm-variable-2">save_c</span>);
+    
+    <span class="cm-variable">active</span> <span class="cm-operator">=</span> <span class="cm-atom">false</span>;
+    <span class="cm-variable">item</span> <span class="cm-operator">=</span> <span class="cm-atom">null</span>;
+
+  }
+
+  <span class="cm-keyword">function</span> <span class="cm-def">save</span>(<span class="cm-def">save_a</span>,<span class="cm-def">save_b</span>,<span class="cm-def">save_c</span>) {
+
+    <span class="cm-keyword">var</span> <span class="cm-def">data</span> <span class="cm-operator">=</span> <span class="cm-variable">JSON</span>.<span class="cm-property">parse</span>(<span class="cm-variable">localStorage</span>.<span class="cm-property">getItem</span>(<span class="cm-string">'data'</span>));
+
+    <span class="cm-variable">getObject</span>(<span class="cm-variable-2">data</span>);
+    <span class="cm-keyword">function</span> <span class="cm-def">getObject</span>(<span class="cm-def">a</span>) {
+      <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Array</span>) {
+        <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">a</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">i</span><span class="cm-operator">++</span>) {
+          <span class="cm-variable-2">getObject</span>(<span class="cm-variable-2">a</span>[<span class="cm-variable-2">i</span>]);
+        }
+      } <span class="cm-keyword">else</span> <span class="cm-keyword">if</span> (<span class="cm-variable-2">a</span> <span class="cm-keyword">instanceof</span> <span class="cm-variable">Object</span>) {
+        <span class="cm-comment">// console.log('%c data','color:aqua',data);</span>
+        <span class="cm-keyword">for</span> (<span class="cm-keyword">let</span> <span class="cm-def">prop</span> <span class="cm-keyword">in</span> <span class="cm-variable-2">a</span>) {
+          <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'%c a'</span>,<span class="cm-string">'color:aqua'</span>,<span class="cm-variable-2">prop</span>,<span class="cm-variable-2">a</span>[<span class="cm-variable-2">prop</span>]);
+          <span class="cm-keyword">if</span> (<span class="cm-variable-2">prop</span> <span class="cm-operator">==</span> <span class="cm-variable-2">save_a</span>) {
+            <span class="cm-comment">// ##NOTE## Matched local Object and Element</span>
+          };
+        };
+      };
+    };
+
+    <span class="cm-keyword">var</span> <span class="cm-def">empty</span> <span class="cm-operator">=</span> <span class="cm-variable-2">data</span>.<span class="cm-property">map</span>(<span class="cm-variable">replace</span>);
+
+    <span class="cm-keyword">function</span> <span class="cm-def">replace</span>(<span class="cm-def">value</span>) {
+      <span class="cm-keyword">var</span> <span class="cm-def">obj</span> <span class="cm-operator">=</span> {};
+      <span class="cm-variable-2">obj</span>[<span class="cm-variable-2">save_a</span>] <span class="cm-operator">=</span> {
+        <span class="cm-string cm-property">"x"</span> : <span class="cm-variable-2">save_b</span>,
+        <span class="cm-string cm-property">"y"</span> : <span class="cm-variable-2">save_c</span>
+      };
+      <span class="cm-keyword">if</span> ( <span class="cm-variable-2">value</span>.<span class="cm-property">hasOwnProperty</span>(<span class="cm-variable-2">save_a</span>) ) {
+        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'%c selected'</span>,<span class="cm-string">'color:greenyellow'</span>,<span class="cm-variable-2">value</span>);
+        <span class="cm-keyword">return</span> <span class="cm-variable-2">obj</span>;
+      } <span class="cm-keyword">else</span> {
+        <span class="cm-keyword">return</span> <span class="cm-variable-2">value</span>;
+      }
+    };
+
+    <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'%c empty'</span>,<span class="cm-string">'color:hotpink'</span>,<span class="cm-variable-2">empty</span>);
+
+    <span class="cm-variable">localStorage</span>.<span class="cm-property">setItem</span>(<span class="cm-string">"data"</span>, <span class="cm-variable">JSON</span>.<span class="cm-property">stringify</span>(<span class="cm-variable-2">empty</span>));
+  };
+
+</code></pre>
+</div>
+<div id="result-box" class="code-box active zoom-1" role="region" aria-label="Result">
+<a href="https://codepen.io/user_563745/embed/LaYBxK?default-tab=&amp;theme-id=" class="overlay" style="background-image: url(&#39;https://assets.codepen.io/2873325/internal/screenshots/pens/LaYBxK.default.png?fit=cover&amp;format=auto&amp;ha=false&amp;height=540&amp;quality=75&amp;v=2&amp;version=1551223016&amp;width=960&#39;);"></a>
+<a href="https://codepen.io/user_563745/embed/LaYBxK?default-tab=&amp;theme-id=" class="run-button">
+<span>Run Pen</span>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<path d="M58.097 52.127c-.431-.7-1.415-1.028-2.181-.732l-3.392 1.302c-.768.295-1.847.04-2.407-.565l-2.55-2.408c-.64-.518-.957-1.584-.706-2.367l1.104-3.46c.248-.782-.153-1.716-.891-2.075l-6.85-2.607c-.792-.224-1.712.21-2.047.96l-1.475 3.32c-.333.75-1.277 1.335-2.1 1.296l-3.508.108c-.816.08-1.795-.45-2.173-1.18l-1.668-3.227c-.375-.731-1.329-1.138-2.117-.906 0 0-1.85.547-3.454 1.267-1.606.72-3.244 1.74-3.244 1.74-.699.435-1.028 1.416-.735 2.184l1.307 3.392c.294.767.041 1.85-.564 2.406l-2.412 2.548c-.517.639-1.584.957-2.365.707l-3.46-1.104c-.782-.25-1.716.15-2.076.892l-2.607 6.85c-.222.792.21 1.71.96 2.045l3.32 1.474c.75.333 1.335 1.28 1.297 2.1l.106 3.508c.083.817-.448 1.796-1.178 2.173l-3.229 1.669c-.729.375-1.136 1.33-.904 2.119 0 0 .548 1.849 1.268 3.451.719 1.607 1.74 3.247 1.74 3.247.434.697 1.416 1.027 2.183.73l3.392-1.302c.767-.296 1.85-.04 2.406.563l2.552 2.411c.638.515.955 1.582.706 2.365l-1.104 3.46c-.251.784.15 1.718.89 2.077l6.85 2.608c.794.222 1.713-.211 2.046-.962l1.474-3.318c.335-.751 1.28-1.337 2.101-1.3l3.508-.104c.818-.084 1.795.449 2.173 1.18l1.665 3.23c.378.73 1.332 1.138 2.12.904 0 0 1.848-.548 3.454-1.268 1.605-.72 3.245-1.74 3.245-1.74.698-.434 1.027-1.416.733-2.185l-1.303-3.388c-.297-.768-.042-1.851.562-2.407l2.411-2.553c.521-.636 1.581-.955 2.365-.705l3.46 1.105c.784.25 1.719-.15 2.08-.889l2.604-6.852c.224-.79-.209-1.712-.96-2.047L57.2 70.396c-.751-.338-1.335-1.283-1.3-2.105l-.103-3.505c-.082-.82.449-1.799 1.18-2.173l3.227-1.668c.732-.375 1.139-1.332.906-2.117 0 0-.547-1.852-1.268-3.458-.724-1.606-1.746-3.243-1.746-3.243zm-21.593 21.75a7.33 7.33 0 01-9.691-3.686A7.33 7.33 0 0130.5 60.5a7.33 7.33 0 019.69 3.689 7.328 7.328 0 01-3.686 9.688z" class="gear-one"></path>
+<path d="M94.205 26.616c-.1-.707-.763-1.315-1.478-1.351l-3.154-.156c-.716-.035-1.488-.619-1.717-1.296L86.677 21c-.325-.637-.203-1.593.27-2.129l2.097-2.36c.474-.535.485-1.419.022-1.965l-4.528-4.48c-.55-.457-1.435-.436-1.962.043l-2.342 2.119c-.527.479-1.485.61-2.124.29l-2.825-1.149c-.679-.223-1.268-.987-1.311-1.703l-.189-3.15c-.044-.714-.657-1.373-1.366-1.465 0 0-1.664-.216-3.194-.208-1.53.007-3.19.242-3.19.242-.705.098-1.314.764-1.352 1.477l-.154 3.153c-.035.716-.619 1.486-1.295 1.715l-2.814 1.18c-.638.326-1.595.204-2.129-.272l-2.36-2.093c-.533-.476-1.419-.484-1.965-.024l-4.482 4.528c-.453.55-.434 1.436.044 1.963l2.116 2.34c.483.53.613 1.489.295 2.125l-1.151 2.828c-.222.677-.99 1.269-1.7 1.311l-3.154.188c-.712.044-1.37.659-1.462 1.366 0 0-.217 1.665-.21 3.194.008 1.528.242 3.19.242 3.19.099.706.763 1.315 1.477 1.35l3.155.157c.713.034 1.485.618 1.716 1.294l1.177 2.814c.324.636.204 1.594-.27 2.128l-2.096 2.361c-.475.535-.484 1.419-.024 1.965l4.53 4.481c.55.456 1.434.437 1.962-.043l2.342-2.118c.528-.48 1.484-.61 2.123-.293l2.826 1.15c.68.223 1.268.989 1.314 1.702l.188 3.151c.043.715.657 1.372 1.366 1.465 0 0 1.662.215 3.192.207 1.529-.006 3.191-.24 3.191-.24.708-.099 1.317-.765 1.35-1.48l.157-3.15c.035-.715.618-1.487 1.296-1.717l2.813-1.178c.636-.324 1.595-.204 2.128.27l2.363 2.095c.533.474 1.417.484 1.963.023l4.481-4.528c.456-.55.437-1.433-.043-1.962l-2.118-2.341c-.481-.53-.611-1.487-.293-2.125l1.149-2.827c.222-.678.99-1.27 1.699-1.311l3.156-.19c.712-.042 1.37-.658 1.463-1.367 0 0 .214-1.662.209-3.192-.007-1.527-.241-3.189-.241-3.189zM69.391 37.203a7.27 7.27 0 11-.072-14.537 7.27 7.27 0 01.072 14.537z" class="gear-two"></path>
+</svg>
+</a>
+</div>
+<div id="about-box">
+<div class="about-container">
+<div class="about-user">
+<a href="https://codepen.io/user_563745" target="_blank" rel="noopener"><img src="./77ce11e4542ccc30fd5b20879f7e5b29" loading="lazy" alt="" class="about-image"></a>
+<div class="about-user-info">
+<p>
+This Pen is owned by <a href="https://codepen.io/user_563745" target="_blank" rel="noopener">Danny</a> on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.
+</p>
+<p>
+<a href="https://codepen.io/user_563745" target="_blank" rel="noopener" class="about-user-more">
+See more by @user_563745 on CodePen
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="resources-box" class="resources-box">
+<h3>External CSS</h3>
+<p>
+This Pen doesn't use any external CSS resources.
+</p>
+<h3>External JavaScript</h3>
+<p>
+This Pen doesn't use any external JavaScript resources.
+</p>
+</div>
+</div>
+<footer class="embed-footer" id="embed-footer">
+<button id="resources-link" class="resources-link action-button bottom left" href="#resources-box" aria-pressed="false" role="button">
+Resources
+</button>
+<ul class="scaling-choices bottom right">
+<li><button class="action-button" id="zoom-button-1">1×</button></li>
+<li><button class="action-button" id="zoom-button-05">0.5×</button></li>
+<li><button class="action-button" id="zoom-button-025">0.25×</button></li>
+</ul>
+<button id="rerun-button" class="action-button rerun-button bottom right">
+Rerun
+</button>
+</footer>
+<script nonce="">
+    __processedPen = {"html":"&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;body&gt;\n\n\t&lt;div id=&quot;outerContainer&quot;&gt;\n\t\t&lt;div id=&quot;container&quot;&gt;\n\n\t\t\t&lt;stats id=&quot;me&quot; class=&quot;de-style&quot;&gt;&lt;/stats&gt;\n\t\t\t&lt;application class=&quot;de-style&quot;&gt;&lt;/application&gt;\n\t\t\t&lt;nav class=&quot;de-style&quot;&gt;&lt;/nav&gt;\n\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\n&lt;/body&gt;\n&lt;/html&gt;","css":"#container {\n\twidth: 100%;\n\n\theight: 400px;\n\tbackground-color: #333;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\toverflow: hidden;\n\tborder-radius: 7px;\n\ttouch-action: none;\n}\n\n.de-style {\n\tborder-radius: 50%;\n\ttouch-action: none;\n\tuser-select: none;\n\tposition: relative;\n\twidth: 100px;\n\theight: 100px;\n\tbackground-color: rgb(245, 230, 99);\n\tborder: 10px solid rgba(136, 136, 136, .5);\n\ttop: 0px;\n\tleft: 0px;\n}\n\n.de-style:active {\n\topacity: .75;\n}\n\n.de-style:hover {\n\tcursor: pointer;\n}","js":"window.onload = function () {\n  load();\n};\n\nfunction load() {\n\n  var a = JSON.parse(localStorage.getItem(&#39;data&#39;));\n  getObject(a);\n  function getObject(a) {\n    if (a instanceof Array) {\n      for (let i = 0; i &lt; a.length; i++) {if (window.CP.shouldStopExecution(0)) break;\n        getObject(a[i]);\n      }window.CP.exitedLoop(0);\n    } else if (a instanceof Object) {\n      for (let prop in a) {\n        // console.log(&#39;%c a&#39;,&#39;color:yellow&#39;,a,prop,a[prop]);\n        var subObject = a[prop];\n        if (subObject instanceof Object || subObject instanceof Array) {\n          Object.keys(subObject).forEach(key =&gt; {\n            window[`${key.toUpperCase()}`] = new Object(`${subObject[`${key}`]}`);\n            // console.log(`${subObject[`${key}`]}`);\n          });\n          getCont(prop);\n        };\n      };\n    } else {\n      var a = localStorage.getItem(&#39;data&#39;) ? JSON.parse(localStorage.getItem(&#39;data&#39;)) : [];\n      var a = document.getElementById(&#39;container&#39;).children;\n      var element = [];\n      for (var i = 0; i &lt; a.length; i++) {if (window.CP.shouldStopExecution(1)) break;\n        var tag = a[i].tagName;\n        var obj = {};\n        obj[tag] = {\n          &quot;x&quot;: 0,\n          &quot;y&quot;: 0 };\n\n        element.push(obj);\n      }window.CP.exitedLoop(1);;\n      localStorage.setItem(&quot;data&quot;, JSON.stringify(element));\n    };\n  };\n\n  function getCont(prop) {\n    var container = document.getElementById(&#39;container&#39;).children;\n    for (var i = 0; i &lt; container.length; i++) {if (window.CP.shouldStopExecution(2)) break;\n      var c_str = container[i];\n      var c_tag = c_str.tagName;\n      // console.log(c_tag);\n      // console.log(c_str);\n      if (c_tag === prop) {\n        c_str.style.transform = &quot;translate3d(&quot; + X + &quot;px, &quot; + Y + &quot;px, 0)&quot;;\n      };\n    }window.CP.exitedLoop(2);;\n  };\n};\n\nvar container = document.querySelector(&quot;#container&quot;);\nvar item = null;\nvar active = false;\n\n// mobile\ncontainer.addEventListener(&quot;touchstart&quot;, dragStart, false);\ncontainer.addEventListener(&quot;touchmove&quot;, drag, false);\ncontainer.addEventListener(&quot;touchend&quot;, dragEnd, false);\n\n// desktop\ncontainer.addEventListener(&quot;mousedown&quot;, dragStart, false);\ncontainer.addEventListener(&quot;mousemove&quot;, drag, false);\ncontainer.addEventListener(&quot;mouseup&quot;, dragEnd, false);\n\nfunction dragStart(event) {\n  // console.log(&quot;dragStart&quot;);\n\n  if (event.target !== event.currentTarget) {\n    active = true;\n\n    // &quot;target&quot; returns element (body,p,h1..)\n    item = event.target;\n    itemtag = item.tagName;\n\n    if (item !== null) {\n\n      var a = JSON.parse(localStorage.getItem(&#39;data&#39;));\n      getObject(a);\n      function getObject(a) {\n        if (a instanceof Array) {\n          for (let i = 0; i &lt; a.length; i++) {if (window.CP.shouldStopExecution(3)) break;\n            getObject(a[i]);\n          }window.CP.exitedLoop(3);\n        } else if (a instanceof Object) {\n          for (let prop in a) {\n            if (prop === itemtag) {\n              var subObject = a[prop];\n              if (subObject instanceof Object || subObject instanceof Array) {\n                Object.keys(subObject).forEach(key =&gt; {\n                  window[`${key.toUpperCase()}`] = new Object(`${subObject[`${key}`]}`);\n                  // console.log(`${subObject[`${key}`]}`);\n                });\n              };\n            }\n          };\n        };\n      };\n      console.log(&#39;%c #######&#39;, &#39;color:hotpink&#39;, X);\n\n      item.xOffset = X;\n      item.yOffset = Y;\n\n      if (!item.xOffset) {\n        item.xOffset = 0;\n      }\n\n      if (!item.yOffset) {\n        item.yOffset = 0;\n      }\n\n\n      // &quot;type&quot; returns (mouseup,mousedown,mousemove)\n      if (event.type === &quot;touchstart&quot;) {\n        item.initialX = event.touches[0].clientX - item.xOffset;\n        item.initialY = event.touches[0].clientY - item.yOffset;\n      } else {\n        item.initialX = event.clientX - item.xOffset;\n        item.initialY = event.clientY - item.yOffset;\n      }\n    }\n  }\n};\n\nfunction drag(event) {\n  // console.log(&quot;drag&quot;);\n  if (active) {\n    event.preventDefault();\n    if (event.type === &quot;touchmove&quot;) {\n      item.currentX = event.touches[0].clientX - item.initialX;\n      item.currentY = event.touches[0].clientY - item.initialY;\n    } else {\n      item.currentX = event.clientX - item.initialX;\n      item.currentY = event.clientY - item.initialY;\n    }\n\n    item.xOffset = item.currentX;\n    item.yOffset = item.currentY;\n\n    setTranslate(item.currentX, item.currentY, item);\n    function setTranslate(x, y, el) {\n      el.style.transform = &quot;translate3d(&quot; + x + &quot;px, &quot; + y + &quot;px, 0)&quot;;\n    }\n  }\n}\n\n\nfunction dragEnd(event) {\n  // console.log(&quot;dragEnd&quot;);\n  if (item !== null) {\n    item.initialX = item.currentX;\n    item.initialY = item.currentY;\n  };\n\n  var save_a = item.tagName;\n  var save_b = item.initialX;\n  var save_c = item.initialY;\n  save(save_a, save_b, save_c);\n\n  active = false;\n  item = null;\n\n}\n\nfunction save(save_a, save_b, save_c) {\n\n  var data = JSON.parse(localStorage.getItem(&#39;data&#39;));\n\n  getObject(data);\n  function getObject(a) {\n    if (a instanceof Array) {\n      for (let i = 0; i &lt; a.length; i++) {if (window.CP.shouldStopExecution(4)) break;\n        getObject(a[i]);\n      }window.CP.exitedLoop(4);\n    } else if (a instanceof Object) {\n      // console.log(&#39;%c data&#39;,&#39;color:aqua&#39;,data);\n      for (let prop in a) {\n        console.log(&#39;%c a&#39;, &#39;color:aqua&#39;, prop, a[prop]);\n        if (prop == save_a) {\n          // ##NOTE## Matched local Object and Element\n        };\n      };\n    };\n  };\n\n  var empty = data.map(replace);\n\n  function replace(value) {\n    var obj = {};\n    obj[save_a] = {\n      &quot;x&quot;: save_b,\n      &quot;y&quot;: save_c };\n\n    if (value.hasOwnProperty(save_a)) {\n      console.log(&#39;%c selected&#39;, &#39;color:greenyellow&#39;, value);\n      return obj;\n    } else {\n      return value;\n    }\n  };\n\n  console.log(&#39;%c empty&#39;, &#39;color:hotpink&#39;, empty);\n\n  localStorage.setItem(&quot;data&quot;, JSON.stringify(empty));\n};"};
+    __preprocessors = {
+      "html": "none",
+      "css": "none",
+      "js": "none"
+    };
+    __preprocessorNames = {
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JS"
+    };
+    __editable = false;
+    __embed_prefill = false;
+  </script>
+<script src="./embed-b0782d505bcecbe52b6e80fa7accfeb37eadcf49c482388469aacfd9aec72be4.js"></script>
+
+
+</body></html>

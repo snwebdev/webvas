@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<!-- saved from url=(0097)https://forum.kirupa.com/embed/comments?embed_url=https%3A%2F%2Fwww.kirupa.com%2Fhtml5%2Fdrag.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link href="./embed_35ae3407d3089c60e9160436fc983fff18944065.css" media="all" rel="stylesheet" data-target="embed">
+<link href="./embedded_theme_5_34384e96ea88e3d82e4230060b37322853b18254.css" media="all" rel="stylesheet" data-target="embedded_theme" data-theme-id="5">
+<link rel="preload" href="./break_string-cc617154cd957804f2f6a1f3bc68258c9cdca3d4b9a322bf777d145fed04790e.js" as="script">
+<script src="./break_string-cc617154cd957804f2f6a1f3bc68258c9cdca3d4b9a322bf777d145fed04790e.js"></script>
+<title>Create a Draggable Element in JavaScript - programming - kirupaForum</title>
+<meta id="data-embedded" data-referer="https://www.kirupa.com/html5/drag.htm">
+<link rel="preload" href="./embed-application-9cef8308c816fc1d83137e63d6c556c6cc2b68fe2b6e5ce16cca6766ba2c0ae4.js" as="script">
+<script src="./embed-application-9cef8308c816fc1d83137e63d6c556c6cc2b68fe2b6e5ce16cca6766ba2c0ae4.js"></script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1008.0" data-gr-ext-installed="">
+<header class="discourse" data-embed-state="loaded">
+<a class="button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/2">Continue Discussion</a>
+<span class="replies">140 replies</span>
+</header>
+<article class="post" id="post-796095">
+<a title="July 30, 2018  1:45pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/2">Jul '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Alvin_Tan_Hoe_Leong" target="_blank"><img src="./9224_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Alvin_Tan_Hoe_Leong" target="_blank" class="new-user">Alvin_<wbr>​<wbr>​Tan_<wbr>​<wbr>​Hoe_<wbr>​<wbr>​Leong</a>
+</h3>
+<p>Hi,<br>
+How about if i want to have multiple draggable elements?<br>
+Thank you very much for your concerning.</p>
+<a data-link-to-post="796107" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/2" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796107">
+<a title="July 31, 2018  3:58am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/3">Jul '18</a>
+<a data-link-to-post="796095" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/2">▶ Alvin_Tan_Hoe_Leong</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Hi Alvin!<br>
+That will require adjusting the draggable element from being <a href="https://www.kirupa.com/html5/drag.htm" target="_blank">hard coded for a single element</a> to handle an arbitrary number of elements. I used the ideas from the <a href="https://www.kirupa.com/html5/handling_events_for_many_elements.htm" target="_blank">Handling Events for Many Elements</a> article to make that adjustment.</p>
+<p>The full code for being able to drag multiple elements looks as follows:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" /&gt;
+  &lt;title&gt;Drag Multiple Elements&lt;/title&gt;
+  &lt;style&gt;
+    #container {
+      width: 100%;
+      height: 400px;
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 7px;
+      touch-action: none;
+    }
+
+    .item {
+      border-radius: 50%;
+      touch-action: none;
+      user-select: none;
+      position: relative;
+    }
+
+    .one {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(245, 230, 99);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: 0px;
+      left: 0px;
+    }
+
+    .two {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(196, 241, 190, 1);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: 30%;
+      left: 10%;
+    }
+
+    .three {
+      width: 40px;
+      height: 40px;
+      background-color: rgb(0, 255, 231);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: -40%;
+      left: -10%;
+    }
+
+    .four {
+      width: 80px;
+      height: 80px;
+      background-color: rgb(233, 210, 244);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: -10%;
+      left: 5%;
+    }
+
+    .item:active {
+      opacity: .75;
+    }
+
+    .item:hover {
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div id="outerContainer"&gt;
+    &lt;div id="container"&gt;
+      &lt;div class="item one"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="item two"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="item three"&gt;
+
+      &lt;/div&gt;
+      &lt;div class="item four"&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    var container = document.querySelector("#container");
+    var activeItem = null;
+
+    var active = false;
+
+    container.addEventListener("touchstart", dragStart, false);
+    container.addEventListener("touchend", dragEnd, false);
+    container.addEventListener("touchmove", drag, false);
+
+    container.addEventListener("mousedown", dragStart, false);
+    container.addEventListener("mouseup", dragEnd, false);
+    container.addEventListener("mousemove", drag, false);
+
+    function dragStart(e) {
+
+      if (e.target !== e.currentTarget) {
+        active = true;
+
+        // this is the item we are interacting with
+        activeItem = e.target;
+
+        if (activeItem !== null) {
+          if (!activeItem.xOffset) {
+            activeItem.xOffset = 0;
+          }
+
+          if (!activeItem.yOffset) {
+            activeItem.yOffset = 0;
+          }
+
+          if (e.type === "touchstart") {
+            activeItem.initialX = e.touches[0].clientX - activeItem.xOffset;
+            activeItem.initialY = e.touches[0].clientY - activeItem.yOffset;
+          } else {
+            console.log("doing something!");
+            activeItem.initialX = e.clientX - activeItem.xOffset;
+            activeItem.initialY = e.clientY - activeItem.yOffset;
+          }
+        }
+      }
+    }
+
+    function dragEnd(e) {
+      if (activeItem !== null) {
+        activeItem.initialX = activeItem.currentX;
+        activeItem.initialY = activeItem.currentY;
+      }
+
+      active = false;
+      activeItem = null;
+    }
+
+    function drag(e) {
+      if (active) {
+        if (e.type === "touchmove") {
+          e.preventDefault();
+
+          activeItem.currentX = e.touches[0].clientX - activeItem.initialX;
+          activeItem.currentY = e.touches[0].clientY - activeItem.initialY;
+        } else {
+          activeItem.currentX = e.clientX - activeItem.initialX;
+          activeItem.currentY = e.clientY - activeItem.initialY;
+        }
+
+        activeItem.xOffset = activeItem.currentX;
+        activeItem.yOffset = activeItem.currentY;
+
+        setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+      }
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>You can see a live demo of it here: <a href="https://www.kirupa.com/html5/examples/drag_multiple.htm" target="_blank">https://www.kirupa.com/html5/examples/drag_multiple.htm</a></p>
+<p>Let me know if this works for you.</p>
+<p>Cheers,<br>
+Kirupa</p>
+<a class="post-replies button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/3">2 replies</a>
+</div>
+</article>
+<article class="post" id="post-796109">
+<a title="July 31, 2018 10:45am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/4">Jul '18</a>
+<a data-link-to-post="796107" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/3">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Alvin_Tan_Hoe_Leong" target="_blank"><img src="./9224_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Alvin_Tan_Hoe_Leong" target="_blank" class="new-user">Alvin_<wbr>​<wbr>​Tan_<wbr>​<wbr>​Hoe_<wbr>​<wbr>​Leong</a>
+</h3>
+<p>Hi Kirupa,</p>
+<p>Yes, it works pretty well.<br>
+This code really helps me a lot.<br>
+Thank you very much.</p>
+<p>Best Regards,<br>
+Alvin</p>
+</div>
+</article>
+<article class="post" id="post-796352">
+<a title="August 27, 2018  4:44am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/5">Aug '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Joe_Bloggs" target="_blank"><img src="./45.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Joe_Bloggs" target="_blank" class="new-user">Joe_<wbr>​<wbr>​Bloggs</a>
+</h3>
+<p>Quick note, you’ll want to move preventDefault out of the if statement or you will have problems…</p>
+<pre><code class="lang-auto">if (e.type === "touchmove") {
+          e.preventDefault();
+          
+          currentX = e.touches[0].clientX - initialX;
+          currentY = e.touches[0].clientY - initialY;
+        } else {
+          currentX = e.clientX - initialX;
+          currentY = e.clientY - initialY;
+        }
+</code></pre>
+<p>Should be:</p>
+<pre><code class="lang-auto">e.preventDefault();
+if(e.type === "touchmove"){ ...
+</code></pre>
+ <a data-link-to-post="796353" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/5" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796353">
+<a title="August 27, 2018  6:13am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/6">Aug '18</a>
+<a data-link-to-post="796352" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/5">▶ Joe_Bloggs</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p><a class="mention" href="https://forum.kirupa.com/u/joe_bloggs" target="_blank">@Joe_Bloggs</a> - What are the problems? I tested it on my iPhone with the code as-is, and I’m able to drag the element around <img src="./frowning.png" title=":frowning:" class="emoji" alt=":frowning:"> <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<a data-link-to-post="796358" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/6" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796358">
+<a title="August 27, 2018  3:24pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/7">Aug '18</a>
+<a data-link-to-post="796353" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/6">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Joe_Bloggs" target="_blank"><img src="./45.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Joe_Bloggs" target="_blank" class="new-user">Joe_<wbr>​<wbr>​Bloggs</a>
+</h3>
+<p>The code is great! But you only have preventDefault for mobile, not for laptops or desktop browsers, so it will not work unless you move preventDefault() out of the “if” block of code it is currently in (where it is only testing for mobile devices)</p>
+<a data-link-to-post="796361" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/7" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796361">
+<a title="August 27, 2018  6:07pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/8">Aug '18</a>
+<a data-link-to-post="796358" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/7">▶ Joe_Bloggs</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That is a great point. I’ll update the code momentarily <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-796502">
+<a title="September 18, 2018  4:24pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/9">Sep '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank"><img src="./9288_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank" class="new-user">brucenorton</a>
+</h3>
+<p>Thanks for this. Works very well.<br>
+Do you have something that would detect collisions on dragEnd?<br>
+I am trying to only allow “dropping” if dropped in the proper place.</p>
+<a data-link-to-post="796503" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/9" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796503">
+<a title="September 18, 2018  9:15pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/10">Sep '18</a>
+<a data-link-to-post="796502" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/9">▶ brucenorton</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>You may need to adapt that code with the Drag Drop API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API</a></p>
+<p>There are many ways to fake this behavior by detecting whether your mouse cursor is hovering over the drop area. We can look at some of these fake approaches if you the “recommended” approach using the Drag Drop API doesn’t work out <img src="./slight_smile.png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<a class="post-replies button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/10">2 replies</a>
+</div>
+</article>
+<article class="post" id="post-796505">
+<a title="September 18, 2018 10:04pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/11">Sep '18</a>
+<a data-link-to-post="796503" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/10">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank"><img src="./9288_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank" class="new-user">brucenorton</a>
+</h3>
+<p>Thanks Kirupa,<br>
+My impression is that the Drag &amp; Drop API does not work with touch events.<br>
+I am designing for a 55" touch screen, like you might find in a mall or large office building.<br>
+I am trying with collision detection, but so far no luck.<br>
+If you could share a fake approach you might have come across, I would much appreciate it.</p>
+</div>
+</article>
+<article class="post" id="post-796510">
+<a title="September 19, 2018 12:17pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/12">Sep '18</a>
+<a data-link-to-post="796503" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/10">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank"><img src="./9288_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/brucenorton" target="_blank" class="new-user">brucenorton</a>
+</h3>
+<p>P.S. This is the resource that helped me to get it working:<br>
+<iframe id="cp_embed_vRQYwZ" src="./vRQYwZ.html" title="Dropping elements inside a drop area" scrolling="no" frameborder="0" height="260" class="cp_embed_iframe" width="695" seamless="seamless" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"></iframe><br>
+Specifically:</p>
+<pre><code>function dragEnd(e) {
+     dropHandler(event.target, event.changedTouches[0].pageX, event.changedTouches[0].pageY);
+    }
+
+function dropHandler(element, coordX, coordY){
+   if(element.parentNode.classList.contains(targetElement.id)){
+    // console.log('good drop');
+    dropped++;
+  }else{
+    //console.log('bad drop');
+  }
+}
+</code></pre>
+<p>Plus the important note to disable pointer events when dragging to access the target element underneath.<br>
+.active{<br>
+pointer-events: none;<br>
+}</p>
+<p>Thanks again.</p>
+<a data-link-to-post="796517" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/12" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796517">
+<a title="September 19, 2018  5:59pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/13">Sep '18</a>
+<a data-link-to-post="796510" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/12">▶ brucenorton</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That is awesome! The approach I was thinking is where we listen for a <strong>mouseover</strong> or <strong>touchover</strong> event that fires over the drop area. When that happens, we can treat the drop as having succeeded when you release the mouse or touch. I’m just thinking out loud here, so what I said could be completely wrong <img src="./stuck_out_tongue.png" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+</div>
+</article>
+<article class="post" id="post-796824">
+<a title="October 22, 2018 12:59pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/14">Oct '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Alej" target="_blank"><img src="./45(1).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Alej" target="_blank" class="new-user">Alej</a>
+</h3>
+<p>Thanks for this posting. The code works great! But I’m having issues with the items going beyond the container border when using FireFox, Chrome and in my mobile. It does stop at the container border when using Microsoft Edge.<br>
+Is there a fix for this issue?<br>
+Again, thank you for this fourm.</p>
+<a data-link-to-post="796832" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/14" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-796832">
+<a title="October 22, 2018  4:50pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/15">Oct '18</a>
+<a data-link-to-post="796824" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/14">▶ Alej</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Can you post an example?</p>
+<p><img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-796930">
+<a title="October 31, 2018  1:23pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/16">Oct '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/dzimen" target="_blank"><img src="./9338_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/dzimen" target="_blank" class="new-user">dzimen</a>
+</h3>
+<p>How can I transform it so I can move several elements on the page? Here is the code: <a href="https://pastebin.com/QV8UhHhC" rel="nofollow noopener" target="_blank">https://pastebin.com/QV8UhHhC</a></p>
+</div>
+</article>
+<article class="post" id="post-797101">
+<a title="November 14, 2018 11:29am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/17">Nov '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Omg this was a lifesaver, thank you so much!! It works great. I have many elements, and now it works like a charm. I only have one problem, I have to press the trackpad on my mac ones more to make it drop the element. It doesnt let go by itself. Do you have any clue how I can fix this problem?</p>
+</div>
+</article>
+<article class="post" id="post-797105">
+<a title="November 14, 2018  1:48pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/19">Nov '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Sorry for spamming, but I found what’s wrong, it’s that I’m using png files. Then it doesn’t work properly. Do you know how I can make it work using the img tag? I need it to be files I’ve already made in illustrator</p>
+<a data-link-to-post="797112" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/19" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797107">
+<a title="November 14, 2018  9:11pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/20">Nov '18</a>
+<a data-link-to-post="796107" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/3">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/namik" target="_blank"><img src="./45(2).png" alt=""></a>
+</div>
+ <div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/namik" target="_blank" class="new-user">namik</a>
+</h3>
+<p>Hi Kirupa,<br>
+Thank you for your effort. Is it possible to re-arrange the code with many elements to use “element.style.top” and “element.style.left”. Because I need to keep the absolute coordinates of the elements fo later restructuring.<br>
+Best regards.</p>
+<a data-link-to-post="797113" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/20" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797112">
+<a title="November 15, 2018  8:33pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/21">Nov '18</a>
+<a data-link-to-post="797105" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/19">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Just place your image files inside the <code>div</code> element that is currently the item that is being dragged around. The content inside it doesn’t matter at all <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<a data-link-to-post="797139" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/21" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797113">
+<a title="November 15, 2018 10:54pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/22">Nov '18</a>
+<a data-link-to-post="797107" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/20">▶ namik</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>You can just store the <code>transform</code> <strong>X</strong> and <strong>Y</strong> values on each element to get the same result. I don’t recommend using the the <code>top</code> and <code>left</code> properties for performance reasons.</p>
+</div>
+</article>
+<article class="post" id="post-797139">
+<a title="November 21, 2018  9:12am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/23">Nov '18</a>
+<a data-link-to-post="797112" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/21">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Thank you for your response, now it is much easier to drag <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"> But now I have a new problem - I can’t get the file to scale. The settings I had before I placed the url(filehere) in css, was that the element should be 60% of the windows width, but not bigger than 363px (width: 60%;, max-width: 363px;). That worked when I had the img src in html, but not now when I need the image file to be in css. I tried to place the img src in between the div in html, but then my original problem occurs (you have to click once more to let the item go). I tried making a container around the div as well, but it still doesn’t work. Now it looks like this:</p>
+<p><span class="hashtag">#containerElement1</span> {<br>
+position: relative;<br>
+max-width: 363px;<br>
+max-height: 139px;<br>
+width: 60%;<br>
+height: auto;<br>
+}</p>
+<p><span class="hashtag">#element1</span> {<br>
+background-image: url(illustrasjon/nase1.png);<br>
+display: block;<br>
+width: 100%;<br>
+height: auto;<br>
+}</p>
+<a data-link-to-post="797170" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/23" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797170">
+<a title="November 23, 2018  2:55pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/24">Nov '18</a>
+<a data-link-to-post="797139" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/23">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Correction, this is how it looks like in the css file:</p>
+<p><span class="hashtag">#containerElement1</span> {</p>
+<p>position: relative;</p>
+<p>max-width: 363px;</p>
+<p>max-height: 139px;</p>
+<p>width: 60%;</p>
+<p>height: auto;</p>
+<p>}</p>
+<p><span class="hashtag">#element1</span> {</p>
+<p>background-image: url(illustrasjon/nase1.png);</p>
+<p>display: block;</p>
+<p>width: 263px;</p>
+<p>height: 139px;</p>
+<p>}</p>
+<a data-link-to-post="797174" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/24" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797174">
+<a title="November 23, 2018  4:16pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/25">Nov '18</a>
+<a data-link-to-post="797170" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/24">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Do you have the example hosted anywhere that we can take a look at? <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<a data-link-to-post="797184" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/25" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797184">
+<a title="November 24, 2018 11:39am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/26">Nov '18</a>
+<a data-link-to-post="797174" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/25">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+ </div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Here is the webpage: <a href="http://folk.ntnu.no/manordt/wu1/Heimeside/framside.html" rel="nofollow noopener" target="_blank">http://folk.ntnu.no/manordt/wu1/Heimeside/framside.html</a></p>
+<p>The code is a bit messy now because I have been trying out different things <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"> But the first element is the one I can’t get to scale properly (id=“element1”). The other elements on the page is how it looks when the file is in the html document.<br>
+Then it doesn’t drag properly.</p>
+<a data-link-to-post="797187" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/26" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797187">
+<a title="November 24, 2018  8:47pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/27">Nov '18</a>
+<a data-link-to-post="797184" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/26">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That helps greatly! The issue is that the drag code doesn’t like any child elements like our image to be placed inside the <code>div</code>. The trick is to disable mouse/touch events on the image. Here is an example: <a href="https://www.kirupa.com/html5/examples/drag_multiple_images.htm" target="_blank">https://www.kirupa.com/html5/examples/drag_multiple_images.htm</a></p>
+<p>The main change is the following style rule that I added:</p>
+<pre><code>.item img {
+  pointer-events: none;
+}
+</code></pre>
+<p>You may need to modify your style rule to be <code>.element img</code>, but that will fix it for you as well. I set it on all images via your existing <code>img</code> style rule, and it worked.</p>
+<p>Cheers,<br>
+Kirupa</p>
+<a data-link-to-post="797232" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/27" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797232">
+<a title="November 28, 2018  8:27am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/28">Nov '18</a>
+<a data-link-to-post="797187" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/27">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Thank you so much! It worked <img src="./smiley.png" title=":smiley:" class="emoji" alt=":smiley:"> Buuuut… Every time something works, it affects something else <img src="./joy.png" title=":joy:" class="emoji" alt=":joy:"> Now all my elements get to small, I figured out it is because the javascript I have that randomly places the objects inside the browser window. Maybe it doesn’t like that I use element img in css, and then only refers to element in the script? Do you have any idea how I can fix this? I should send you a medal soon for helping me so much out <img src="./sweat_smile.png" title=":sweat_smile:" class="emoji" alt=":sweat_smile:"><br>
+Webpage: folk.ntnu.no/manordt/wu1/Heimeside/framside.html</p>
+<a data-link-to-post="797236" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/28" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797236">
+<a title="November 29, 2018  4:10am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/29">Nov '18</a>
+<a data-link-to-post="797232" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/28">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Haha. Welcome to web development <img src="./stuck_out_tongue(1).png" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+<p>The reason for the sizes doesn’t seem to have anything to do with the JavaScript or how you are placing them on the page. All of your images are respecting the size you have specified:</p>
+<pre><code>.element img {
+    max-width: 363px;
+    width: 60%;
+    pointer-events: none;
+}
+</code></pre>
+<p>If you increase the <code>width</code> and <code>max-width</code> values, you’ll find that your images grow to match your new size. Try that and let us know if that solves it for you.</p>
+<p>Cheers,<br>
+Kirupa</p>
+</div>
+</article>
+<article class="post" id="post-797241">
+<a title="November 29, 2018 12:09pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/30">Nov '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank"><img src="./9357_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/mafiamaria" target="_blank" class="">mafiamaria</a>
+</h3>
+<p>Figured it out, thank you! Again! I figured out it was because I was using the .element img {} to scale it within the browser window, but I guess it then scaled within the div instead? So I moved the max-width and width: 60% to .element {}, and in .element img {width: 100%;}. Now it works! I also added some code that prevent the images from being highlighted when dragged. Now it looks like this in the CSS file:<br>
+.element {<br>
+max-width: 363px;<br>
+width: 60%;<br>
+user-select: none;<br>
+-ms-user-select: none;<br>
+-moz-user-select: none;<br>
+-webkit-touch-callout: none;<br>
+-webkit-user-select: none;<br>
+}</p>
+<p>.element img {<br>
+pointer-events: none;<br>
+width: 100%;<br>
+}</p>
+<p>.element:active {<br>
+opacity: .75;<br>
+}</p>
+<p>.element:hover {<br>
+cursor: pointer;<br>
+}</p>
+<p>Thanks again, you’re a real life saver! Now my webpage is finally ready to be launched <img src="./smiley.png" title=":smiley:" class="emoji" alt=":smiley:"></p>
+<a data-link-to-post="797242" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/30" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797242">
+<a title="November 29, 2018 12:22pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/31">Nov '18</a>
+<a data-link-to-post="797241" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/30">▶ mafiamaria</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That is awesome! Glad to hear you are unblocked <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-797262">
+<a title="December  1, 2018  2:32pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/32">Dec '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/tcaissie" target="_blank"><img src="./9390_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/tcaissie" target="_blank" class="new-user">tcaissie</a>
+</h3>
+<p>Hi there, I’m trying your code and for some reason it doesn’t get past the condition for the if statement in dragStart.</p>
+<pre><code>if(e.target === detailPanel) {
+active = true;
+}
+</code></pre>
+<p>detailPanel being my dragItem.</p>
+<p>I’m trying to drag an element (toggled on the draggable in the html attributes) which has a few things inside. It’s basically a card, or as the name implies, a detail panel with lots of info in it.</p>
+<p>If I console log out my detailPanel variable it does select the right element so I’m not sure why the script can’t get into the if statement.</p>
+<pre><code>var detailPanel = document.getElementsByClassName('detailTabWrappper');
+console.log(detailPanel);
+var panelContainer = document.body;
+console.log(panelContainer);
+var active = false;
+
+var currentX;
+var currentY;
+var initialX;
+var initialY;
+var xOffset = 0;
+var yOffset = 0;
+
+panelContainer.addEventListener('mousedown', dragStart);
+panelContainer.addEventListener('mouseup', dragEnd);
+panelContainer.addEventListener('mousemove', drag);
+
+function dragStart(e) {
+  if(e.type === 'mousedown') {
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+  }
+
+  // this here is not working
+  if(e.target === detailPanel) {
+    active = true;
+  }
+}
+
+&lt;article class="detailTabWrappper" draggable="true"&gt;&lt;/article&gt;
+</code></pre>
+<p>Any ideas why?</p>
+<a data-link-to-post="797263" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/32" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797263">
+<a title="December  1, 2018 11:28pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/33">Dec '18</a>
+<a data-link-to-post="797262" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/32">▶ tcaissie</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>One thing is that <code>getElementsByClassName</code> returns an array. Try this:</p>
+<pre><code>var detailPanel = document.getElementsByClassName('detailTabWrappper')[0];
+</code></pre>
+<p>That will ensure <code>detailPanel</code> points to an element instead of the array. Does that fix it?</p>
+<p>Cheers,<br>
+Kirupa <img src="./stuck_out_tongue(1).png" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+<a data-link-to-post="797267" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/33" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797267">
+<a title="December  2, 2018 12:23am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/34">Dec '18</a>
+<a data-link-to-post="797263" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/33">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/tcaissie" target="_blank"><img src="./9390_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/tcaissie" target="_blank" class="new-user">tcaissie</a>
+</h3>
+<p>It works.</p>
+<p>I can’t believe I got owned by that a second time. That the getEByClass returns an array.</p>
+<p>Thanks!</p>
+</div>
+</article>
+<article class="post" id="post-797516">
+<a title="December 26, 2018 12:44pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/35">Dec '18</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/dozabia" target="_blank"><img src="./45(3).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/dozabia" target="_blank" class="new-user">dozabia</a>
+</h3>
+<p>Thanks Kirupa for your post on drag and drop in javascript. It really helped me to learn about multiple drag and drop elements.</p>
+<a data-link-to-post="797518" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/35" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-797518">
+<a title="December 27, 2018  4:50pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/36">Dec '18</a>
+<a data-link-to-post="797516" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/35">▶ dozabia</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Thanks for the comment! Glad the tutorial helped <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-797909">
+<a title="January 22, 2019 10:33pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/37">Jan '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/David_Larew" target="_blank"><img src="./9456_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/David_Larew" target="_blank" class="new-user">David_<wbr>​<wbr>​Larew</a>
+</h3>
+<p>I’m trying to create a drag and select around multiple countries in a svg of the world.<br>
+The box should resize and grab user selected countries. tia, David<br>
+<a href="http://datamaps.github.io/" class="onebox" target="_blank" rel="nofollow noopener">http://datamaps.github.io/</a></p>
+</div>
+</article>
+<article class="post" id="post-798228">
+<a title="February 26, 2019  5:38am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/38">Feb '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Danny1897" target="_blank"><img src="./9517_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Danny1897" target="_blank" class="new-user">Danny<wbr>​1897</a>
+</h3>
+<p><strong>HELP</strong><br>
+It runs, not clean, and needs fixes.<br>
+Can someone suggest how to fix the reset to (0,0) bug on reload+dragStart.<br>
+(<a href="https://codepen.io/Danny1897/pen/LaYBxK" rel="nofollow noopener" target="_blank">https://codepen.io/Danny1897/pen/LaYBxK</a>)</p>
+<p><iframe id="cp_embed_LaYBxK" src="./LaYBxK.html" title="Drag  &amp; Drop" scrolling="no" frameborder="0" height="260" class="cp_embed_iframe" width="695" seamless="seamless" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"></iframe></p>
+</div>
+</article>
+<article class="post" id="post-798247">
+<a title="March  1, 2019 11:34am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/39">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Mikolaj_Marciniak" target="_blank"><img src="./9519_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Mikolaj_Marciniak" target="_blank" class="new-user">Mikolaj_<wbr>​<wbr>​Marciniak</a>
+</h3>
+<p>How do I write a sortable component, based on an items position property?</p>
+</div>
+</article>
+<article class="post" id="post-798296">
+<a title="March  6, 2019  8:23pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/40">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>I am creating a Tangram game for children’s therapy sessions. I need to drag shapes on the page and rotate them in 22.5 deg increments to make the tangram images. I have the drag code (from your tutorial) done but have been unable to rotate the shapes to fit patterns that will be loaded by the user onto the page. Tangram so far can be seen at <a href="http://www.hansondesignmaine.com/" rel="nofollow noopener" target="_blank">www.hansondesignmaine.com</a>. Thank you for any help you can provide. Jack</p>
+</div>
+</article>
+<article class="post" id="post-798297">
+<a title="March  6, 2019  8:31pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/41">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>Correction to web page name it is: <a href="http://www.hansondesignmaine.com/tangram/tangram.html" rel="nofollow noopener" target="_blank">www.hansondesignmaine.com/tangram/tangram.html</a> Thanks, Jack</p>
+<a data-link-to-post="798299" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/41" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798299">
+<a title="March  6, 2019  8:49pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/42">Mar '19</a>
+<a data-link-to-post="798297" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/41">▶ jmacky</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>What gesture are you planning to use to rotate the element? The rotation is something that can be done by using a <code>rotate</code> CSS transform.</p>
+<a data-link-to-post="798301" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/42" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798301">
+<a title="March  6, 2019 10:29pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/43">Mar '19</a>
+<a data-link-to-post="798299" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/42">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>The game should be for mouse and touch as in your drag tutorial. I am assuming that touch or click plus drag would move the shape (existing code), whereas touch or click plus lift the pointer would rotate the shape. So you move the shape over the pattern then rotate the shape so it will fit in place and then move the shape to final position. The pattern will be a white outline that can be selected from a group of patterns on the right side of the screen and then appear in the center work space. I am suggesting a rotation of 22.5 degree increments so that the kids have more options to make their own objects if they don’t want to use a pattern. Separating the drag and rotate functions with similar pointer actions is a problem. The users will be occupational therapy patients, parents, and therapists. How would the CSS rotate transform be incorporated into the existing code and identify the existing items? Thanks, Jack</p>
+<a data-link-to-post="798302" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/43" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798302">
+<a title="March  7, 2019 12:51am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/44">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<aside class="quote no-group" data-post="43" data-topic="638149">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="./40.png" class="avatar"> jmacky:</div>
+<blockquote>
+<p>Separating the drag and rotate functions with similar pointer actions is a problem.</p>
+</blockquote>
+</aside>
+<p>This is the part I was worried about, but I think we can differentiate between a drag and click. Check out the following snippet:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" /&gt;
+  &lt;title&gt;Drag Multiple Images&lt;/title&gt;
+  &lt;link href="https://www.kirupa.com/ssi/newDesign/kirupa_html5.css" rel="stylesheet" type="text/css"&gt;
+  &lt;style&gt;
+    body {
+      margin: 20px;
+    }
+
+    #container {
+      width: 600px;
+      height: 400px;
+      background-color: #EEE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 7px;
+      touch-action: none;
+    }
+
+    .item {
+      border-radius: 50%;
+      touch-action: none;
+      user-select: none;
+      position: relative;
+    }
+
+    .item img {
+      pointer-events: none;
+    }
+
+    .one {
+      width: 100px;
+      height: 100px;
+      top: 0px;
+      left: 0px;
+    }
+
+    .two {
+      width: 60px;
+      height: 60px;
+      top: 30%;
+      left: 10%;
+    }
+
+    .three {
+      width: 40px;
+      height: 40px;
+      top: -40%;
+      left: -10%;
+    }
+
+    .four {
+      width: 80px;
+      height: 80px;
+      top: -10%;
+      left: 5%;
+    }
+
+    .item:active {
+      opacity: .75;
+    }
+
+    .item:hover {
+      cursor: pointer;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;Drag Multiple Images&lt;/h1&gt;
+  &lt;div id="outerContainer"&gt;
+    &lt;div id="container"&gt;
+      &lt;div class="item one"&gt;
+        &lt;img src="https://www.kirupa.com/icon/1f6a7.svg"&gt;
+      &lt;/div&gt;
+      &lt;div class="item two"&gt;
+        &lt;img src="https://www.kirupa.com/icon/1f680.svg"&gt;
+      &lt;/div&gt;
+      &lt;div class="item three"&gt;
+        &lt;img src="https://www.kirupa.com/icon/1f35d.svg"&gt;
+      &lt;/div&gt;
+      &lt;div class="item four"&gt;
+        &lt;img src="https://www.kirupa.com/icon/1f5fa.svg"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;p class="callout"&gt;Check out the &lt;a href="https://www.kirupa.com/html5/drag.htm" class="blueEmphasis"&gt;tutorial&lt;/a&gt;
+      or the &lt;a href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/3" class="blueEmphasis"&gt;discussion&lt;/a&gt;
+      around this effect.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+    var container = document.querySelector("#container");
+    var activeItem = null;
+
+    var active = false;
+    var dragging = false;
+
+    container.addEventListener("touchstart", dragStart, false);
+    container.addEventListener("touchend", dragEnd, false);
+    container.addEventListener("touchmove", drag, false);
+
+    container.addEventListener("mousedown", dragStart, false);
+    container.addEventListener("mouseup", dragEnd, false);
+    container.addEventListener("mousemove", drag, false);
+
+    container.addEventListener("click", rotateElement, false);
+
+    function dragStart(e) {
+      if (e.target !== e.currentTarget) {
+        active = true;
+        dragging = false;
+
+        // this is the item we are interacting with
+        activeItem = e.target;
+
+        if (activeItem.degrees === undefined) {
+          activeItem.degrees = 0;
+        }
+
+        if (activeItem !== null) {
+          if (!activeItem.xOffset) {
+            activeItem.xOffset = 0;
+          }
+
+          if (!activeItem.yOffset) {
+            activeItem.yOffset = 0;
+          }
+
+          if (e.type === "touchstart") {
+            activeItem.initialX = e.touches[0].clientX - activeItem.xOffset;
+            activeItem.initialY = e.touches[0].clientY - activeItem.yOffset;
+          } else {
+            activeItem.initialX = e.clientX - activeItem.xOffset;
+            activeItem.initialY = e.clientY - activeItem.yOffset;
+          }
+        }
+      }
+    }
+
+    function dragEnd(e) {
+      if (activeItem !== null) {
+        activeItem.initialX = activeItem.currentX;
+        activeItem.initialY = activeItem.currentY;
+      }
+
+      active = false;
+      activeItem = null;
+    }
+
+    function drag(e) {
+      if (active) {
+
+        dragging = true;
+
+        if (e.type === "touchmove") {
+          e.preventDefault();
+
+          activeItem.currentX = e.touches[0].clientX - activeItem.initialX;
+          activeItem.currentY = e.touches[0].clientY - activeItem.initialY;
+        } else {
+          activeItem.currentX = e.clientX - activeItem.initialX;
+          activeItem.currentY = e.clientY - activeItem.initialY;
+        }
+
+        activeItem.xOffset = activeItem.currentX;
+        activeItem.yOffset = activeItem.currentY;
+
+        setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+      }
+    }
+
+    function rotateElement(e) {
+      if (dragging === false) {
+
+        if (activeItem === null) {
+          activeItem = e.target;
+        }
+
+        console.log(activeItem.degrees);
+
+        activeItem.degrees += 22.5;
+        
+        activeItem.querySelector("img").style.transform = `rotate(${activeItem.degrees}deg)`;
+      }
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+      //el.querySelector("img").style.transform = `rotate(${degrees}deg)`;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>Does this work for your needs? The way this example work is by using a <code>dragging</code> variable to differentiate between a regular click and a drag operation. If the click was indeed a click, I rotate the child image by 22.5 degrees. The repositioning logic deals with the parent element, and the rotation deals with the child image element. This is a silly trick dealing with how transforms work and figuring out a way to set two different transform values.</p>
+<p><img src="./running_man.png" title=":running_man:" class="emoji" alt=":running_man:"></p>
+<a data-link-to-post="801921" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/44" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798307">
+<a title="March  7, 2019  4:36pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/45">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>Your solution works great! How can I thank you? Jack</p>
+<a class="post-replies button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/45">2 replies</a>
+</div>
+</article>
+<article class="post" id="post-798308">
+<a title="March  7, 2019  5:51pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/46">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Glad to hear it!</p>
+<aside class="quote no-group" data-post="45" data-topic="638149">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="./40.png" class="avatar"> jmacky:</div>
+<blockquote>
+<p>How can I thank you?</p>
+</blockquote>
+</aside>
+<p>Help someone else out one day who has a strange technical problem <img src="./stuck_out_tongue(1).png" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+</div>
+</article>
+<article class="post" id="post-798468">
+<a title="March 27, 2019  6:07pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/47">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>Kirupa, My previous problem was with dragging and rotating shapes in a Tangram game. That can now be done, but when dragging the user must be careful not to accidentally rotate the shape when stopping drag. Also when dragging the user must have the cursor on the shape when they stop dragging. If cursor is not on the shape when they click or lift finger to stop dragging, the dragging action is not stopped (though the shape may not be moving at the moment) when they move the cursor near the shape it starts moving again without any new click, and until they get the cursor on the shape (not easy on small shapes) they cannot stop the dragging function. “Make a Face” (a therapy program I am doing to help children identify and locate facial parts) has the same problems. Any help would be appreciated. The problems can be easily seen by viewing <a href="https://www.therapygames.online/face/face.html" rel="nofollow noopener" target="_blank">https://www.therapygames.online/face/face.html</a> and trying to move a face component rapidly. The part does not always stay with the cursor. Thanks, Jack</p>
+<a data-link-to-post="798477" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/47" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798469">
+<a title="March 27, 2019  6:27pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/48">Mar '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>Also above does not appear to be a problem using a finger on a touch pad but is a problem on a touch pad using a mouse. Thanks, Jack</p>
+</div>
+</article>
+<article class="post" id="post-798477">
+<a title="March 28, 2019  5:39am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/49">Mar '19</a>
+<a data-link-to-post="798468" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/47">▶ jmacky</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>I totally see the problem, but I’m a bit swamped to look into this right now. I’ll do my best to get back to you on this soon. This might be a really simple fix or something that will involve some complicated tricks, and I don’t have a guess on where in that range the right answer will fall <img src="./ambulance.png" title=":ambulance:" class="emoji" alt=":ambulance:"></p>
+<a data-link-to-post="798483" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/49" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798483">
+<a title="March 28, 2019  4:40pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/50">Mar '19</a>
+<a data-link-to-post="798477" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/49">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank"><img src="./12021_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/jmacky" target="_blank" class="">jmacky</a>
+</h3>
+<p>Thank you. I have research the issues between mouse and touch and have not found any kind of a fix, just a lot of discussion about the issues.</p>
+<a data-link-to-post="799061" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/50" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-798550">
+<a title="April  3, 2019  5:19pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/51">Apr '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Cezary" target="_blank"><img src="./45(4).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Cezary" target="_blank" class="new-user">Cezary</a>
+</h3>
+<p>Hello,<br>
+The script works perfectly !<br>
+but I have one question, how to prevent element from disappearing when i drag him through the border line?, how to stop him inside to not let him pass the container shape</p>
+<p>Thanks in advance <img src="./slight_smile(1).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-799060">
+<a title="June  6, 2019  1:10pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/52">Jun '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank"><img src="./45(5).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank" class="">Ozyris</a>
+</h3>
+<p>Hi Kirupa!<br>
+Don’t know if you remember me - doing well with your book!<br>
+I am currently making a simulated cassette player for my website, including a “fake” range slider as a volume control, using your excellent “dragging” technique. I have limited it to the horizontal direction only, but I need to restrict the left-right movement to between two fixed points. Suggestions?</p>
+<a data-link-to-post="799065" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/52" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-799061">
+<a title="June  6, 2019  1:16pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/53">Jun '19</a>
+<a data-link-to-post="798483" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/50">▶ jmacky</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank"><img src="./45(5).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank" class="">Ozyris</a>
+</h3>
+<p>Hi jmacky - don’t know if this will be your answer, but while Kirupa is busy (it’s a difficult life being so popular!) you could check it out.</p>
+<p>The dragging function is cancelled when you release the mouse over the dragged item. The “mouseup” event won’t fire if the pointer is not over it. Try also making the dragEnd() function run on “mouseout” - when it leaves the dragged item.</p>
+<p>Unless the dragging function is cancelled the item will keep following the mouse pointer.</p>
+</div>
+</article>
+<article class="post" id="post-799065">
+<a title="June  7, 2019  7:23pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/54">Jun '19</a>
+<a data-link-to-post="799060" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/52">▶ Ozyris</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>I can fiddle with that and see if I can provide you with some code.</p>
+<p>For what you are trying to do, have you thought about using an actual slider element? That way you get some of the dragging for free, and you also get accessibility, keyboard shortcuts, and more as well.</p>
+</div>
+</article>
+<article class="post" id="post-799066">
+<a title="June  7, 2019  8:08pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/55">Jun '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank"><img src="./45(5).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank" class="">Ozyris</a>
+</h3>
+<p>Hi Mr K!! Long time no chat!!<br>
+I managed to come up with a solution already. I did think of using a range slider but I wanted a custom old fashioned image for the knob to match an old cassette. The “thumb” does not seem to be consistently implemented yet and accessing it to style it seems a bit of a mission. It was easier to use your brilliant “translate3d” idea, limit it to one axis, and use an “if…else if…else” to impose a minimum and maximum value to the slider. I’ll send you a link once I have the rest of it performing correctly. Getting very excited here!</p>
+<p>Once I’m done you might tell me if my code is clumsy or inefficient or whatever so I can learn some more from the master!</p>
+<p>Thanks for being out there for us all!</p>
+</div>
+</article>
+<article class="post" id="post-799070">
+<a title="June  9, 2019  9:51pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/56">Jun '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank"><img src="./45(5).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank" class="">Ozyris</a>
+</h3>
+<p>Greetings again O Awesome JS Guru!<br>
+I’m all excited now I have the Cassette Player working completely as I want it! Here’s a link:<br>
+<a href="http://www.smooth-operator.co.uk/SmoothCassette.html" class="onebox" target="_blank" rel="nofollow noopener">http://www.smooth-operator.co.uk/SmoothCassette.html</a><br>
+It will next be integrated into our website. Looking forward to your feedback!<br>
+Have a great week!</p>
+</div>
+</article>
+<article class="post" id="post-799071">
+<a title="June  9, 2019  9:55pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/57">Jun '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank"><img src="./45(5).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Ozyris" target="_blank" class="">Ozyris</a>
+</h3>
+<p>BTW - you will notice it only loads the tracks when you select them. The main images will also be loaded while the construction is invisible offscreen. What I am also excited about is that if I want to add tracks, which of course I will, I have only to edit the external js file, which is basically just a list. Everything else is automatic.</p>
+<p>Felicitations once more Mr K!<br>
+The Cassette Player is now intregrated into our main site.<br>
+<a href="http://www.smooth-operator.co.uk/" class="onebox" target="_blank" rel="nofollow noopener">http://www.smooth-operator.co.uk/</a><br>
+So the draggable element here is the volume control. Hope my code is pleasing to you!</p>
+</div>
+</article>
+<article class="post" id="post-799166">
+<a title="June 22, 2019  8:13am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/58">Jun '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/gwgwpl" target="_blank"><img src="./45(6).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/gwgwpl" target="_blank" class="">gwgwpl</a>
+</h3>
+<p>Hello,is it poosible to change particle moving path on the canvas on events such us touch or mousemove?<br>
+I mean, i have particle that needs to move from point a to b,c,d(…) so along predefinied path of x and y coordinates, can i distort points of this path on touch or when pointer is near the path point?</p>
+</div>
+</article>
+<article class="post" id="post-801063">
+<a title="November 25, 2019 12:35pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/59">Nov '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank"><img src="./10446_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank" class="new-user">Sarvinstyle_<wbr>​<wbr>​Taba</a>
+</h3>
+<p>Thank you so much for such a greet tutorial.<br>
+I just need a help<br>
+I want to drag and clone image from one div to another<br>
+can you please help me ??</p>
+</div>
+</article>
+<article class="post" id="post-801100">
+<a title="November 27, 2019  2:09am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/60">Nov '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/rajeshm" target="_blank"><img src="./45(7).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/rajeshm" target="_blank" class="new-user">rajeshm</a>
+</h3>
+<p>Thanks for a great tutorial. Clearly explained what I wanted to know.</p>
+</div>
+</article>
+<article class="post" id="post-801242">
+<a title="December  9, 2019  1:10pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/61">Dec '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/never" target="_blank"><img src="./45(8).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/never" target="_blank" class="new-user">never</a>
+</h3>
+<p>How to have this remember each dragged-to location, and for these to be updated in a database, so that positions would get remembered when you revisit the page?</p>
+<a data-link-to-post="801244" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/61" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801244">
+<a title="December  9, 2019  1:47pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/62">Dec '19</a>
+<a data-link-to-post="801242" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/61">▶ never</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>You can use local storage: <a href="https://www.kirupa.com/things_to_do_with_data/web_storage.htm" target="_blank">https://www.kirupa.com/things_to_do_with_data/web_storage.htm</a></p>
+<p>Store the transform value for each element. When the page loads, read the stored transform value and apply it back to each element <img src="./slight_smile(2).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<a data-link-to-post="801247" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/62" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801247">
+<a title="December  9, 2019 10:33pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/63">Dec '19</a>
+<a data-link-to-post="801244" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/62">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/never" target="_blank"><img src="./45(8).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/never" target="_blank" class="new-user">never</a>
+</h3>
+<p>Hey thanks for that helpful info <img src="./smiley(1).png" title=":smiley:" class="emoji" alt=":smiley:"></p>
+</div>
+</article>
+<article class="post" id="post-801498">
+<a title="December 28, 2019 10:50pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/65">Dec '19</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Liam1" target="_blank"><img src="./10628_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Liam1" target="_blank" class="new-user">Liam<wbr>​1</a>
+</h3>
+<p><a class="mention" href="https://forum.kirupa.com/u/kirupa" target="_blank">@kirupa</a> Hi there! im looking to do exactly this, I have your multiple point setup and working, I am now looking to create lines to link them together that move with it, eg, will have 4 circles and connect circle a to b with a line and so on, 4 lines + 4 circles. Is this possible? ill keep looking for my own solution in the interim! thanks in advance</p>
+<a data-link-to-post="801499" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/65" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801499">
+<a title="December 29, 2019  3:41am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/66">Dec '19</a>
+<a data-link-to-post="801498" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/65">▶ Liam1</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That is possible! It is much easier using the canvas, but there are ways of making that work on the DOM as well. I don’t have any code readily available, but I can share something with you in a little bit. The trick is identifying the element you want to use for the line. My current thinking is to use a div element whose height is the distance between two points, and its width is 1 or 2 pixels. This will essentially look like a line. This div element’s size and rotation will vary based on where the current endpoint circle is being dragged.</p>
+<p><img src="./thinking.png" title=":thinking:" class="emoji" alt=":thinking:"></p>
+</div>
+</article>
+<article class="post" id="post-801656">
+<a title="January 13, 2020  4:59am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/67">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank"><img src="./10039_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank" class="new-user">col_<wbr>​des</a>
+</h3>
+<p>Drag Multiple Elements [Help Required]<br>
+<strong>How to use local storage to retain final position of each token?</strong><br>
+So on page reload tokens are placed as per storage data [Got that working]<br>
+<strong>Problem is token snaps back to default css position away from cursor on first interaction/touch!</strong><br>
+<a href="https://cdpn.io/coldes/debug/1444d8a68663d2869426937aa152e74a" rel="nofollow noopener" target="_blank">Codepen Debug Page</a><br>
+ANY ASSISTANCE will be greatly appreciated - am thinking I am erring by storing translate3d values?</p>
+<a data-link-to-post="801657" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/67" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801657">
+<a title="January 13, 2020  5:38am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/68">Jan '20</a>
+<a data-link-to-post="801656" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/67">▶ col_des</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>This is a great repro! Thanks for providing it. I don’t have a computer to check this on right now, but I think you may need to persist the values of <code>xOffset</code> and <code>yOffset</code> as well. Those two values start at 0 and adjust based on where the dragged item ends up, and they are responsible for keeping the internal state of the drag in-sync with the translate values that appear.</p>
+<a data-link-to-post="801661" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/68" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801661">
+<a title="January 13, 2020  7:03am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/69">Jan '20</a>
+<a data-link-to-post="801657" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/68">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank"><img src="./10039_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank" class="new-user">col_<wbr>​des</a>
+</h3>
+<p>…thanks for the prompt reply - if possible, when you have time and computer access, if you could look at the Codepen page [your original code with my added local storage bits] and assist with the x &amp; y Offsets - I feel I am close, yet “no cigar”…</p>
+<a data-link-to-post="801664" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/69" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801664">
+<a title="January 13, 2020  7:58am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/70">Jan '20</a>
+<a data-link-to-post="801661" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/69">▶ col_des</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Here you go:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+  &lt;style&gt;
+    #container {
+      width: 600px;
+      height: 400px;
+      background-color: #333;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: hidden;
+      border-radius: 7px;
+      touch-action: none;
+    }
+
+    .item {
+      border-radius: 50%;
+      touch-action: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    .one {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(245, 230, 99);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: 0px;
+      left: 0px;
+      font-size: x-large;
+    }
+
+    .two {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(196, 241, 190, 1);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: 0%;
+      left: 30%;
+    }
+
+    .three {
+      width: 40px;
+      height: 40px;
+      background-color: rgb(0, 255, 231);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: 0%;
+      left: 50%;
+    }
+
+    .four {
+      width: 80px;
+      height: 80px;
+      background-color: rgb(233, 210, 244);
+      border: 10px solid rgba(136, 136, 136, .5);
+      top: -10%;
+      left: 5%;
+    }
+
+    .item:active {
+      opacity: .75;
+    }
+
+    .item:hover {
+      cursor: pointer;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: red;
+    }
+
+    h3 {
+      color: blue
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body translate="no"&gt;
+  &lt;h1&gt;Drag Multiple Elements [Help?]&lt;/h1&gt;
+  &lt;h2&gt;How to use local storage to retain final position of each token?&lt;/h2&gt;
+  &lt;p&gt;So on page reload tokens are placed as per storage data [Got that working]&lt;/p&gt;
+  &lt;h3&gt;Problem is token snaps back to default css position away from cursor on first interaction/touch!&lt;/h3&gt;
+  &lt;div id="outerContainer"&gt;
+    &lt;div id="container"&gt;
+      &lt;div class="item one"&gt;1&lt;/div&gt;
+      &lt;div class="item two"&gt;2&lt;/div&gt;
+      &lt;div class="item three"&gt;3&lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;script id="rendered-js"&gt;
+      //https://www.kirupa.com/html5/drag.htm
+      //https://www.kirupa.com/html5/examples/drag_multiple.htm
+
+      var container = document.querySelector("#container");
+      var activeItem = null;
+
+      var active = false;
+
+      container.addEventListener("touchstart", dragStart, false);
+      container.addEventListener("touchend", dragEnd, false);
+      container.addEventListener("touchmove", drag, false);
+
+      container.addEventListener("mousedown", dragStart, false);
+      container.addEventListener("mouseup", dragEnd, false);
+      container.addEventListener("mousemove", drag, false);
+
+      //STORE TOKEN POSITIONS MY ADD
+      var elONE = document.querySelector("#container .one");
+      var elTWO = document.querySelector("#container .two");
+      var elTHREE = document.querySelector("#container .three");
+
+      function storePositions() {
+        //var positionONE = elONE.style.top;
+        var positionONE = elONE.style.transform;
+        localStorage.setItem('positionONE', positionONE);
+        localStorage.setItem('positionONE_x', elONE.xOffset);
+        localStorage.setItem('positionONE_y', elONE.yOffset);
+
+        console.log("position ONE stored:" + positionONE);
+        console.log(elONE.xOffset + " " + elONE.yOffset);
+
+        var positionTWO = elTWO.style.transform;
+        localStorage.setItem('positionTWO', positionTWO);
+        localStorage.setItem('positionTWO_x', elTWO.xOffset);
+        localStorage.setItem('positionTWO_y', elTWO.yOffset);
+
+        var positionTHREE = elTHREE.style.transform;
+        localStorage.setItem('positionTHREE', positionTHREE);
+        localStorage.setItem('positionTHREE_x', elTHREE.xOffset);
+        localStorage.setItem('positionTHREE_y', elTHREE.yOffset);
+      };
+
+
+      //RETRIVE TOKEN POSITIONS
+      function retrievePositions() {
+        var positionONEsaved = localStorage.getItem('positionONE');
+        var positionTWOsaved = localStorage.getItem('positionTWO');
+        var positionTHREEsaved = localStorage.getItem('positionTHREE');
+
+        console.log("position ONE saved:" + positionONEsaved);
+
+        if (positionONEsaved) {
+          elONE.style.transform = positionONEsaved;
+          elONE.xOffset = localStorage.getItem('positionONE_x');
+          elONE.yOffset = localStorage.getItem('positionONE_y');
+        }
+        if (positionTWOsaved) {
+          elTWO.style.transform = positionTWOsaved;
+          elTWO.xOffset = localStorage.getItem('positionTWO_x');
+          elTWO.yOffset = localStorage.getItem('positionTWO_y');
+        }
+        if (positionTHREEsaved) {
+          elTHREE.style.transform = positionTHREEsaved;
+          elTHREE.xOffset = localStorage.getItem('positionTHREE_x');
+          elTHREE.yOffset = localStorage.getItem('positionTHREE_y');
+        }
+
+      };
+
+      /////
+      function dragStart(e) {
+
+        if (e.target !== e.currentTarget) {
+          active = true;
+
+          // this is the item we are interacting with
+          activeItem = e.target;
+
+          if (activeItem !== null) {
+            if (!activeItem.xOffset) {
+              activeItem.xOffset = 0;
+            }
+
+            if (!activeItem.yOffset) {
+              activeItem.yOffset = 0;
+            }
+
+            if (e.type === "touchstart") {
+              activeItem.initialX = e.touches[0].clientX - activeItem.xOffset;
+              activeItem.initialY = e.touches[0].clientY - activeItem.yOffset;
+            } else {
+              //console.log("doing something!");
+              activeItem.initialX = e.clientX - activeItem.xOffset;
+              activeItem.initialY = e.clientY - activeItem.yOffset;
+            }
+          }
+        }
+      }
+
+      function dragEnd(e) {
+        if (activeItem !== null) {
+          activeItem.initialX = activeItem.currentX;
+          activeItem.initialY = activeItem.currentY;
+        }
+
+        //MY ADD Store Info to Local Storage
+        setTimeout(storePositions, 111);
+
+        active = false;
+        activeItem = null;
+      }
+
+      function drag(e) {
+
+        if (active) {
+          if (e.type === "touchmove") {
+            e.preventDefault();
+
+            activeItem.currentX = e.touches[0].clientX - activeItem.initialX;
+            activeItem.currentY = e.touches[0].clientY - activeItem.initialY;
+          } else {
+            activeItem.currentX = e.clientX - activeItem.initialX;
+            activeItem.currentY = e.clientY - activeItem.initialY;
+          }
+
+          activeItem.xOffset = activeItem.currentX;
+          activeItem.yOffset = activeItem.currentY;
+
+          setTranslate(activeItem.currentX, activeItem.currentY, activeItem);
+        }
+      }
+
+      function setTranslate(xPos, yPos, el) {
+        el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+        //el.style.top = xPos + "px";
+        //el.style.left = yPos + "px";
+      }
+
+      //
+      document.addEventListener("DOMContentLoaded", function (event) {
+        setTimeout(retrievePositions, 0);//MY ADD
+
+      });
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>Notice that I am storing the <code>xOffset</code> and <code>yOffset</code> values for each of the three items. When retrieving the stored value, I read the stored <code>xOffset</code> and <code>yOffset</code> values and assign it directly to our element (<strong>elONE</strong>, <strong>elTWO</strong>, <strong>elTHREE</strong>). This ensures that our new dragging operation starts from the state originally set by the earlier drag.</p>
+<p><img src="./parasol_on_ground.png" title=":parasol_on_ground:" class="emoji" alt=":parasol_on_ground:"></p>
+<a data-link-to-post="801704" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/70" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801670">
+<a title="January 13, 2020 10:47pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/71">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank"><img src="./10039_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/col_des" target="_blank" class="new-user">col_<wbr>​des</a>
+ </h3>
+<p>…<strong>Brilliant!</strong> - Many thanks indeed - it’s people like you who make this world a (slightly) better place.</p>
+</div>
+</article>
+<article class="post" id="post-801704">
+<a title="January 16, 2020  1:44pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/72">Jan '20</a>
+<a data-link-to-post="801664" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/70">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/HILAL_KEKEC" target="_blank"><img src="./10908_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/HILAL_KEKEC" target="_blank" class="new-user">HILAL_<wbr>​KEKEC</a>
+</h3>
+<p>Hi <a class="mention" href="https://forum.kirupa.com/u/kirupa" target="_blank">@kirupa</a>;<br>
+I try to develop my little project. It includes the multiple draggable Sortable container. I want to put another element inside the element. How can I do it?</p>
+<a data-link-to-post="801708" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/72" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801708">
+<a title="January 16, 2020  6:06pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/73">Jan '20</a>
+<a data-link-to-post="801704" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/72">▶ HILAL_KEKEC</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Right now what we are dragging is a <code>div</code> element. You can just add more child elements into it, and that will now be draggable as well. Are you looking to <em><strong>drag</strong></em> another element into another element? At which point two separate elements become one combined element?</p>
+</div>
+</article>
+<article class="post" id="post-801714">
+<a title="January 17, 2020  6:04am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/74">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Manjunath_R" target="_blank"><img src="./10916_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Manjunath_R" target="_blank" class="new-user">Manjunath_<wbr>​R</a>
+</h3>
+<p>Hi <a class="mention" href="https://forum.kirupa.com/u/kirupa" target="_blank">@kirupa</a> , it had helped me a lot for dragging an element. Am using the drag to have horizontal page scroll. My only concern now is, as there someone (<a class="mention" href="https://forum.kirupa.com/u/cezary" target="_blank">@Cezary</a> ) had already asked about the draggable element is going beyond it’s parent(container) element. As the parent has overflow: hidden the element looks like cropped in the border. Can you provide a solution to stop that inside the parent element, it will help me a lot.</p>
+<a data-link-to-post="801715" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/74" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801715">
+<a title="January 17, 2020  6:22am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/75">Jan '20</a>
+<a data-link-to-post="801714" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/74">▶ Manjunath_R</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Welcome to the forums <a class="mention" href="https://forum.kirupa.com/u/manjunath_r" target="_blank">@Manjunath_R</a> <img src="./partying_face.png" title=":partying_face:" class="emoji" alt=":partying_face:"></p>
+<p>If I understood your question correctly, you want the draggable element to stop just before hitting the boundaries. In other words, it will never look cropped. Does that sound right? <img src="./slight_smile(2).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-801716">
+<a title="January 17, 2020  6:45am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/76">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Manjunath_R" target="_blank"><img src="./10916_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Manjunath_R" target="_blank" class="new-user">Manjunath_<wbr>​R</a>
+</h3>
+<p>Exactly <a class="mention" href="https://forum.kirupa.com/u/kirupa" target="_blank">@kirupa</a>!!. Glad to see your response so soon.</p>
+<a data-link-to-post="801734" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/76" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801734">
+<a title="January 17, 2020  7:39pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/78">Jan '20</a>
+<a data-link-to-post="801716" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/76">▶ Manjunath_R</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>I don’t have a solution ready to share, but this is something I will fiddle with over the next week or so. The main work revolves around first identifying the boundaries of the container, boundaries of the element being dragged, and checking for overlaps to block the drag when an overlap is detected.</p>
+</div>
+</article>
+<article class="post" id="post-801737">
+<a title="January 19, 2020  1:37am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/79">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/prg9" target="_blank"><img src="./45(9).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/prg9" target="_blank" class="">prg<wbr>​9</a>
+<span class="title">Registered User</span>
+</h3>
+<p>There exist various vanilla drag and drop libraries with robust feature sets. So I wonder at what point regarding features does reinventing the wheel from scratch start to come into question? I appreciate the learning aspect, but when features start getting overly robust then sometimes efficient reusable libraries can become beneficial.</p>
+<a data-link-to-post="801744" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/79" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801744">
+<a title="January 19, 2020  7:20pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/80">Jan '20</a>
+<a data-link-to-post="801737" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/79">▶ prg9</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p><a class="mention" href="https://forum.kirupa.com/u/prg9" target="_blank">@prg9</a> - That is actually a good point. Drag/drop functionality is something best done by a 3rd party library that handles all the edge cases. Do you have a good one that you’d recommend?</p>
+</div>
+</article>
+<article class="post" id="post-801750">
+<a title="January 20, 2020  3:39am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/81">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/prg9" target="_blank"><img src="./45(9).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/prg9" target="_blank" class="">prg<wbr>​9</a>
+<span class="title">Registered User</span>
+</h3>
+<p>Here are a few that come to mind, while many others abound also.</p>
+<ul>
+<li><a href="https://sortablejs.github.io/Sortable/" rel="nofollow noopener" target="_blank">https://sortablejs.github.io/Sortable/</a></li>
+<li><a href="https://shopify.github.io/draggable/" rel="nofollow noopener" target="_blank">https://shopify.github.io/draggable/</a></li>
+<li><a href="https://haltu.github.io/muuri/" rel="nofollow noopener" target="_blank">https://haltu.github.io/muuri/</a></li>
+<li><a href="https://bevacqua.github.io/dragula/" rel="nofollow noopener" target="_blank">https://bevacqua.github.io/dragula/</a></li>
+<li><a href="https://anseki.github.io/plain-draggable/" rel="nofollow noopener" target="_blank">https://anseki.github.io/plain-draggable/</a></li>
+<li><a href="https://greensock.com/draggable/" rel="nofollow noopener" target="_blank">https://greensock.com/draggable/</a></li>
+<li><a href="https://draggabilly.desandro.com/" rel="nofollow noopener" target="_blank">https://draggabilly.desandro.com/</a></li>
+</ul>
+<p>Most of these are pretty vanilla yet very extensible further with user logic as desired. Some are similar while others have specific features which make them unique. I would say a few of these are quite relative to questions that have been asked regarding drag and drop from your tutorials. All of which would be a worthwhile review for consideration by users seeking drag and drop capabilities, some may prove useful to someone.</p>
+<a data-link-to-post="801769" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/81" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801769">
+<a title="January 20, 2020  5:07pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/82">Jan '20</a>
+<a data-link-to-post="801750" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/81">▶ prg9</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Thanks! I will be revising this tutorial shortly, so I will revise some of the basic drag explanations (for science, of course :P) and then point to your list for drag/drop next steps.</p>
+</div>
+</article>
+<article class="post" id="post-801921">
+<a title="January 29, 2020  2:15pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/83">Jan '20</a>
+<a data-link-to-post="798302" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/44">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank"><img src="./10446_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank" class="new-user">Sarvinstyle_<wbr>​<wbr>​Taba</a>
+</h3>
+<p>Thank you so much, It is lifesaving. but please please please help me.<br>
+How can I provide drag and drop with snap into place functionality ?? something like photoshop <strong>Snap To</strong> functionality</p>
+<p>Can you help me again??</p>
+<a data-link-to-post="801922" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/83" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-801922">
+<a title="January 29, 2020  7:32pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/84">Jan '20</a>
+<a data-link-to-post="801921" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/83">▶ Sarvinstyle_Taba</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>For that level of functionality, I would suggest you look at the links prg9 has provided: <a href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/81" class="inline-onebox" target="_blank">Create a Draggable Element in JavaScript</a></p>
+<p><img src="./slight_smile(2).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-801925">
+<a title="January 30, 2020  2:51am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/85">Jan '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank"><img src="./10446_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Sarvinstyle_Taba" target="_blank" class="new-user">Sarvinstyle_<wbr>​<wbr>​Taba</a>
+</h3>
+<p>Thank you very much <img src="./pray.png" title=":pray:" class="emoji" alt=":pray:"> <img src="./pray.png" title=":pray:" class="emoji" alt=":pray:"> <img src="./pray.png" title=":pray:" class="emoji" alt=":pray:"></p>
+</div>
+</article>
+<article class="post" id="post-802135">
+<a title="February 21, 2020  8:09am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/88">Feb '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kou_soreach" target="_blank"><img src="./11080_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kou_soreach" target="_blank" class="new-user">kou_<wbr>​soreach</a>
+</h3>
+<p>Drag not working on mobile it can move outside from container. if we open on browser desktop no problem.</p>
+<a data-link-to-post="802197" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/88" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-802197">
+<a title="February 22, 2020 10:03pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/89">Feb '20</a>
+<a data-link-to-post="802135" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/88">▶ kou_soreach</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Interesting! I will look into it shortly <img src="./slight_smile(2).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+</div>
+</article>
+<article class="post" id="post-802199">
+<a title="February 22, 2020 10:51pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/90">Feb '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/E959" target="_blank"><img src="./45(10).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/E959" target="_blank" class="new-user">E<wbr>​959</a>
+</h3>
+<p>Hi, Kirupa! How do I make it so you can drag the circles between and around two boxes instead of around just one box? Thank you in advance! <img src="./smiley(1).png" title=":smiley:" class="emoji" alt=":smiley:"></p>
+<a data-link-to-post="802200" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/90" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-802200">
+<a title="February 22, 2020 11:32pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/91">Feb '20</a>
+<a data-link-to-post="802199" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/90">▶ E959</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Can you clarify further? I am not following <img src="./grinning.png" title=":grinning:" class="emoji" alt=":grinning:"></p>
+</div>
+</article>
+<article class="post" id="post-802573">
+<a title="March 12, 2020 10:44am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/92">Mar '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Jr_May" target="_blank"><img src="./11218_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Jr_May" target="_blank" class="new-user">Jr_<wbr>​<wbr>​May</a>
+</h3>
+<p>Hi Kirupa,</p>
+<p>Nice tutorial. It really helped me alot. But after dragging the divs and then resizing the window, the divs are not on the same positions anymore, as I am trying to get the perfect alignment with its parent div. I tried changing this line</p>
+<p>setTranslate = (xPos, yPos, el) =&gt; {<br>
+el.style.transform = “translate3d(” + xPos + "%, " + yPos + “%, 0)”;<br>
+};</p>
+<p>into percentage. It works as I expected but the thing is as mentioned <a href="https://stackoverflow.com/questions/50409008/css-transform-transition-using-%C2%B4px%C2%B4-more-smooth-performant-than-percentage" rel="nofollow noopener" target="_blank">here</a> dragging and animations are terribly slow and awful with percentage, as it needs to be calculated for its relative position.</p>
+<p>Could you think of anyway to solve this? Thank you so much!</p>
+<a data-link-to-post="802579" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/92" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-802579">
+<a title="March 12, 2020  9:31pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/93">Mar '20</a>
+<a data-link-to-post="802573" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/92">▶ Jr_May</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Do you have an example or live demo? I’d like to see what exactly is happening, for when I resize the example in the tutorial, I am not seeing the position shifts.</p>
+<a data-link-to-post="802597" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/93" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-802581">
+<a title="March 12, 2020 10:22pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/94">Mar '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/John_A_Davis" target="_blank"><img src="./11221_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/John_A_Davis" target="_blank" class="new-user">John_<wbr>​A_<wbr>​<wbr>​Davis</a>
+</h3>
+<p>I have to face the issue of my website <a href="https://forum.kirupa.com/" target="_blank">{baleeted}</a> the HTML code cannot work properly. Anyone help or guide me which is the best plugin I can you for my site</p>
+</div>
+</article>
+<article class="post" id="post-802597">
+<a title="March 13, 2020  7:17pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/95">Mar '20</a>
+<a data-link-to-post="802579" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/93">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Jr_May" target="_blank"><img src="./11218_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Jr_May" target="_blank" class="new-user">Jr_<wbr>​<wbr>​May</a>
+</h3>
+<p>thank you for the response. I have solved my problem by using transform and scale methods. Thanks for this useful tutorial!</p>
+</div>
+</article>
+<article class="post" id="post-803128">
+<a title="April  4, 2020 12:05pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/96">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/SusanM" target="_blank"><img src="./45(11).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/SusanM" target="_blank" class="">SusanM</a>
+</h3>
+<p>Hi Kirupa, I would like to be able to make a simple game where I can drag an image to the correct image box to make it droppable, any other boxes will not be droppable for that image… for example I have three images, orange, strawberry, apple, and three colored boxes, red box (for the strawberry image to be dropped in), orange box (for the orange image to be dropped in) and green box (for the Apple image to be dropped in)… is this possible? I have searched high and low but I can’t find one that will work on iOS as well as PC. Thanks so much <img src="./slight_smile(2).png" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>(The red, orange, green boxes to be images as well, or or better still, contain letters like “RED” “GREEN” “ORANGE”)</p>
+<a data-link-to-post="803140" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/96" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-803140">
+<a title="April  6, 2020  6:09am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/97">Apr '20</a>
+<a data-link-to-post="803128" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/96">▶ SusanM</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>That is doable with the code I posted earlier. The main work will be to ensure that the place you are releasing your dragged element on is indeed the right destination. This can be done by either checking if the coordinates intersect or by doing some eventing tricks. Does this help a bit? <img src="./grinning.png" title=":grinning:" class="emoji" alt=":grinning:"></p>
+<a class="post-replies button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/97">2 replies</a>
+</div>
+</article>
+<article class="post" id="post-803143">
+<a title="April  6, 2020  2:18pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/98">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Philip_Kirchhof" target="_blank"><img src="./11409_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Philip_Kirchhof" target="_blank" class="new-user">Philip_<wbr>​<wbr>​Kirchhof</a>
+</h3>
+<p>Hi kirupa,</p>
+<p>Thank you so much for that amazing code - it even works on a wix site. Is it possible to edit that original code that the circle you are moving is kind of like a flashlight and while moving you are revealing the background picture?</p>
+</div>
+</article>
+<article class="post" id="post-803144">
+<a title="April  6, 2020  2:21pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/99">Apr '20</a>
+<a data-link-to-post="803140" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/97">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/SusanM" target="_blank"><img src="./45(11).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/SusanM" target="_blank" class="">SusanM</a>
+</h3>
+<p>hi Kipura, thanks… the problem is that I’m a newbie and not sure if I have got it right, I’ve tried adjusting your code, but it’s not exactly what I need… could you have a look at what I did in here <a href="http://www.susyancrafts.com/" rel="nofollow noopener" target="_blank">what it looks like</a></p>
+<p>Here is the code that I put in:<br>
+(I don’t know how to paste in the code in here… I’ll put it up in my website above)</p>
+</div>
+</article>
+<article class="post" id="post-803285">
+<a title="April 14, 2020  9:51am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/100">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Faizan_Qureshi" target="_blank"><img src="./11464_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Faizan_Qureshi" target="_blank" class="new-user">Faizan_<wbr>​<wbr>​Qureshi</a>
+</h3>
+<p>Thanks for great work.</p>
+</div>
+</article>
+<article class="post" id="post-803341">
+<a title="April 17, 2020 11:49am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/101">Apr '20</a>
+<a data-link-to-post="803140" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/97">▶ kirupa</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/auhanlon" target="_blank"><img src="./45(12).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/auhanlon" target="_blank" class="new-user">auhanlon</a>
+</h3>
+<p>kirupa. This code works great. I am trying to add a rotate with double click then drag the multiple items on the container. so far I can do one or the other but can not do both. I tried your rotate onclick function above with the drag but the rotate doesn’t work with the drag. Can you add rotation to each item on your latest code above?</p>
+</div>
+</article>
+<article class="post" id="post-803345">
+<a title="April 17, 2020  1:04pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/102">Apr '20</a>
+<a data-link-to-post="798307" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/45">▶ jmacky</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/auhanlon" target="_blank"><img src="./45(12).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/auhanlon" target="_blank" class="new-user">auhanlon</a>
+</h3>
+<p>jmacky<br>
+I copied the code as is and I can not get the items to rotate. They drag smoothly. Did you modify the code to get the click rotate to work? Thanks in advance.</p>
+</div>
+</article>
+<article class="post" id="post-803357">
+<a title="April 17, 2020  7:45pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/103">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/chelsea1" target="_blank"><img src="./45(13).png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/chelsea1" target="_blank" class="new-user">chelsea<wbr>​1</a>
+</h3>
+<p>Hi Kirupa,<br>
+This tutorial is fantastic! I am learning and it has been great to be able change colors and sizes and see how things work. My question is how can I add more items? .five . six etc.? I tried just writing it in and then adding to the div style, but circles five and 6 never show up when I put the code live. What am I doing wrong? Thanks!</p>
+<a data-link-to-post="803360" class="post-replies button" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/103" target="_blank">1 reply</a>
+</div>
+</article>
+<article class="post" id="post-803360">
+<a title="April 17, 2020 11:27pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/104">Apr '20</a>
+<a data-link-to-post="803357" class="in-reply-to" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/103">▶ chelsea1</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank"><img src="./11616_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/kirupa" target="_blank" class="staff">kirupa</a>
+</h3>
+<p>Hi <a class="mention" href="https://forum.kirupa.com/u/chelsea1" target="_blank">@chelsea1</a> - welcome to the forums! Can you share your example? Did you add the HTML elements as well that map to the <strong>.five</strong> and <strong>.six</strong> selectors?</p>
+</div>
+</article>
+<article class="post" id="post-803388">
+<a title="April 19, 2020  1:05pm" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/105">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/Three_X" target="_blank"><img src="./11504_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/Three_X" target="_blank" class="new-user">Three_<wbr>​X</a>
+</h3>
+<p>Hi, Kirupa <a class="mention" href="https://forum.kirupa.com/u/kirupa" target="_blank">@kirupa</a></p>
+<p>Thanks for the great tutorial.<br>
+Please help me I only want to make a draggable player div miniplayer<br>
+when change the class with jquary</p>
+<p>Example: <a href="https://codepen.io/xvids/pen/KKdMrOq" rel="nofollow noopener" target="_blank">https://codepen.io/xvids/pen/KKdMrOq</a></p>
+<p>Thanks…</p>
+</div>
+</article>
+<article class="post" id="post-803516">
+<a title="April 27, 2020  6:39am" class="post-date" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/106">Apr '20</a>
+<div class="author">
+<a href="https://forum.kirupa.com/u/n2fole00" target="_blank"><img src="./11561_2.png" alt=""></a>
+</div>
+<div class="cooked">
+<h3 class="username">
+<a href="https://forum.kirupa.com/u/n2fole00" target="_blank" class="new-user">n<wbr>​2fole<wbr>​00</a>
+</h3>
+<p>Hi, I expanded on this example to include mouse scrolling. However, I have to move the mouse after the scroll action, in order for the element position to be rendered. Is there a way to update and render the position on scroll alone?<br>
+Here is an example fiddle of what I have. Thanks.<br>
+<a href="https://jsfiddle.net/n2fole00/Lxdjf15h/" class="onebox" target="_blank" rel="nofollow noopener">https://jsfiddle.net/n2fole00/Lxdjf15h/</a></p>
+</div>
+</article>
+<footer class="clearfix">
+<a target="_blank" href="https://forum.kirupa.com/"><img class="logo" src="./ed6006f4a517a9ed8a07f860df454e7f560669ed.png"></a>
+<a class="button" target="_blank" href="https://forum.kirupa.com/t/create-a-draggable-element-in-javascript/638149/106">Continue Discussion</a>
+<span class="replies">40 more replies</span>
+</footer>
+<div class="clearfix"></div>
+
+
+</body></html>

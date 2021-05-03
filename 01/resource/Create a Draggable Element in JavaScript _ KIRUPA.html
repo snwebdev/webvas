@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://www.kirupa.com/html5/drag.htm -->
+<html class="kirupa_blue" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="shortcut icon" href="https://www.kirupa.com/favicon_new.png">
+<link rel="apple-touch-icon" href="https://www.kirupa.com/favicon_ios.png">
+<link rel="alternate" type="application/rss+xml" title="kirupa.com Updates" href="https://www.kirupa.com/modular/kirupa.xml">
+<meta property="og:site_name" content="kirupa.com">
+<meta property="fb:admins" content="700218">
+<meta property="og:type" content="article">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0099fe">
+<link rel="manifest" href="https://www.kirupa.com/manifest.json">
+<script>
+
+	/*
+function lazyLoadImages() {
+	let images = document.querySelectorAll("img");
+	
+	for (let i = 0; i < images.length; i++) {
+		images[i].setAttribute("loading", "lazy");
+	}
+}
+
+document.addEventListener("DOMContentLoaded", lazyLoadImages, false);
+	*/
+</script>
+<style>
+:root {
+	--primary: #0798FF;
+	--textOnPrimary: #FFFFFF;
+	--primaryDarker: #0267AF;
+	--primaryLighter: #AADCFF;
+	--primaryLightest: #EAF7FF;
+	--backgroundStart: #f5fcff;
+	
+	--light: #F3F3F3;
+	--lighter: #FAFAFA;
+	--highlighter: #FFE561;
+	--highlighterTwo: #FFE561;
+	--highlighterThree: #DCFFB2;
+	
+	--inputBackground: #FFF;
+	--inputBorder: #AADCFF;
+	
+    --headerBackground: #EAF7FF;
+	
+	/* This is not a bug. It's deliberately malformed 
+	   to allow for further tweaking using JS! */
+    --headerCircles:"rgba(7, 152, 255, ";
+	
+	--darkText: #222222;
+	--headerText: #222222;
+	--bodyText: #373d42;
+	--darkTextSecondary: #999999;
+	--navigationLinkColor: #333333;
+	
+	--serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+	
+	--pageBackground: #FFFFFF;
+	
+	--linkForeground: #0071bf;
+	--linkBackground: hsla(209, 100%, 52%, 0.07);
+	--linkHoverForeground: hsla(50, 100%, 25%, 1);
+	--linkHoverBackground: hsla(50, 100%, 50%, 0.51);
+	
+	--linkFilter: "none";
+	--linkFilterHover: "none";
+	
+	--orangeBigLeaf: #008000;
+	--orangeSmallLeaf: #01C201;
+	--orangeBodyTop: #FFD500;
+	--orangeBodyMiddle: #FFA601;
+	--orangeBodyBottom: #FF8000;
+	--orangeBorder: #333333;
+	--orangeBackground: #FFFFFF;
+	
+	--logoTextColor: #0798FF; /* should be the same as primary */
+	--logoTextShadow: #333333;
+	
+	--structureBorder: #EEE;
+	--darkStructureBorder: #666;
+	--mediaBorder: #333;
+	--tableBorder: 1px solid #CCC;
+	
+	--codeFilter: none;
+}
+	
+html.theme_pink {
+  --primary: #ff0767;
+  --textOnPrimary: #FFFFFF;
+  --primaryDarker: #99003b;
+  --primaryLighter: #ffb1cf;
+  --primaryLightest: #ffdae8;
+  --backgroundStart: #ffaecd;
+  --light: #f6f6f6;
+  --lighter: #fffcfe;
+  --highlighter: #b2fff8;
+  --highlighterTwo: #bffff9;
+  --highlighterThree: #ffcfb2;
+  --inputBackground: #FFF;
+  --inputBorder: #ff99c0;
+  --headerBackground: #ffeaf2;
+  --headerCircles: "rgba(255, 7, 103, ";
+  --darkText: #222222;
+  --headerText: #97033c;
+  --bodyText: #373d42;
+  --navigationLinkColor: #333333;
+  --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+  --pageBackground: #ffffff;
+  --linkForeground: #d70053;
+  --linkBackground: rgba(215, 0, 83, .07);
+  --linkHoverForeground: hsla(50, 100%, 25%, 1);
+  --linkHoverBackground: hsla(50, 100%, 50%, 0.51);
+  --orangeBigLeaf: #008000;
+  --orangeSmallLeaf: #01C201;
+  --orangeBodyTop: #FFD500;
+  --orangeBodyMiddle: #FFA601;
+  --orangeBodyBottom: #FF8000;
+  --orangeBorder: #333333;
+  --orangeBackground: #FFFFFF;
+  --logoTextColor: #e70059;
+  --logoTextShadow: #333333;
+  --structureBorder: #EEE;
+  --darkStructureBorder: #666;
+  --mediaBorder: #333;
+  --tableBorder: 1px solid #CCC;
+}
+
+html.theme_yellow {
+  --primary: rgb(104, 99, 5);
+  --textOnPrimary: #FFFFFF;
+  --primaryDarker: rgb(36, 34, 0);
+  --primaryLighter: #FFEB3B;
+  --primaryLightest: #fff5c5;
+  --backgroundStart: #fffcdf;
+  --light: #F3F3F3;
+  --lighter: #FAFAFA;
+  --highlighter: rgb(206, 234, 255);
+  --highlighterTwo: #FFE561;
+  --highlighterThree: #DCFFB2;
+  --inputBackground: hsl(0, 0%, 100%);
+  --inputBorder: #ffd500;
+  --headerBackground: #fff38b;
+  --headerCircles: "rgba(200, 150, 150, ";
+  --darkText: #222222;
+  --headerText: #3a3802;
+  --bodyText: #373d42;
+  --navigationLinkColor: #333333;
+  --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+  --pageBackground: #FFFFFF;
+  --linkForeground: hsl(55, 100%, 14%);
+  --linkBackground: hsl(54, 100%, 77%);
+  --linkHoverForeground: hsl(0, 0%, 16%);
+  --linkHoverBackground: hsl(50, 100%, 50%);
+  --orangeBigLeaf: #008000;
+  --orangeSmallLeaf: #01C201;
+  --orangeBodyTop: #FFD500;
+  --orangeBodyMiddle: #FFA601;
+  --orangeBodyBottom: #FF8000;
+  --orangeBorder: #333333;
+  --orangeBackground: #FFFFFF;
+  --logoTextColor: #868000;
+  --logoTextShadow: #333333;
+  --structureBorder: #EEE;
+  --darkStructureBorder: #666;
+  --mediaBorder: #333;
+  --tableBorder: 1px solid #CCC;
+}
+
+html.theme_green {
+  --primary: #428989;
+  --textOnPrimary: #FFFFFF;
+  --primaryDarker: #245455;
+  --primaryLighter: #66BB6A;
+  --primaryLightest: #a4f8a8;
+  --backgroundStart: #f1fff1;
+  --light: #F3F3F3;
+  --lighter: #FAFAFA;
+  --highlighter: #fbdbff;
+  --highlighterTwo: #FFE561;
+  --highlighterThree: #DCFFB2;
+  --inputBackground: #FFF;
+  --inputBorder: #72b3b6;
+  --headerBackground: #deffe0;
+  --headerCircles: "rgba(7, 152, 255, ";
+  --darkText: #222222;
+  --headerText: #1c3a3a;
+  --bodyText: #373d42;
+  --navigationLinkColor: #333333;
+  --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+  --pageBackground: #FFFFFF;
+  --linkForeground: #008000;
+  --linkBackground: hsla(120, 100%, 25%, .07);
+  --linkHoverForeground: hsla(50, 100%, 25%, 1);
+  --linkHoverBackground: hsla(50, 100%, 50%, 0.51);
+  --orangeBigLeaf: #008000;
+  --orangeSmallLeaf: #01C201;
+  --orangeBodyTop: #FFD500;
+  --orangeBodyMiddle: #FFA601;
+  --orangeBodyBottom: #FF8000;
+  --orangeBorder: #333333;
+  --orangeBackground: #FFFFFF;
+  --logoTextColor: #428889;
+  --logoTextShadow: #333333;
+  --structureBorder: #EEE;
+  --darkStructureBorder: #666;
+  --mediaBorder: #333;
+  --tableBorder: 1px solid #CCC;
+}
+html.theme_purple {
+	--primary: #6b16a6;
+    --textOnPrimary: #FFFFFF;
+    --primaryDarker: #420a66;
+    --primaryLighter: #cc98f0;
+    --primaryLightest: #edd4ff;
+	--backgroundStart: #f0dbff;
+    --light: #F3F3F3;
+    --lighter: #FAFAFA;
+    --highlighter: #A6F6FF;
+    --highlighterTwo: #FFE561;
+    --highlighterThree: #d5d5d5;
+    --inputBackground: #FFF;
+    --inputBorder: #815b9b;
+    --headerBackground: #bb94d7;
+    --headerCircles: "rgba(62, 0, 104, ";
+    --darkText: #280540;
+	--headerText: #3d0b5f;
+    --bodyText: #373d42;
+    --navigationLinkColor: #333333;
+    --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+    --pageBackground: #FFFFFF;
+    --linkForeground: #6b16a6;
+    --linkBackground: #f1e9f6;
+    --linkHoverForeground: #605814;
+    --linkHoverBackground: #ffeb43;;
+    --orangeBigLeaf: #008000;
+    --orangeSmallLeaf: #01C201;
+    --orangeBodyTop: #FFD500;
+    --orangeBodyMiddle: #FFA601;
+    --orangeBodyBottom: #FF8000;
+    --orangeBorder: #333333;
+    --orangeBackground: #FFFFFF;
+    --logoTextColor: #6b17a7;
+    --logoTextShadow: #000000;
+    --structureBorder: #EEE;
+    --darkStructureBorder: #666;
+    --mediaBorder: #333;
+    --tableBorder: 1px solid #CCC;
+}
+html.theme_pico8 {
+    --primary: #7E2553;
+    --textOnPrimary: #FFFFFF;
+    --primaryDarker: #1D2B53;
+    --primaryLighter: #9fdaff;
+    --primaryLightest: #ffe4d3;
+	--backgroundStart: #f9e9d9;
+    --light: #F3F3F3;
+    --lighter: #FAFAFA;
+    --highlighter: #ffbbd3;
+    --highlighterTwo: #ffec27;
+    --highlighterThree: #FFCCAA;
+    --inputBackground: #FFF;
+    --inputBorder: #C39D89;
+    --headerBackground: #FFCCAA;
+    --headerCircles: "rgba(131, 118, 156, ";
+    --darkText: #222222;
+	--headerText: #222;
+    --bodyText: #373d42;
+    --navigationLinkColor: #333333;
+    --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+    --pageBackground: #FFFFFF;
+    --linkForeground: #7E2553;
+    --linkBackground: #FFF1E8;
+    --linkHoverForeground: #008751;
+    --linkHoverBackground: #d6ff6b;
+    --orangeBigLeaf: #008000;
+    --orangeSmallLeaf: #01C201;
+    --orangeBodyTop: #FFD500;
+    --orangeBodyMiddle: #FFA601;
+    --orangeBodyBottom: #FF8000;
+    --orangeBorder: #333333;
+    --orangeBackground: #FFFFFF;
+    --logoTextColor: #7e2653;
+    --logoTextShadow: #000000;
+    --structureBorder: #EEE;
+    --darkStructureBorder: #666;
+    --mediaBorder: #333;
+    --tableBorder: 1px solid #CCC;
+}
+html.theme_black {
+	--primary: #000000;
+    --textOnPrimary: #FFFFFF;
+    --primaryDarker: #3e3e3e;
+    --primaryLighter: #737373;
+    --primaryLightest: #c1c1c1;
+	--backgroundStart: #ececec;
+    --light: #F3F3F3;
+    --lighter: #FAFAFA;
+    --highlighter: #FFE561;
+    --highlighterTwo: #FFE561;
+    --highlighterThree: #DCFFB2;
+    --inputBackground: #FFF;
+    --inputBorder: #8a8a8a;
+    --headerBackground: #d6d6d6;
+    --headerCircles: "rgba(0, 0, 0, ";
+    --darkText: #222222;
+	--headerText: #222;
+    --bodyText: #373d42;
+    --navigationLinkColor: #333333;
+    --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+    --pageBackground: #FFFFFF;
+    --linkForeground: #333;
+    --linkBackground: #EEE;
+    --linkHoverForeground: hsla(50, 100%, 25%, 1);
+    --linkHoverBackground: hsla(50, 100%, 50%, 0.51);
+    --orangeBigLeaf: #008000;
+    --orangeSmallLeaf: #01C201;
+    --orangeBodyTop: #FFD500;
+    --orangeBodyMiddle: #FFA601;
+    --orangeBodyBottom: #FF8000;
+    --orangeBorder: #333333;
+    --orangeBackground: #FFFFFF;
+    --logoTextColor: #a9a9a9;
+    --logoTextShadow: #333333;
+    --structureBorder: #EEE;
+    --darkStructureBorder: #666;
+    --mediaBorder: #333;
+    --tableBorder: 1px solid #CCC;
+}
+html.theme_brown {
+	--primary: #99242c;
+    --textOnPrimary: #FFFFFF;
+    --primaryDarker: #67181d;
+    --primaryLighter: #9a4a50;
+    --primaryLightest: #d8abae;
+	--backgroundStart: #ffd4d7;
+	--backgroundStart: #ffe0e2;
+    --light: #F3F3F3;
+    --lighter: #FAFAFA;
+    --highlighter: #FFE561;
+    --highlighterTwo: #FFE561;
+    --highlighterThree: #DCFFB2;
+    --inputBackground: #FFF;
+    --inputBorder: #672025;
+    --headerBackground: #e48289;
+    --headerCircles: "rgba(255, 236, 39, ";
+    --darkText: #222222;
+	--headerText: #531418;
+    --bodyText: #373d42;
+    --navigationLinkColor: #333333;
+    --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+    --pageBackground: #FFFFFF;
+    --linkForeground: #333;
+    --linkBackground: #ffe2e4;
+    --linkHoverForeground: #000;
+    --linkHoverBackground: #ffc6c8;
+    --orangeBigLeaf: #008000;
+    --orangeSmallLeaf: #01C201;
+    --orangeBodyTop: #FFD500;
+    --orangeBodyMiddle: #FFA601;
+    --orangeBodyBottom: #FF8000;
+    --orangeBorder: #333333;
+    --orangeBackground: #FFFFFF;
+    --logoTextColor: #9a242c;
+    --logoTextShadow: #000000;
+    --structureBorder: #EEE;
+    --darkStructureBorder: #666;
+    --mediaBorder: #333;
+    --tableBorder: 1px solid #CCC;
+}
+html.theme_dark {
+    --primary: #518ac1;
+	--darkTextSecondary: #cacaca;
+    --textOnPrimary: #ffffff;
+    --primaryDarker: #3a6fa1;
+    --primaryLighter: #AADCFF;
+    --primaryLightest: #3e4f5f;
+    --backgroundStart: #000000;
+    --light: #54606f;
+    --lighter: #24282d;
+    --highlighter: #3a6fa1;
+    --highlighterTwo: #3a6fa1;
+    --highlighterThree: #3a6fa1;
+    --inputBackground: #373b41;
+    --inputBorder: #8eb2e8;
+    --headerBackground: #24282d;
+    --headerCircles: "rgba(170, 220, 255, ";
+    --darkText: hsla(216deg, 100%, 98%, .75);
+	--headerText: #7f8fa7;
+    --bodyText: #f5f9fe;
+    --navigationLinkColor: #333333;
+    --serifFonts: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --monoFonts: "SF Mono", Menlo, monospace, "SF Pro Icons";
+    --pageBackground: #383a42;
+	--linkForeground: hsl(205, 100%, 75%, 1);
+    --linkBackground: hsla(209, 100%, 52%, .38);
+    --linkHoverForeground: hsla(50, 100%, 71%, 1);
+    --linkHoverBackground: hsla(50, 95%, 24%, .75);
+    --orangeBigLeaf: #008000;
+    --orangeSmallLeaf: #01C201;
+    --orangeBodyTop: #FFD500;
+    --orangeBodyMiddle: #FFA601;
+    --orangeBodyBottom: #FF8000;
+    --orangeBorder: #333333;
+    --orangeBackground: #FFFFFF;
+    --logoTextColor: #FFFFFF;
+    --logoTextShadow: #333333;
+    --structureBorder: #504f4f;
+    --darkStructureBorder: #666;
+    --mediaBorder: #333;
+    --tableBorder: 1px solid #CCC;
+}
+
+html.theme_dark .centerImageNoBorder img {
+	filter: sepia(.2) grayscale(.3);
+	opacity: .75;
+	background-color: #EEE;
+    padding: 20px;
+}
+html.theme_dark .centerImageNoBorder img:hover {
+	filter: none;
+	opacity: 1;
+}
+
+html.theme_dark .centerImage img {
+	filter: sepia(.2) grayscale(.3);
+	opacity: .75;
+}
+html.theme_dark .centerImage img:hover {
+	filter: none;
+	opacity: 1;
+}
+
+html.theme_dark #rightContents nav .fresh_caption {
+	filter: invert(.75)
+}
+
+html.theme_dark .sig {
+	filter: invert(1);
+}
+html.theme_dark #mainFooter img {
+    filter: invert(1);
+}
+html.theme_dark #mainFooter img:hover {
+    filter: invert(.75);
+}
+html.theme_dark img[src*="kirupa_sig"] {
+    filter: invert(1);
+}
+
+html.theme_dark :not(pre) > code[class*="language-"], 
+html.theme_dark pre[class*="language-"] {
+  background: rgb(0 0 0 / 20%) !important;
+  border-radius: 10px !important;
+}
+
+html.theme_dark code[class*="language-"], 
+html.theme_dark pre[class*="language-"] {
+  color: var(--bodyText) !important;
+  text-shadow: 0 1px #383a4287 !important;
+  filter: var(--codeFilter);
+}
+
+html.theme_dark .token.atrule,
+html.theme_dark .token.attr-value,
+html.theme_dark .token.keyword {
+  color: #C586C0 !important;
+}
+
+html.theme_dark .token.property,
+html.theme_dark .token.tag,
+html.theme_dark .token.boolean,
+html.theme_dark .token.number,
+html.theme_dark .token.constant,
+html.theme_dark .token.symbol,
+html.theme_dark .token.deleted {
+  color: #569CD6 !important;
+}
+html.theme_dark .token.selector, 
+html.theme_dark .token.attr-name, 
+html.theme_dark .token.string, 
+html.theme_dark .token.char, 
+html.theme_dark .token.builtin, 
+html.theme_dark .token.inserted {
+  color: #CE9178 !important;
+}
+html.theme_dark .token.operator, 
+html.theme_dark .token.entity, 
+html.theme_dark .token.url, 
+html.theme_dark .language-css 
+html.theme_dark .token.string, 
+html.theme_dark .style .token.string {
+  color: var(--bodyText) !important;
+  background: none !important;
+}
+
+html.theme_dark .line-highlight {
+	background: #1b7fcc38;
+}
+
+html.theme_dark .kirupaInput {
+	border-color: var(--headerBackground);
+}
+html.theme_dark .kirupaInput:focus {
+    background-color: var(--headerBackground);
+	box-shadow: 0px 0px 10px 0px var(--primaryDarker);
+    color: var(--bodyText);
+}
+html.theme_dark #sigNewsletter #mce-EMAIL {
+    border-color: var(--inputBorder);
+}
+html.theme_dark .articleActions a {
+	filter: invert(.9);
+}
+html.theme_dark .themeLabel {
+    filter: brightness(1.5) grayscale(.5);
+}
+
+html.theme_dark .syntaxhighlighter {
+	filter: invert(1);
+	opacity: .75;
+}
+
+html.theme_dark .yellowEmphasis {
+	filter: grayscale(.5);
+}
+
+html.theme_yellow_dark {
+	--primary: #776600;
+    --darkTextSecondary: #cacaca;
+    --primaryDarker: #927e00;
+    --primaryLighter: rgb(181 156 0);
+    --primaryLightest: #bfa500;
+    --backgroundStart: #776703;
+    --lighter: #27230b;
+    --highlighter: #776703;
+    --highlighterTwo: #776703;
+    --highlighterThree: #776703;
+    --inputBackground: #433c22;
+    --inputBorder: #776703;
+    --headerBackground: #292720;
+    --headerCircles: "rgba(181, 156, 0, ";
+    --headerText: rgb(236 204 0 / 0.75);
+    --pageBackground: #3a382f;
+	--linkFilter: hue-rotate(205deg);
+	--linkFilterHover: hue-rotate(295deg);
+	
+	--codeFilter: hue-rotate(195deg);
+}
+
+html.theme_pink_dark {
+	--primary: #ca4fb2;
+    --darkTextSecondary: #cacaca;
+    --primaryDarker: #9c4c9c;
+    --primaryLighter: rgb(179 99 179);
+    --primaryLightest: #bf8abf;
+    --backgroundStart: #7b397b;
+    --lighter: #270227;
+    --highlighter: #ab00ad;
+    --highlighterTwo: #ab00ad;
+    --highlighterThree: #ab00ad;
+    --inputBackground: #3e173e;
+    --inputBorder: #7b387b;
+    --headerBackground: #1b001b;
+    --headerCircles: "rgba(191, 138, 191, ";
+    --headerText: rgb(189 135 189 / 78%);
+    --pageBackground: #290229;
+    --linkFilter: hue-rotate(445deg);
+    --linkFilterHover: hue-rotate(155deg);
+	
+	--codeFilter: hue-rotate(85deg);
+}
+
+html.theme_green_dark {
+    --primary: #2daa72;
+    --darkTextSecondary: #adcaba;
+    --primaryDarker: #1f744e;
+    --primaryLighter: rgb(2, 56, 41);
+    --primaryLightest: #123027;
+    --backgroundStart: #000000;
+    --lighter: #061911;
+    --highlighter: #207b52;
+    --highlighterTwo: #207b52;
+    --highlighterThree: #207b52;
+    --inputBackground: #0f3f2a;
+    --inputBorder: #13ab7e;
+    --headerBackground: #0b2c1d;
+    --headerCircles: "rgba(70, 255, 173, ";
+    --headerText: rgba(70, 255, 173, 0.62);
+    --pageBackground: #062014;
+    --linkFilter: hue-rotate(275deg);
+    --linkFilterHover: hue-rotate(377deg);
+    --structureBorder: #0c4129;
+    --darkStructureBorder: #0e412a;
+	
+	--codeFilter: hue-rotate(285deg);
+}
+html.theme_purple_dark {
+    --primary: #972fc6;
+    --darkTextSecondary: #bdadca;
+    --primaryDarker: #842cae;
+    --primaryLighter: rgb(189, 73, 243);
+    --primaryLightest: #551e70;
+    --backgroundStart: #4d1866;
+    --lighter: #0c050f;
+    --highlighter: #561e70;
+    --highlighterTwo: #551e70;
+    --highlighterThree: #551e70;
+    --inputBackground: #270e35;
+    --inputBorder: #9630c6;
+    --headerBackground: #15081c;
+    --headerCircles: "rgba(190, 59, 255, ";
+    --headerText: #b881d5;
+    --pageBackground: #230d2e;
+    --linkFilter: hue-rotate(420deg);
+    --linkFilterHover: hue-rotate(577deg);
+    --structureBorder: #4a1a61;
+    --darkStructureBorder: #0e412a;
+	
+	--codeFilter: hue-rotate(45deg);
+}
+html.theme_pico8_dark {
+    --primary: #29ADFF;
+    --darkTextSecondary: #bdadca;
+    --primaryDarker: #c0597e;
+    --primaryLighter: rgb(190, 90, 126);
+    --primaryLightest: #551e70;
+    --backgroundStart: #4f475d;
+    --lighter: #362531;
+    --highlighter: #FF004D;
+    --highlighterTwo: #FF004D;
+    --highlighterThree: #FF004D;
+    --inputBackground: #682b41;
+    --inputBorder: var(--primary);
+    --headerBackground: #332e3c;
+    --headerCircles: "rgba(255, 0, 77, ";
+    --headerText: #ac5479;
+    --pageBackground: #1b1820;
+    --linkFilter: hue-rotate(713deg);
+    --linkFilterHover: hue-rotate(517deg);
+    --structureBorder: #3c3747;
+    --darkStructureBorder: #0e412a;
+    --codeFilter: hue-rotate(-5deg);
+}
+html.theme_black_dark {
+	--primary: #009aff;
+    --darkTextSecondary: #bdbdbd;
+    --primaryDarker: #6eb3de;
+    --primaryLighter: #848484;
+    --primaryLightest: #000000;
+    --backgroundStart: #212121;
+    --lighter: #2f2f2f;
+    --highlighter: #5d5d5d;
+    --highlighterTwo: #5d5d5d;
+    --highlighterThree: #5d5d5d;
+    --inputBackground: #262626;
+    --inputBorder: var(--primary);
+    --headerBackground: #191919;
+    --headerCircles: "rgba(225, 225, 225, ";
+    --headerText: #777777;
+    --pageBackground: #232323;
+    --linkFilter: hue-rotate(713deg);
+    --linkFilterHover: hue-rotate(517deg);
+    --structureBorder: #3c3747;
+    --darkStructureBorder: #0e412a;
+    --codeFilter: hue-rotate(-5deg);
+}
+html.theme_brown_dark {
+	--primary: #a56554;
+    --darkTextSecondary: #caadad;
+    --primaryDarker: #865446;
+    --primaryLighter: rgb(225, 139, 112);
+    --primaryLightest: #4a2f28;
+    --backgroundStart: #4f475d;
+    --lighter: #201410;
+    --highlighter: #95185d;
+    --highlighterTwo: #95185d;
+    --highlighterThree: #95185d;
+    --inputBackground: #4f3129;
+    --inputBorder: var(--primary);
+    --headerBackground: #432b24;
+    --headerCircles: "rgba(190, 90, 126, ";
+    --headerText: #a56554;
+    --pageBackground: #2c1c17;
+    --linkFilter: hue-rotate(533deg);
+    --linkFilterHover: hue-rotate(367deg);
+    --structureBorder: #53352b;
+    --darkStructureBorder: #0e412a;
+    --codeFilter: hue-rotate(145deg);
+}
+</style>
+<meta content="drag, element, javascript, mouse, touch" name="keywords">
+<meta content="Learn how to easily drag an element around using either the mouse or touch." name="description">
+<meta content="Create a Draggable Element in JavaScript | KIRUPA" name="title">
+<title>Create a Draggable Element in JavaScript | KIRUPA<script type="text/javascript" async="" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/embed.js"></script></title>
+<meta name="author" content="Kirupa Chinnathambi">
+<link href="./Create a Draggable Element in JavaScript _ KIRUPA_files/kirupa_html5.css" rel="stylesheet" type="text/css">
+<link rel="image_src" href="https://www.kirupa.com/images/draggable_sharing.png">
+<meta content="Create a Draggable Element in JavaScript" property="og:title">
+<meta content="https://www.kirupa.com/html5/drag.htm" property="og:url">
+<meta content="https://www.kirupa.com/images/draggable_sharing.png" property="og:image">
+<meta content="Learn how to easily drag an element around using either the mouse or touch." property="og:description">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@kirupa" name="twitter:site">
+<meta content="@kirupa" name="twitter:creator">
+<meta content="Create a Draggable Element in JavaScript" name="twitter:title">
+<meta content="Learn how to easily drag an element around using either the mouse or touch." name="twitter:description">
+<meta content="https://www.kirupa.com/images/draggable_sharing.png" name="twitter:image:src">
+<style>
+    #container {
+      width: 100%;
+      height: 400px;
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 7px;
+      touch-action: none;
+    }
+    #item {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(245, 230, 99);
+      border: 10px solid rgba(136, 136, 136, .5);
+      border-radius: 50%;
+      touch-action: none;
+      user-select: none;
+    }
+    #item:active {
+      background-color: rgba(168, 218, 220, 1.00);
+    }
+    #item:hover {
+      cursor: pointer;
+      border-width: 20px;
+    }
+  </style>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1008.0" data-gr-ext-installed="">
+<script>
+	let currentMode;
+	let currentTheme;
+	
+	function setTheme(theme) {
+		document.documentElement.className = theme;
+	}
+	
+	function setDefaultTheme() {
+		currentTheme = localStorage["kirupaTheme"];
+		currentMode = localStorage["kirupaDarkMode"];
+		
+		if (currentMode == undefined) {
+			currentMode = "";
+			localStorage["kirupaDarkMode"] = "";
+		}
+		
+		if (currentTheme) {
+			setTheme(currentTheme + currentMode);
+		} else {
+			currentTheme = "kirupa_blue";
+			setTheme(currentTheme + currentMode);
+		}
+	}
+	setDefaultTheme();
+</script>
+
+<div id="mainHeader">
+<a href="https://www.kirupa.com/">
+<svg width="55" height="54" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" fill-rule="evenodd">
+<path d="M-1-2h62v62H-1z"></path>
+<g transform="translate(3 3)">
+<ellipse fill="var(--orangeBackground)" cx="27.625" cy="26.323" rx="24.375" ry="24.677"></ellipse>
+<path d="M13.167.145a13.9 13.9 0 00-.498 1.452c-1.033 3.668-.138 6.634 2.687 8.898.095.087.204.16.327.218 1.82-3.107 1.455-6.145-1.095-9.116A16.937 16.937 0 0013.167.145zM.142 3.861c1.251.765 2.124 1.883 2.616 3.354a265.59 265.59 0 00.854 2.482c.644 1.858 1.829 3.213 3.554 4.064.067.039.138.073.214.102 1.8.832 3.644 1.002 5.53.508.39-.116.702-.32.94-.61.122-.155.227-.334.312-.537.227-.58.251-1.17.071-1.77a2.943 2.943 0 00-.1-.262 9.305 9.305 0 00-.725-1.408 8.739 8.739 0 00-2.8-2.845 22.164 22.164 0 00-5.034-2.352h-.029A14.388 14.388 0 003.27 4.05a14.7 14.7 0 00-3.128-.189z" stroke="var(--orangeBackground)" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15.782 10.667C17.928 7.014 17.077 3.457 13.226 0c-1.752 4.386-1.01 7.868 2.224 10.447.096.088.207.161.332.22z" fill="var(--orangeSmallLeaf)" fill-rule="nonzero"></path>
+<path d="M14.208 11.15a9.372 9.372 0 00-.736-1.42 8.846 8.846 0 00-2.845-2.873 22.57 22.57 0 00-5.111-2.373c-.77-.245-1.55-.425-2.34-.543A15.017 15.017 0 000 3.751c1.27.772 2.156 1.9 2.657 3.385a266.975 266.975 0 00.866 2.505c.655 1.876 1.858 3.243 3.61 4.103.067.039.14.073.216.102 1.83.84 3.702 1.011 5.617.513.395-.117.713-.322.953-.615.125-.157.231-.337.318-.542.27-.674.26-1.358-.029-2.052z" fill="var(--orangeBigLeaf)" fill-rule="nonzero"></path>
+<path d="M13.183 32.88c.77 1.738 1.872 3.335 3.306 4.79 3.11 3.136 6.854 4.704 11.234 4.704 1.684 0 3.278-.23 4.78-.688.115-.04.235-.079.36-.118.491-.175.977-.37 1.459-.586a16.547 16.547 0 002.136-1.216 16.684 16.684 0 002.498-2.095c1.377-1.397 2.45-2.926 3.22-4.586.135-.284.255-.572.361-.865-.404.303-.813.591-1.227.865-3.07 2.051-6.151 3.414-9.241 4.088-.202.039-.4.078-.592.117-.087.02-.173.034-.26.044-1.838.332-3.682.42-5.53.264l-.563-.059a1.235 1.235 0 00-.173-.015c-3.909-.478-7.831-2.027-11.768-4.644z" fill="var(--orangeBodyBottom)" fill-rule="nonzero"></path>
+<path d="M43.606 26.257c0-4.445-1.55-8.245-4.65-11.4a25.56 25.56 0 00-.52-.512c.357.693.535 1.43.535 2.212 0 1.69-.838 3.165-2.513 4.425-.269.195-.553.386-.851.571-2.234 1.378-4.929 2.066-8.086 2.066-3.158 0-5.858-.688-8.1-2.066a11.51 11.51 0 01-.838-.571c-1.675-1.26-2.512-2.735-2.512-4.425 0-.498.072-.977.216-1.436h-.043a16.271 16.271 0 00-2.08 2.681l-.057.088c-1.223 2.003-1.95 4.215-2.18 6.638a17.039 17.039 0 00-.087 1.729c0 2.393.448 4.6 1.343 6.623 3.937 2.617 7.86 4.166 11.768 4.644.048 0 .105.005.173.015.183.02.37.04.563.059 1.848.156 3.692.068 5.53-.264.087-.01.173-.025.26-.044.193-.04.39-.078.592-.117 3.09-.674 6.17-2.037 9.241-4.088.414-.274.823-.562 1.227-.865.135-.342.255-.684.361-1.025.472-1.544.708-3.19.708-4.938z" fill="var(--orangeBodyMiddle)" fill-rule="nonzero"></path>
+<path d="M34.018 12.044c-1.78-1.006-3.927-1.51-6.44-1.51-2.512 0-4.654.504-6.425 1.51-1.78.996-2.671 2.203-2.671 3.62 0 1.416.89 2.627 2.671 3.633 1.771.996 3.913 1.494 6.426 1.494 2.512 0 4.658-.498 6.44-1.494 1.77-1.006 2.656-2.217 2.656-3.634 0-1.416-.886-2.623-2.657-3.619z" fill="var(--orangeBodyTop)" fill-rule="nonzero"></path>
+<path d="M8.832 18.503a20.725 20.725 0 00-1.52 7.82c0 11.357 9.095 20.564 20.313 20.564 11.218 0 20.313-9.207 20.313-20.564 0-11.358-9.095-20.565-20.313-20.565-2.23 0-4.376.364-6.384 1.036" stroke="var(--orangeBorder)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
+</g>
+</g>
+</svg>
+</a>
+ <a class="wideOnly" style="margin-top: 3px;" href="https://www.kirupa.com/">
+<svg width="157" height="31" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" fill-rule="evenodd">
+<path d="M-7-10h171v51H-7z"></path>
+<path d="M19 13V1h-6v12h6zM7 31V19h6v-6H7V1H1v30h6zm12 0V19h-6v12h6zm18 0V1h-6v30h6zm24-12v12h6V19h-6zm-.24-6H55V7h5.76v6zm.24 6v-6h6V1H49v30h6V19h6zm36 12V1h-6v24h-6V1h-6v30h18zm18 0V19h12V1h-18v30h6zm6-18h-6V7h6v6zm24 18V19h6v12h6V1h-18v30h6zm6-18h-6V7h6v6z" fill="var(--logoTextShadow)" fill-rule="nonzero"></path>
+<path d="M18 12V0h-6v12h6zM6 30V18h6v-6H6V0H0v30h6zm12 0V18h-6v12h6zm18 0V0h-6v30h6zm24-12v12h6V18h-6zm-.24-6H54V6h5.76v6zm.24 6v-6h6V0H48v30h6V18h6zm36 12V0h-6v24h-6V0h-6v30h18zm18 0V18h12V0h-18v30h6zm6-18h-6V6h6v6zm24 18V18h6v12h6V0h-18v30h6zm6-18h-6V6h6v6z" fill="var(--logoTextColor)" fill-rule="nonzero"></path>
+</g>
+</svg>
+</a>
+<p><a class="headerLink articles" href="https://www.kirupa.com/learn/index.htm"><span>ARTICLES</span></a></p>
+<p class="wideOnly"><a class="headerLink" href="https://www.youtube.com/user/kirupa"><span>VIDEOS</span></a></p>
+<p class="wideOnly"><a class="headerLink books" href="https://www.kirupa.com/book/index.htm"><span>BOOKS</span></a></p>
+<p class="wideOnly"><a class="headerLink newsletter" href="https://www.kirupa.com/newsletter.htm"><span>NEWSLETTER</span></a></p>
+<p></p>
+<svg id="searchGlass" class="wideOnly headerIcons" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.545 13.467l-3.779-3.779a6.15 6.15 0 00.898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 00.1 6.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 003.115-.844l3.799 3.801a.953.953 0 001.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM2.004 6.287a4.282 4.282 0 014.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 01-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474z" fill="var(--darkText)" fill-rule="nonzero"></path>
+</svg>
+<svg class="wideOnly class=" headerdivider"="" width="3" height="36" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" fill-rule="evenodd">
+<path stroke="var(--structureBorder)" stroke-width="2" stroke-linecap="square" d="M1.5 1.5v33"></path>
+</g>
+</svg>
+<a href="https://twitter.com/intent/user?screen_name=kirupa"><svg class="headerIcons" width="20" height="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.316 4.246c.008.162.011.326.011.488 0 4.99-3.797 10.742-10.74 10.742-2.133 0-4.116-.625-5.787-1.697a7.577 7.577 0 005.588-1.562 3.779 3.779 0 01-3.526-2.621 3.858 3.858 0 001.705-.065 3.779 3.779 0 01-3.028-3.703v-.047a3.766 3.766 0 001.71.473 3.775 3.775 0 01-1.168-5.041 10.716 10.716 0 007.781 3.945 3.813 3.813 0 01-.097-.861A3.773 3.773 0 0113.539.524a3.77 3.77 0 012.756 1.191 7.602 7.602 0 002.397-.916 3.789 3.789 0 01-1.66 2.088 7.55 7.55 0 002.168-.594 7.623 7.623 0 01-1.884 1.953z" fill="var(--darkText)" fill-rule="nonzero"></path>
+</svg></a>
+<a class="wideOnly" href="https://www.youtube.com/kirupa"><svg class="headerIcons" width="20" height="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 .3C.172.3 0 1.174 0 8c0 6.826.172 7.7 10 7.7s10-.874 10-7.7c0-6.826-.172-7.7-10-7.7zm3.205 8.034l-4.49 2.096c-.393.182-.715-.022-.715-.456V6.026c0-.433.322-.638.715-.456l4.49 2.096c.393.184.393.484 0 .668z" fill="var(--darkText)" fill-rule="nonzero"></path>
+</svg></a>
+<a class="wideOnly" href="https://www.kirupa.com/modular/kirupa.xml"><svg class="headerIcons" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M.4.4v2.367c7.086 0 12.83 5.746 12.83 12.832h2.369C15.599 7.205 8.794.4.4.4zm0 4.737v2.369A8.093 8.093 0 018.493 15.6h2.368C10.861 9.822 6.177 5.137.4 5.137zm2.269 5.922a2.271 2.271 0 000 4.541 2.269 2.269 0 002.269-2.27 2.27 2.27 0 00-2.269-2.271z" fill="var(--darkText)" fill-rule="nonzero"></path>
+</svg></a>
+<a class="kirupaButton" id="askquestion" href="http://forum.kirupa.com/">FORUM</a>
+</div>
+<div id="searchContainer" class="searchBar hidden">
+<span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input placeholder="search" id="sbi" class="kirupaInput wideOnly ds-input" size="20" aria-autocomplete="list" aria-haspopup="true" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Arial; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span>
+<svg id="closeSearch" width="10" height="12" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.348 10.849a1.2 1.2 0 01-1.697 0L5 7.819l-2.651 3.029A1.2 1.2 0 11.652 9.151l2.758-3.15L.651 2.849a1.2 1.2 0 111.697-1.697L5 4.183l2.651-3.031a1.2 1.2 0 111.697 1.697L6.59 6.001l2.758 3.15a1.2 1.2 0 010 1.698z" fill="var(--darkText)" fill-rule="nonzero"></path>
+</svg>
+</div>
+<script>
+	let searchButton = document.querySelector("#searchGlass");
+	let closeSearchButton = document.querySelector("#closeSearch");
+	let searchContainerButton = document.querySelector("#searchContainer");
+	let searchInput = document.querySelector("#sbi");
+	
+	searchButton.addEventListener("click", showSearch, false);
+	closeSearchButton.addEventListener("click", hideSearch, false);
+	
+	function showSearch() {
+		searchContainer.classList.remove("hidden");
+		closeSearchButton.style.display = "block";
+		searchInput.focus();
+		searchInput.value = "";
+	}
+	
+	function hideSearch() {
+		searchContainer.classList.add("hidden");
+		closeSearchButton.style.display = "none";
+	}
+</script>
+<div id="mainBody">
+<div id="leftContents">
+<nav class="navigationBoxes">
+<ul>
+<li><a id="tweetLink" href="https://www.kirupa.com/html5/drag.htm#">
+<img alt="Share" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/twitter.svg">
+Share on Twitter</a> </li>
+<li><a href="https://forum.kirupa.com/">
+<img alt="Ask a question!" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/1f970.svg">
+Ask a Question</a></li>
+<li>
+<hr>
+</li>
+<li><a id="personalizeLink" href="https://www.kirupa.com/html5/drag.htm#">
+<img alt="Personalize the appearance!" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/1f324.svg">
+Personalize</a></li>
+</ul>
+<div id="themeWrapper">
+<div id="themeChooser">
+<svg class="leftCat" width="48" height="47" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill-rule="nonzero"><path d="M37 16c-1.4-6-4.9-14.2-6.4-14.5-1.4-.2-8.3 6.2-8.3 10.6l-3 .9-2.6 1.6c-3.3-3-12.6-2.1-13.5-.9-.8 1.3 3 9.4 6.5 14.5 0 0 0 2.2 2.7 8.6l13-10.1 16.3-2.9C38.8 17.4 37 16 37 16z" fill="var(--primaryLighter)"></path><path d="M29.8 21.8a14 14 0 00-5 3.6c-1.8-.1-4 .4-5.9 1.2-9 4-7 8.8-6.5 10.2.7 1.4 6 8.4 18.7 2.7C44 33.8 42.3 25.2 41.7 23.8c-.6-1.4-2.9-6-12-2z" fill="var(--primaryLightest)"></path><path d="M24.7 11.8C25.7 8.7 29 5.2 30 5c.8-.2 3.2 5.5 4.1 9-4-2.8-9.4-2.3-9.4-2.3zM14.9 16c-3-1.3-7.8-1-8.6-.5-.6.5 2 6.1 4 9.1.6-5 4.6-8.6 4.6-8.6z" fill="var(--primary)"></path><path d="M28.3 23.2c-2-4.3-7-11.1-9-10.2-2 .9-.3 9.2 1.6 13.5 2 4.3 2.5 1.1 4.5.2 2-1 4.8.8 2.9-3.5z" fill="var(--primary)"></path><path d="M20.7 23.3a2 2 0 01-1 2.7 2 2 0 01-2.7-1 2 2 0 011-2.7 2 2 0 012.7 1zm9.1-4a2 2 0 01-1 2.6 2 2 0 01-2.7-1 2 2 0 011-2.6 2 2 0 012.7 1z" fill="#2A2F33"></path><path d="M33.5 30.6c-2.9 2-4.4 1.2-4.8.9L27.6 29a1 1 0 10-1.9.8l1.1 2.5c0 .5-.4 2.3-3.9 3a1 1 0 00.4 2l2.1-.6c1.9-.9 2.7-2 3.1-3 1 .3 2.4.5 4.3-.4.6-.2 1.2-.6 1.9-1a1 1 0 00-1.2-1.7z" fill="var(--primary)"></path><path d="M29 24.7c.6 1.6-1.4 5-2.1 5.3-.8.3-4.6-.4-5.3-2-.7-1.6 1.4-2.4 3-3.1 1.6-.8 3.6-1.8 4.3-.2z" fill="#292F33"></path><path d="M44.1 29.3a1 1 0 01-.8 0s-4.4-2-11.4 0a1 1 0 11-.5-2l1-.2c7.2-1.7 11.5.2 11.7.3a1 1 0 010 1.9z" fill="var(--primaryDarker)"></path><path d="M32 29.2a1 1 0 01-1.1-1.6c4.2-4 11-5.1 11.4-5.2a1 1 0 01.3 2A21.4 21.4 0 0032 29.2zm-17.2 13c.3 0 .5-.2.6-.5 0 0 1.5-4.5 7.6-8.5a1 1 0 10-1-1.7l-1 .6c-6 4.3-7.5 8.8-7.5 9a1 1 0 001.3 1.2z" fill="var(--primaryDarker)"></path><path d="M22.9 33.3a1 1 0 00-.5-2c-5.8.5-11.2 4.8-11.4 5a1 1 0 001.3 1.6 21.4 21.4 0 0110.6-4.6z" fill="var(--primaryDarker)"></path></g></g></svg>
+<h1>Personalize</h1>
+<br>
+<p class="themeHeading">Color</p>
+<button aria-label="Blue Theme" class="activeTheme" id="theme_blue"></button>
+<button aria-label="Yellow Theme" id="theme_yellow" class=""></button>
+<button aria-label="Pink Theme" id="theme_pink" class=""></button>
+<button aria-label="Green Theme" id="theme_green" class=""></button>
+<button aria-label="Purple Theme" id="theme_purple" class=""></button>
+<button aria-label="Pico8 Theme" id="theme_pico8" class=""></button>
+<button aria-label="Black Theme" id="theme_black" class=""></button>
+<button aria-label="Brown Theme" id="theme_brown" class=""></button>
+<p class="themeHeading bg">Background</p>
+<div id="radioContainer">
+<label id="light" class="modes"><input type="radio" name="mode" value="light" checked="">Light</label>
+<label id="dark" class="modes"><input type="radio" name="mode" value="dark">Dark</label>
+</div>
+<br>
+<a class="kirupaButton" id="applyTheme" href="https://www.kirupa.com/html5/drag.htm#">Done</a>
+</div>
+</div>
+</nav>
+</div>
+<script>
+  let themeWrapper = document.querySelector("#themeWrapper");
+  let applyTheme = document.querySelector("#applyTheme");
+
+  let personalizeLink = document.querySelector("#personalizeLink");
+
+  applyTheme.addEventListener("click", closeModal, false);
+  personalizeLink.addEventListener("click", showModal, false);
+
+  function showModal(e) {
+    themeWrapper.classList.toggle("show");
+    document.body.style.overflowY = "hidden";
+  }
+
+  function closeModal(e) {
+    themeWrapper.classList.toggle("show");
+    document.body.style.overflowY = "auto";
+  }
+
+  let tweetLink = document.querySelector("#tweetLink");
+	tweetLink.addEventListener("click", tweetCurrentPage, false);
+  let twitterHandle = 'kirupa';
+
+	function tweetCurrentPage() {
+		window.open('https://twitter.com/share?url='+encodeURIComponent(window.location.href)+'&text='+document.title + ' via @' + twitterHandle, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=550,width=475');
+		return false; 
+	}
+</script>
+<div id="mainContent">
+<div id="tutorialInformation">
+<div class="authorImage">
+<a href="https://www.kirupa.com/me/index.htm">
+<img alt="Look, it&#39;s a kirupa!!!" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/kirupa_me.webp"></a></div>
+<div class="authorText">
+<h1>Create a Draggable Element in JavaScript</h1>
+<p class="tutorialInfo">by <a href="https://www.kirupa.com/about/whatiskirupa.htm">kirupa</a>&nbsp;&nbsp; |&nbsp;&nbsp; 26 April 2018</p>
+</div>
+</div>
+<p>A common gesture we use all the time and take for granted is the ability to drag an element around on screen. Despite how common this drag gesture is, there is no <strong><em>good</em></strong> built-in support for making an element draggable on the web. This is doubly-so if we wish to go beyond the mouse and support things like touch! That's where this tutorial comes in. Over the next few sections, we'll look at a pure JavaScript-based solution (aka no jQuery) that will allow you to turn any boring element into one that you can drag around on your page.</p>
+<p>Onwards!</p>
+<h2>The Example</h2>
+<p>Before we go any further, let's take a look at an example. Go ahead and drag the following yellow circle around:</p>
+<div id="outerContainer">
+<div id="container">
+<div id="item" style="transform: translate3d(-153px, -13px, 0px);">
+</div>
+</div>
+</div>
+<script>
+    var dragItem = document.querySelector("#item");
+    var container = document.querySelector("#container");
+
+    var active = false;
+    var currentX;
+    var currentY;
+    var initialX;
+    var initialY;
+    var xOffset = 0;
+    var yOffset = 0;
+
+    container.addEventListener("touchstart", dragStart, false);
+    container.addEventListener("touchend", dragEnd, false);
+    container.addEventListener("touchmove", drag, false);
+
+    container.addEventListener("mousedown", dragStart, false);
+    container.addEventListener("mouseup", dragEnd, false);
+    container.addEventListener("mousemove", drag, false);
+
+    function dragStart(e) {
+      if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+      } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+      }
+
+      if (e.target === dragItem) {
+        active = true;
+      }
+    }
+
+    function dragEnd(e) {
+      initialX = currentX;
+      initialY = currentY;
+
+      active = false;
+    }
+
+    function drag(e) {
+      
+
+      if (active) {
+        
+        e.preventDefault();
+        
+        if (e.type === "touchmove") {
+          currentX = e.touches[0].clientX - initialX;
+          currentY = e.touches[0].clientY - initialY;
+        } else {
+          currentX = e.clientX - initialX;
+          currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, dragItem);
+      }
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+    }
+  </script>
+<p>You can drag either using your mouse cursor or, if you have access to a touch-friendly device, using your fingers. If all works according to plan, the yellow circle should easily drag to the various positions you take it to.</p>
+<h2>Drag Me Up, Scotty!</h2>
+<p>Now that we have a good idea of what we will be creating, it's time to actually create it. As you will see in a few moments, the code behind making any element draggable isn't rocket science. The hard part is just understanding the various stages involved in a typical drag operation.</p>
+<h3>Anatomy of a Drag Operation</h3>
+<p>Let's say we have an element that we would like to drag around or make draggable:</p>
+<p class="centerImageNoBorder"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/draggable_element_200.webp" width="400" height="342" alt=""></p>
+<p>To initiate the drag, we first press down on the element:</p>
+<p class="centerImageNoBorder"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/pressing_down_200.webp" width="350" height="200" alt=""></p>
+<p>This pressing down can be either via our mouse cursor or finger. To keep the terminology simple, I'll refer to the mouse cursor or finger (or stylus) more generically as just a <strong>pointer</strong>.</p>
+<p>While we are pressing down on the element with our pointer, we move our pointer to a new position:</p>
+<p class="centerImageNoBorder"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/move_pointer_200.webp" width="550" height="313" alt=""></p>
+<p>At each point during the move, our draggable element tracks and moves precisely with our pointer's position:</p>
+<p class="centerImageNoBorder"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/track_pointer_200.webp" width="550" height="350" alt=""></p>
+<p>Once we move the pointer to the final destination, we release the press:</p>
+<p><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/release_press_200.webp" width="550" height="350" alt=""></p>
+<p> When the press is released, our draggable element stops tracking the pointer and remains put at the final destination. The drag is complete.</p>
+<h3>Code, Please!</h3>
+<p>There is a reason why we looked at each tiny step of a drag gesture in great detail. The code you are about to see takes all those visuals and text and turns it into something our browser actually understands.</p>
+<p>The full HTML, CSS, and JavaScript for our drag example looks as follows:</p>
+<pre class="line-numbers language-html" data-line=""><code class=" language-html"><span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width=device-width, 
+        initial-scale=1.0, 
+        user-scalable=no<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Drag/Drop/Bounce<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style language-css">
+    <span class="token selector">#container</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+      <span class="token property">background-color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+      <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+      <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+      <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+      <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+      <span class="token property">border-radius</span><span class="token punctuation">:</span> 7px<span class="token punctuation">;</span>
+      <span class="token property">touch-action</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">#item</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+      <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>245, 230, 99<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token property">border</span><span class="token punctuation">:</span> 10px solid <span class="token function">rgba</span><span class="token punctuation">(</span>136, 136, 136, .5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+      <span class="token property">touch-action</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+      <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">#item:active</span> <span class="token punctuation">{</span>
+      <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>168, 218, 220, 1.00<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">#item:hover</span> <span class="token punctuation">{</span>
+      <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+      <span class="token property">border-width</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>outerContainer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token keyword">var</span> dragItem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#item"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#container"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> active <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> currentX<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> currentY<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> initialX<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> initialY<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> xOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> yOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchstart"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchend"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchmove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mouseup"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousemove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">dragStart</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"touchstart"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        initialX <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientX <span class="token operator">-</span> xOffset<span class="token punctuation">;</span>
+        initialY <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientY <span class="token operator">-</span> yOffset<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        initialX <span class="token operator">=</span> e<span class="token punctuation">.</span>clientX <span class="token operator">-</span> xOffset<span class="token punctuation">;</span>
+        initialY <span class="token operator">=</span> e<span class="token punctuation">.</span>clientY <span class="token operator">-</span> yOffset<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target <span class="token operator">===</span> dragItem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        active <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">dragEnd</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      initialX <span class="token operator">=</span> currentX<span class="token punctuation">;</span>
+      initialY <span class="token operator">=</span> currentY<span class="token punctuation">;</span>
+
+      active <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">drag</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      
+        e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"touchmove"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          currentX <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientX <span class="token operator">-</span> initialX<span class="token punctuation">;</span>
+          currentY <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientY <span class="token operator">-</span> initialY<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          currentX <span class="token operator">=</span> e<span class="token punctuation">.</span>clientX <span class="token operator">-</span> initialX<span class="token punctuation">;</span>
+          currentY <span class="token operator">=</span> e<span class="token punctuation">.</span>clientY <span class="token operator">-</span> initialY<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        xOffset <span class="token operator">=</span> currentX<span class="token punctuation">;</span>
+        yOffset <span class="token operator">=</span> currentY<span class="token punctuation">;</span>
+
+        <span class="token function">setTranslate</span><span class="token punctuation">(</span>currentX<span class="token punctuation">,</span> currentY<span class="token punctuation">,</span> dragItem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">setTranslate</span><span class="token punctuation">(</span>xPos<span class="token punctuation">,</span> yPos<span class="token punctuation">,</span> el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token string">"translate3d("</span> <span class="token operator">+</span> xPos <span class="token operator">+</span> <span class="token string">"px, "</span> <span class="token operator">+</span> yPos <span class="token operator">+</span> <span class="token string">"px, 0)"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>If you take all of this and paste it into a HTML document, you will see your own version of this example working on your computer. Anyway, take a few moments to glance through everything you see. The HTML and CSS should look simple. They just help us define the draggable element and the container it lives in. The JavaScript inside the <span class="inlineCode">script</span> tag is where the excitement is at, so let's go through it more carefully.</p>
+<h4>Variable Declaration</h4>
+<p>At the very top, we declare some variables that we'll be using all over the place:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">var</span> dragItem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#item"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#container"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> active <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> currentX<span class="token punctuation">;</span>
+<span class="token keyword">var</span> currentY<span class="token punctuation">;</span>
+<span class="token keyword">var</span> initialX<span class="token punctuation">;</span>
+<span class="token keyword">var</span> initialY<span class="token punctuation">;</span>
+<span class="token keyword">var</span> xOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> yOffset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>The <span class="inlineCode">dragItem</span> and <span class="inlineCode">container</span> variables store a reference to their respective DOM elements. The remaining variables seem a bit mysterious. Don't worry too much about what they do right now. We'll cover them as they get used.</p>
+<h4>Listening for Events</h4>
+<p>Next up is our event-related code for dealing with the various states of our drag gesture:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js">container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchstart"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchend"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchmove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mouseup"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousemove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>The first batch of event listeners deal with touch, and the second batch of event listeners deal with the mouse. The pairing between the touch and mouse events is as follows: <strong>touchstart</strong> to <strong>mousedown</strong>, <strong>touchend</strong> to <strong>mouseup</strong>, and <strong>touchmove</strong> to <strong>mousemove</strong>. Becaues these pairs of events are similar, we have them assigned to the same event handler. The <span class="inlineCode">dragStart</span>, <span class="inlineCode">dragEnd</span>, and <span class="inlineCode">drag</span> event handlers will be responsible for dragging our element around across the mouse and touch scenarios.</p>
+<p>Now, you may have always heard that touch events and mouse events are very similar and you don't have to explicitly listen to each of them separately like we are doing here. For 90% of the time, that is correct. You can just fake touch behavior by listening to the mouse only. The remaining 10% is reserved for more advanced cases like our drag operation. The properties you can use diverge, so we can't reuse the same code across mouse and touch. You	can see this when we look at our first event handler, the <span class="inlineCode">dragStart</span> function.</p>
+<h4>Initializing the Drag</h4>
+<p>The <span class="inlineCode">dragStart</span> function is the gateway to making our drag gesture actually work, and it looks as follows:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">function</span> <span class="token function">dragStart</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"touchstart"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    initialX <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientX <span class="token operator">-</span> xOffset<span class="token punctuation">;</span>
+    initialY <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientY <span class="token operator">-</span> yOffset<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    initialX <span class="token operator">=</span> e<span class="token punctuation">.</span>clientX <span class="token operator">-</span> xOffset<span class="token punctuation">;</span>
+    initialY <span class="token operator">=</span> e<span class="token punctuation">.</span>clientY <span class="token operator">-</span> yOffset<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target <span class="token operator">===</span> dragItem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    active <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This event handling function is called when the <strong>mousedown</strong>/<strong>touchstart</strong> events are overheard. The first thing we do is set the initial position of our pointer (<span class="inlineCode">initialX</span> and <span class="inlineCode">initialY</span>), and we do so by detecting whether the event is touch-based or not. If the event is a touch-based event (by checking for <strong>touchstart</strong>), the way we get the position is by accessing the <span class="inlineCode">clientX</span> and <span class="inlineCode">clientY</span> properties via our event argument's <span class="inlineCode">touches[0]</span> object. For the mouse-based event, our path is a little different. We can get the initial position by accessing the <span class="inlineCode">clientX</span> and <span class="inlineCode">clientY</span> properties directly on our event argument object. It would be great to have a unified way for being able to do all of this, but alas, there isn't...yet!</p>
+<p> One more thing to call out about the position. Calculating it involves both the current position along with subtracting the values for <span class="inlineCode">xOffset</span> and <span class="inlineCode">yOffset</span>. Both <span class="inlineCode">xOffset</span> and <span class="inlineCode">yOffset</span> are initially set to 0, but that won't be the case with subsequent drag operations. We'll look more into how all of the positioning logc works in a few moments.</p>
+<p>The last thing we do is check if the element we are clicking on is the element we would like to drag:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target <span class="token operator">===</span> dragItem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  active <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Why are we doing this? If you go back to our event listener code, notice that we are listening for our various mouse and touch events on the container and not the element we are dragging:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js">container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchstart"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchend"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"touchmove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> dragStart<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mouseup"</span><span class="token punctuation">,</span> dragEnd<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousemove"</span><span class="token punctuation">,</span> drag<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>There are several reasons for doing this. The main reason is that when you are dragging your element really quickly, your pointer will leave the hit area of the element you are dragging. When that happens, your drag will abruptly stop. That is really awkward. We can avoid that by listening for the events on the dragged element's container instead. No matter how quickly you are dragging your element around, you will almost always be within the confines of the container. This ensures your events still fire and your dragged element gets a chance to catch up to where your pointer is.</p>
+<p>Wrapping up this block of code, once we identify this event as being associated with our dragged element, we set the <span class="inlineCode">active</span> variable to <strong>true</strong>:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target <span class="token operator">===</span> dragItem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  active <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Phew. Who knew that three lines of code would require so much additional explanation?</p>
+<h4>Dragging</h4>
+<p>When the <strong>mousemove</strong> or <strong>touchmove</strong> events get fired, the <span class="inlineCode">drag</span> function is called:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">function</span> <span class="token function">drag</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  
+    e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"touchmove"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      currentX <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientX <span class="token operator">-</span> initialX<span class="token punctuation">;</span>
+      currentY <span class="token operator">=</span> e<span class="token punctuation">.</span>touches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>clientY <span class="token operator">-</span> initialY<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      currentX <span class="token operator">=</span> e<span class="token punctuation">.</span>clientX <span class="token operator">-</span> initialX<span class="token punctuation">;</span>
+      currentY <span class="token operator">=</span> e<span class="token punctuation">.</span>clientY <span class="token operator">-</span> initialY<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    xOffset <span class="token operator">=</span> currentX<span class="token punctuation">;</span>
+    yOffset <span class="token operator">=</span> currentY<span class="token punctuation">;</span>
+
+    <span class="token function">setTranslate</span><span class="token punctuation">(</span>currentX<span class="token punctuation">,</span> currentY<span class="token punctuation">,</span> dragItem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>The first thing we do is check whether the drag is active by checking the value of the <span class="inlineCode">active</span> variable we set in the <span class="inlineCode">dragStart</span> function. After that, it is smooth sailing. We set the value of <span class="inlineCode">currentX</span> and <span class="inlineCode">currentY</span> to the result of the current pointer position with an adjustment from <span class="inlineCode">initialX</span> and <span class="inlineCode">initialY</span> that we set earlier. Remember the <span class="inlineCode">xOffset</span> and <span class="inlineCode">yOffset</span> variables we saw earlier? They now get set to the current position. This allows future drag operations to pick up from where the current position left off.</p>
+<p>The last thing this function does is set the new position for our dragged element:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token function">setTranslate</span><span class="token punctuation">(</span>currentX<span class="token punctuation">,</span> currentY<span class="token punctuation">,</span> dragItem<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>This is set by the <span class="inlineCode">setTranslate</span> function which looks as follows:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">function</span> <span class="token function">setTranslate</span><span class="token punctuation">(</span>xPos<span class="token punctuation">,</span> yPos<span class="token punctuation">,</span> el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>transform <span class="token operator">=</span> <span class="token string">"translate3d("</span> <span class="token operator">+</span> xPos <span class="token operator">+</span> <span class="token string">"px, "</span> <span class="token operator">+</span> yPos <span class="token operator">+</span> <span class="token string">"px, 0)"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>This function is just a shortcut for setting the <strong>translate3d</strong> transform, and all we provide is the element whose position we want to set and the horizontal/vertical positions to set the translation to. You can learn more about why <strong>translate3d</strong> is probably one of the best ways we have for performantly setting the position <a href="https://www.kirupa.com/html5/animating_movement_smoothly_using_css.htm" class="blueEmphasis">in this article</a>.</p>
+<div class="callout">
+<h4>About Setting the Dragged Element Position</h4>
+<p>By now, we have seen a lot of hand waving around how the dragged element's position gets set. We have the <span class="inlineCode">setTranslate</span> function and the variables <span class="inlineCode">initialX</span>, <span class="inlineCode">initialY</span>, <span class="inlineCode">xOffset</span>, <span class="inlineCode">yOffset</span>, <span class="inlineCode">clientX</span>, <span class="inlineCode">clientY</span>, and the weird ways they all get used. Setting the position of something can't be that hard, right? Well, that is generally the case but when you throw in both mouse and touch, browser quirks, rounding shenanigans, and more, you end up with something slightly more complicated like what we have here. The main thing to note is that <span class="inlineCode">clientX</span> and <span class="inlineCode">clientY</span> return the absolute position of the pointer inside the container element. The offset variables account for where your pointer is relative to the dragged element's position. This is done to ensure we drag from the correct location even if you click/tap on the edge of our element. We don't want an unnatural snap to the position of our pointer when we initiate the drag.</p>
+</div>
+<p>&nbsp;</p>
+<h4>Ending the Drag</h4>
+<p>The last part of our code is the event handler that gets called when the <strong>mouseup</strong> and <strong>touchend</strong> events fire, signifying the end of the drag:</p>
+<pre class="line-numbers language-js" data-line=""><code class=" language-js"><span class="token keyword">function</span> <span class="token function">dragEnd</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  initialX <span class="token operator">=</span> currentX<span class="token punctuation">;</span>
+  initialY <span class="token operator">=</span> currentY<span class="token punctuation">;</span>
+
+  active <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>We set our initial position for the next drag operation to be the current position. Since our drag is now complete, we set the <span class="inlineCode">active</span> variable to <strong>false</strong>. </p>
+<h2>Conclusion</h2>
+<p>Dragging an element around should be easier, but it isn't. The difficulty doesn't arise from the actual code itself. The difficulty is a very traditional HTML/CSS/JS problem where things get more complex when you start broadening your scope beyond the traditional mouse/keyboard/desktop world. While touch-enabled devices have been around for a long time now, support for developing for them by all the browsers is still a work in progress. That's ok. If everything was too easy, we'd all be out of a job :P</p>
+<p>
+</p><p>Got a question or just want to chat? Comment below or drop by <a class="blueEmphasis" href="http://forum.kirupa.com/">our forums</a> (they are actually the same thing!) where a bunch of the friendliest people you'll ever run into will be happy to help you out!</p>
+<p><a href="https://www.kirupa.com/about/whatiskirupa.htm"><img class="sig" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/kirupa_sig.webp" width="150" height="65" alt=""></a> </p>
+<svg id="downwardCurvedArrow" width="205" height="78" xmlns="http://www.w3.org/2000/svg"><path d="M179.503 17.385c12.317 11.078 17.733 25.477 16.218 43.05l-.056.622-.02.14-1.91 9.989 8.15-9.65a1.5 1.5 0 011.992-.272l.122.093a1.5 1.5 0 01.271 1.992l-.093.122-11.844 14.026a1.5 1.5 0 01-2.518-.362l-.05-.129-5.836-17.405a1.5 1.5 0 012.792-1.089l.052.135 4.015 11.976 1.896-9.917.05-.55c1.412-16.44-3.516-29.777-14.81-40.153l-.427-.388C154.254-1.29 95.609-1.29 1.832 19.963a1.5 1.5 0 01-.664-2.926c94.726-21.468 154.08-21.468 178.335.348z" fill="var(--primary)" fill-rule="nonzero"></path></svg>
+<div id="kirupaBio">
+<svg class="leftBracket" width="13" height="122" xmlns="http://www.w3.org/2000/svg"><g stroke="var(--primary)" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 1.5v119M1.5 120.5h10M1.5 1.5h9"></path></g></svg>
+<img class="kirupaPixel" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/kirupa_pixel_small_profile.webp" width="100" height="100" alt="">
+<p>When Kirupa isn’t busy writing about himself in 3rd person, he is practicing social distancing…even on his <a class="blueEmphasis" href="https://twitter.com/kirupa">Twitter</a>, <a class="blueEmphasis" href="https://www.facebook.com/kirupa/">Facebook</a>, and <a class="blueEmphasis" href="https://www.linkedin.com/in/kirupa/">LinkedIn</a> profiles.</p>
+<svg class="rightBracket" width="16" height="123" xmlns="http://www.w3.org/2000/svg"><g stroke="var(--primary)" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M11.46 120.648L13.537 1.666M13.537 1.666L2.5 2.5M11.46 120.648l-8.998-.157"></path></g></svg>
+</div>
+<div class="horizontal_line"></div>
+<div id="sigNewsletter">
+<svg id="birdNewsletter" width="153" height="149" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M7.5 146.5h9M16.5 147V2"></path><path stroke="var(--primary)" stroke-width="3" stroke-linecap="square" d="M15.5 2.25L2 2.75"></path><path stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M30.25 74.25l-13.5.5"></path><g fill-rule="nonzero"><path d="M104.055 94.133c-.625 3.944-4.325 6.635-8.265 6.011l-49.933-7.908c-3.94-.624-6.627-4.328-6.002-8.272l5.09-32.138c.625-3.944 4.325-6.635 8.265-6.011l49.933 7.908c3.94.624 6.627 4.328 6.002 8.272l-5.09 32.138z" fill="#CCD6DD"></path><path d="M63.847 70.318l-23.448 17.3c-.057.044-.085.105-.134.149a7.278 7.278 0 002.074 2.9c.059-.034.122-.043.178-.084l23.451-17.302c.809-.598.99-1.744.406-2.563a1.79 1.79 0 00-2.527-.4m38.643 27.304c-.03-.056-.041-.123-.082-.18L85.456 73.741a1.79 1.79 0 00-2.527-.4c-.81.6-.992 1.745-.406 2.562l16.955 23.702c.038.054.1.084.143.134a7.247 7.247 0 002.869-2.117" fill="#99AAB5"></path><path d="M103.143 53.723L53.21 45.815c-3.94-.624-7.642 2.079-8.269 6.037l-.292 1.846 21.794 30.078c2.84 3.927 8.358 4.801 12.276 1.945l30.136-21.893.286-1.808c.627-3.958-2.059-7.673-5.998-8.297z" fill="#99AAB5"></path><path d="M103.818 53.83l-50.296-7.966c-2.853-.452-5.562.832-7.103 3.048L68.758 79.54c2.363 3.24 6.915 3.961 10.162 1.61l30.711-22.225c-.78-2.583-2.958-4.642-5.813-5.094z" fill="#E1E8ED"></path></g><g transform="rotate(-31 135.559 -155.175)" fill-rule="nonzero"><path d="M11.904 14.278c-.143 2.143 2.281 4.054-.919 3.838C7.785 17.899.873 14.83.961 13.538c.088-1.293 4.785-3.575 7.985-3.359 3.2.215 3.102 1.956 2.958 4.1zM37.87 35.091c-.26-.041-.506.02-.728.123-3 .301-4.162-2.444-4.162-2.444-.566-.436-1.266-2.606-2.05-1.576l.241 1.818c.241 1.818 3.317 4.181 3.317 4.181l-1.568 2.06a1.3 1.3 0 00.241 1.82 1.286 1.286 0 001.81-.243l.868-1.142-.05.323a1.291 1.291 0 102.55.407l.606-3.842a1.3 1.3 0 00-1.075-1.485zm-8.102.808a1.264 1.264 0 00-.738.023c-3.013-.106-3.799-2.982-3.799-2.982-.503-.509-.907-2.753-1.822-1.838l-.004 1.834c-.003 1.833 2.73 4.59 2.73 4.59l-1.829 1.83a1.3 1.3 0 00-.004 1.834c.504.508 1.32.51 1.825.004l1.013-1.014-.094.314a1.3 1.3 0 00.864 1.616 1.29 1.29 0 001.608-.87l1.112-3.725a1.292 1.292 0 00-.862-1.616z" fill="#FFAC33"></path><path d="M46.114 6.098c-.498-.217-.985-.072-1.364.312-.07.072-5.49 8.052-18.882 6.313-.442-.058 4.078 15.282 4.156 15.274.161-.018 3.99-.47 7.978-3.26 3.662-2.56 8.165-7.65 8.832-17.363.036-.534-.222-1.057-.72-1.276z" fill="#DD2E44"></path><path d="M45.414 24.692c-.27-.433-.78-.722-1.296-.608-1.712.381-4.232.701-5.997.585-8.416-.552-12.393-5.33-12.434-5.37-.364-.363.617 14.91 1.08 14.942 12.172.8 18.352-7.78 18.61-8.144.294-.421.309-.97.037-1.405z" fill="#DD2E44"></path><path d="M32.439 22.147c-.478 7.012 1.692 12.549-5.394 12.075-7.086-.472-13.047-6.26-12.57-13.273.477-7.013 18.442-5.813 17.964 1.198z" fill="#DD2E44"></path><path d="M31.118 13.457c-.47 6.882-5.22 12.17-12.185 11.705-6.967-.464-12.234-6.418-11.764-13.3.47-6.882 6.43-11.1 13.397-10.637 5.325.354 10.966 6.157 10.552 12.232z" fill="#DD2E44"></path><circle fill="#292F33" cx="13.808" cy="8.711" r="2.5"></circle><path d="M24.293 18.956s9.723 7.332 15.785-5.788c.505-1.093 2.147 1.03.126 5.403-2.02 4.373-10.417 8.36-15.343 1.993-1.038-1.343-.568-1.608-.568-1.608z" fill="#A0041E"></path><path d="M19.747 1.347s8.155.317 10.181-.596c2.026-.914.178 3.664-4.259 4.735-4.436 1.071-5.922-4.139-5.922-4.139z" fill="#DD2E44"></path><path d="M22.663 5.306s6.025.17 8.104-.742c2.078-.912.182 3.661-4.367 4.732-4.549 1.07-3.737-3.99-3.737-3.99z" fill="#DD2E44"></path></g></g></svg>
+<p>Hit Subscribe to get cool tips, tricks, selfies, and more personally hand-delivered to your inbox.</p>
+<form action="https://kirupa.us7.list-manage.com/subscribe/post?u=b0d69bc8873ebf34032eb7796&amp;id=47036a7bd4" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+<div id="mc_embed_signup_scroll">
+<p><input class="kirupaInput" id="mce-EMAIL" name="EMAIL" placeholder="you@domain.com" required="" type="email" value=""><input class="greenButton" id="mc-embedded-subscribe" name="subscribe" type="submit" value="SUBSCRIBE"> </p>
+<p>
+</p>
+<div style="position: absolute; left: -5000px;">
+<input name="b_b0d69bc8873ebf34032eb7796_47036a7bd4" tabindex="-1" type="text" value="">
+</div>
+<div class="clear">
+</div>
+</div>
+</form>
+</div>
+<div class="horizontal_line"></div>
+<p> </p>
+<h2 id="pageComments">COMMENTS</h2>
+<div id="pageCommentsImage">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" width="31" height="31"><defs><path fill="var(--primaryDarker)" d="M15.9 31.8l15.9-15.9L15.9 0 0 15.9l15.9 15.9z" id="a"></path></defs><use xlink:href="#a"></use></svg>
+</div>
+<div id="oldComments">
+<div id="discourse-comments"><iframe src="./Create a Draggable Element in JavaScript _ KIRUPA_files/comments.html" id="discourse-embed-frame" width="100%" frameborder="0" scrolling="no" referrerpolicy="no-referrer-when-downgrade" height="32035px"></iframe></div>
+<script>
+			  DiscourseEmbed = { discourseUrl: 'https://forum.kirupa.com/',
+								 discourseEmbedUrl: "https://www.kirupa.com" + window.location.pathname.split("?")[0].split("#")[0] };
+
+			  (function() {
+				var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+				d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+				(document.getElementsByTagName('title')[0] || document.getElementsByTagName('title')[0]).appendChild(d);
+			  })();
+			</script>
+</div><p></p>
+</div>
+<div id="rightContents">
+<div id="bookBannerContent">
+<ul>
+<li class="arraysBookRight">
+<a class="bookLink" href="https://www.amazon.com/exec/obidos/ASIN/B08FB2D8PY/kirupacom"><strong>Arrays</strong>
+<span class="lessemphasis">From Noob to Ninja</span></a>
+<ul class="buyNowRight">
+<li>
+<a class="kirupaButton kirupaButtonSmall" href="https://www.amazon.com/exec/obidos/ASIN/B08FB2D8PY/kirupacom">BUY</a></li>
+</ul>
+</li>
+<li class="js101Right">
+<a class="bookLink" href="http://www.informit.com/store/javascript-absolute-beginners-guide-9780136502890"><strong>JavaScript</strong>
+<span class="lessemphasis">Absolute Beginner's Guide</span></a>
+<ul class="buyNowRight">
+<li>
+<a class="kirupaButton kirupaButtonSmall" href="https://www.amazon.com/exec/obidos/ASIN/013650289X/kirupacom">BUY</a></li>
+</ul>
+</li>
+<li class="learningReactRight">
+<a class="bookLink" href="https://www.amazon.com/exec/obidos/ASIN/013484355X/kirupacom"><strong>Learning
+React:</strong><br>
+<span class="lessemphasis">A Hands-on Guide</span></a>
+<ul class="buyNowRight">
+<li>
+<a class="kirupaButton kirupaButtonSmall" href="https://www.amazon.com/exec/obidos/ASIN/013484355X/kirupacom">BUY</a></li>
+</ul>
+</li>
+<li class="animationRight">
+<a class="bookLink" href="http://shop.oreilly.com/product/0636920050858.do" target="_blank"><strong>Creating</strong><span class="lessemphasis"> Web Animations</span></a>
+<ul class="buyNowRight">
+<li>
+<a class="kirupaButton kirupaButtonSmall" href="https://www.amazon.com/exec/obidos/ASIN/1491957514/kirupacom" target="_blank">BUY</a></li>
+</ul>
+</li>
+</ul>
+<img alt="new books - yay!!!" height="66" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/caption_books.webp" width="165">
+</div>
+<nav class="navigationBoxes whats_new">
+<ul class="oneBoxOnly">
+<li><img class="fresh_caption" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/fresh_new.webp" width="125" height="19" alt="">
+<svg class="fresh_background" width="205" height="64" xmlns="http://www.w3.org/2000/svg">
+<g fill="var(--primary)" fill-rule="evenodd" fill-opacity=".15" opacity=".67">
+<circle cx="4" cy="47" r="4"></circle>
+<circle cx="24" cy="37" r="10"></circle>
+<circle cx="63.5" cy="27.5" r="17.5"></circle>
+<circle cx="49" cy="34" r="24"></circle>
+<circle cx="96.5" cy="19.5" r="15.5"></circle>
+<circle cx="81.5" cy="34.5" r="20.5"></circle>
+<circle cx="106" cy="39" r="25"></circle>
+<circle cx="113" cy="22" r="22"></circle>
+<circle cx="143" cy="36" r="22"></circle>
+<circle cx="165.5" cy="26.5" r="15.5"></circle>
+<circle cx="188" cy="39" r="8"></circle>
+<circle cx="202.5" cy="23.5" r="2.5"></circle>
+</g>
+</svg>
+<ul>
+<li>
+<a href="https://www.kirupa.com/html5/generating_random_boolean_true_false.htm" style="background-image: url(&#39;https://www.kirupa.com/icon/1f3b2.svg&#39;);">
+Generating a Random True or False Boolean Value
+</a>
+</li>
+<li>
+<a href="https://www.kirupa.com/html5/creating_colorful_smart_shadows.htm" style="background-image: url(&#39;https://www.kirupa.com/icon/1f369.svg&#39;);">
+Creating Colorful, Smart Shadows
+</a>
+</li>
+<li>
+<a href="https://www.kirupa.com/javascript/infinitely_cycle_through_array.htm" style="background-image: url(&#39;https://www.kirupa.com/icon/1f69c.svg&#39;);">
+Infinitely Cycle Through an Array
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<nav class="navigationBoxes newForum">
+<ul class="oneBoxOnly">
+<li>
+<img class="fresh_caption" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/hot.webp" width="158" height="18" alt="">
+<svg class="fresh_background" width="176" height="18" xmlns="http://www.w3.org/2000/svg">
+<path fill="var(--highlighter)" d="M1.293 0H176l-2.397 18H0z" fill-rule="evenodd"></path>
+</svg>
+<ul id="forumListing">
+
+<li>
+<a href="https://forum.kirupa.com/t/hello-old-friends-3/646463" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4dd.svg&quot;);">Hello old friends &lt;3</a>
+</li>
+
+<li>
+<a href="https://forum.kirupa.com/t/simple-weather-app-built-in-react/639679" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4dd.svg&quot;);">Simple Weather App (built in React)</a>
+</li>
+
+<li>
+<a href="https://forum.kirupa.com/t/the-kirupa-youtube-intro-video-with-pixel-p/647411" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4dd.svg&quot;);">The KIRUPA YouTube Intro Video...with Pixel! :P</a>
+</li>
+
+<li>
+<a href="https://forum.kirupa.com/t/mouse-follow-with-ease/636239" style="background-image: url(&quot;https://www.kirupa.com/icon/1f4ac.svg&quot;);">Mouse Follow with Ease</a>
+</li>
+
+<li>
+<a href="https://forum.kirupa.com/t/new-apple-tv/647286" style="background-image: url(&quot;https://www.kirupa.com/icon/1f5e8.svg&quot;);">New Apple TV!</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<template id="topicRow"></template>
+<script>
+
+  fetch('https://forum.kirupa.com/latest.json')
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (jsonData) {
+      processResults(jsonData);
+    });
+
+  var topicArray = [];
+
+  function processResults(input) {
+    //console.log(input);
+
+    var topicList = input.topic_list.topics;
+
+    for (var i = 0; i < 5; i++) {
+      var topic = topicList[i];
+
+      if (topic.pinned == false) {
+        topicArray.push({
+          title: topic.title,
+          count: topic.posts_count,
+          category: topic.category_id,
+          urlFrag: topic.slug + "/" + topic.id
+        });
+      }
+    }
+
+    //console.log(topicArray);
+
+    createDOM();
+  }
+
+  function createDOM() {
+    // 38 -> flash/as -> flash.svg
+    // 43 -> jobs -> 26f3.svg (golf)
+    // 36 -> random -> 1f379.svg (orange)
+    // 3 -> meta -> 1f441.svg
+    // 41 -> programming -> 1f4be.svg (disk)
+    // 42 -> web dev -> 1f431.svg (cat)
+    // other -> unknown -> 1f354.svg
+    // other
+    var forumParent = document.querySelector("#forumListing");
+    var t = document.querySelector("#topicRow");
+
+    for (var i = 0; i < topicArray.length; i++) {
+      var topic = topicArray[i];
+
+      var clone = document.importNode(t.content, true);
+
+      // set the link
+      var topicLink = clone.querySelector("a");
+      topicLink.textContent = topic.title;
+      topicLink.setAttribute("href", "https://forum.kirupa.com/t/" + topic.urlFrag);
+
+      // set the icon
+      var category = topic.category;
+      var icon = "https://www.kirupa.com/icon/";
+
+      switch (category) {
+        case 38:
+          icon += "1f525.svg";
+          break;
+        case 43:
+          icon += "1f4b0.svg";
+          break;
+        case 41:
+          icon += "1f4ac.svg";
+          break;
+        case 39:
+          icon += "1f3a8.svg";
+          break;
+        case 42:
+          icon += "1f4dd.svg";
+          break;
+        case 36:
+          icon += "1f5e8.svg";
+          break;
+        case 3:
+          icon += "1f5fa.svg";
+          break;
+        default:
+          icon += "1f4dd.svg"
+          break;
+      }
+
+      topicLink.style.backgroundImage = "url(" + icon + ")";
+
+      forumParent.appendChild(clone);
+    }
+  }
+</script>
+<div id="mainFooter">
+<p>Serving you freshly baked content since 1998!<br>
+<a href="https://mediatemple.net/" target="_blank">Killer hosting by (mt) mediatemple</a>
+</p>
+<div>
+<a href="https://twitter.com/intent/user?screen_name=kirupa" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/twitter_svg.svg" alt="Twitter"></a>
+<a href="https://www.youtube.com/user/kirupa" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/youtube.svg" alt="Youtube"></a>
+<a href="https://www.facebook.com/kirupa" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/fb_svg.svg" alt="Facebook"></a>
+<a href="https://www.pinterest.com/kirupa/" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/pinterest.svg" alt="Pinterest"></a>
+<a href="https://www.instagram.com/kirupac/" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/instagram.svg" alt="Instagram"></a>
+<a href="https://github.com/kirupa/kirupa" target="_blank"><img src="./Create a Draggable Element in JavaScript _ KIRUPA_files/github.svg" alt="Github"></a>
+</div>
+</div>
+<div id="scriptContainer"><script src="./Create a Draggable Element in JavaScript _ KIRUPA_files/prism_v1.js"></script><link rel="stylesheet" href="./Create a Draggable Element in JavaScript _ KIRUPA_files/prism_v1.css"></div>
+<script>
+	let themeElement = document.querySelector("#themeChooser");
+	
+	// Mode checked state
+	console.log("Current mode is: " + currentMode);
+	//if (currentMode != "") {
+		//document.querySelector("#light").firstChild.checked = true;
+	//}
+	
+	// Get initial theme choices
+	let darkMode = localStorage["kirupaDarkMode"];
+	let colorChoice = localStorage["kirupaTheme"];
+	
+	if (colorChoice == undefined) {
+		colorChoice = "theme_blue";
+	}
+	
+	if (darkMode != "") {
+		document.querySelector("#dark").firstChild.checked = true;
+	} else {
+		document.querySelector("#light").firstChild.checked = true;
+	}
+	
+	console.log("Theme: " + colorChoice + " | " + darkMode);
+	
+	themeElement.addEventListener("click", changeTheme, false);
+	
+	function changeTheme(e) {
+		if ((e.target !== e.currentTarget) && (e.target.id != "applyTheme")) {
+			let clickedItem = e.target.id;
+			
+			colorChoice = clickedItem;
+			document.documentElement.className = colorChoice + darkMode;
+			
+			console.log("Change theme: " + colorChoice + " | " + darkMode + " | " + clickedItem);
+			
+			localStorage["kirupaTheme"] = clickedItem;
+			setActiveTheme(colorChoice);
+			
+			console.log("Setting Active theme: " + colorChoice);
+		}
+		e.stopPropagation();
+	}
+	
+	let modeSwitcher = document.querySelector("#radioContainer");
+	modeSwitcher.addEventListener("click", changeMode, false);
+
+	
+	function changeMode(e) {
+		if (e.target.value == "light") {
+			darkMode = "";
+			localStorage["kirupaDarkMode"] = darkMode;
+			console.log("Light!");
+		} else if (e.target.value == "dark") {
+			darkMode = "_dark theme_dark";
+			localStorage["kirupaDarkMode"] = darkMode;
+			console.log("Dark");
+		}
+		
+		console.log(e.target);
+		
+		e.stopPropagation();
+		
+		document.documentElement.className = colorChoice + darkMode;
+	}
+	
+	function setActiveTheme(theme) {
+		clearActiveTheme();
+		
+		if (theme == undefined) {
+			document.querySelector("#theme_blue").className = "activeTheme";
+		} else {
+			document.querySelector("#" + theme).className = "activeTheme";
+			console.log("Debug: #" + theme);
+		}		
+	}
+	setActiveTheme(colorChoice);
+	
+	function clearActiveTheme() {
+		let themeElements = document.querySelectorAll("#themeChooser button");
+		
+		for (let i = 0; i < themeElements.length; i++) {
+			themeElements[i].className = "";
+		}
+	}
+	
+</script>
+<script async="" src="./Create a Draggable Element in JavaScript _ KIRUPA_files/kirupa.js"></script>
+<script>
+var scriptContainer = document.querySelector("#scriptContainer");
+var prism = document.querySelector("pre code");
+
+var syntaxHighlighting = document.querySelector("pre[class^='brush']");
+
+if (prism) {
+  var prismScript = document.createElement("script");
+  prismScript.setAttribute("src", "https://www.kirupa.com/js/prism_v1.js");
+  scriptContainer.appendChild(prismScript);
+
+  var prismStyle = document.createElement("link");
+  prismStyle.setAttribute("rel", "stylesheet");
+  prismStyle.setAttribute("href", "https://www.kirupa.com/js/prism_v1.css");
+  scriptContainer.appendChild(prismStyle);
+
+  console.log("Loaded prism!");
+}
+
+if (syntaxHighlighting) {
+  var shCoreCSS = document.createElement("link");
+  shCoreCSS.setAttribute("rel", "stylesheet");
+  shCoreCSS.setAttribute("href", "https://www.kirupa.com/ssi/sh/styles/shCore.css");
+  scriptContainer.appendChild(shCoreCSS);
+
+  var shThemeDefault = document.createElement("link");
+  shThemeDefault.setAttribute("rel", "stylesheet");
+  shThemeDefault.setAttribute("href", "https://www.kirupa.com/ssi/sh/styles/shThemeDefault.css");
+  scriptContainer.appendChild(shThemeDefault);
+
+  var shCore = document.createElement("script");
+  shCore.setAttribute("src", "https://www.kirupa.com/ssi/sh/scripts/shCore.js");
+  scriptContainer.appendChild(shCore);
+  
+  shCore.addEventListener("load", syntaxScriptLoaded, false);
+}
+
+function syntaxScriptLoaded() {
+
+  var shBrushJScript = document.createElement("script");
+  shBrushJScript.setAttribute("src", "https://www.kirupa.com/ssi/sh/scripts/shBrushJScript.js");
+  scriptContainer.appendChild(shBrushJScript);
+
+  var shBrushXml = document.createElement("script");
+  shBrushXml.setAttribute("src", "https://www.kirupa.com/ssi/sh/scripts/shBrushXml.js");
+  scriptContainer.appendChild(shBrushXml);
+
+  var shBrushCss = document.createElement("script");
+  shBrushCss.setAttribute("src", "https://www.kirupa.com/ssi/sh/scripts/shBrushCss.js");
+  scriptContainer.appendChild(shBrushCss);
+
+  SyntaxHighlighter.defaults['gutter'] = false;
+  SyntaxHighlighter.defaults['toolbar'] = false;
+  SyntaxHighlighter.defaults['class-name'] = 'kirupa_code';
+  SyntaxHighlighter.all();
+  
+  console.log("Loaded the syntaxhighlighting scripts!");
+}
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
+  }
+</script>
+<script src="./Create a Draggable Element in JavaScript _ KIRUPA_files/docsearch.min.js" defer="" async="" onload="docSearchLoaded()"></script>
+<script>
+	function docSearchLoaded() {
+		console.log("Loading docsearch!");
+		
+		docsearch({
+			apiKey: 'e59d8b56a7ba3ed403538ca3c82fe533',
+			indexName: 'kirupa',
+			inputSelector: '#sbi',
+			debug: false // Set debug to true if you want to inspect the dropdown
+		});
+	}
+</script>
+
+</body></html>

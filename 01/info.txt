@@ -1,0 +1,14 @@
+Trying to figure out how to create a sort of web version of VASSAL, i.e. something that runs in the browser and allows enables you to play boardgames, primarily hex and counter wargames.
+
+First task was to try to figure out how to move something with a mouse. For some reason that I can't remember , I thought it a good idea to have each counter in a div, and to move that div.
+
+This implimentation has a large map div and a smaller counter div, on top of it. Clicking on the counter can be dragged and released.
+
+This is all mouse stuff, no touch.
+
+This is all based on (i.e. taken from) a blog post (Create a Draggable Element in JavaScript
+by kirupa, 26 April 2018) copied in the resource file. The author seems to think that the translate3d transform is a good way to move things about. Will stick with it for now.
+
+Not sure while the counter div has a blinking curser in it.
+
+Next task is to see if I can get the dropped counter to snap to a position.
